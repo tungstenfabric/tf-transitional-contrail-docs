@@ -1,0 +1,356 @@
+
+========================================
+Provisioning Contrail CNI for Kubernetes
+========================================
+
+You can use the following procedure to provision Contrail Container Network Interface (CNI) for Kubernetes.
+
+   -  `Requirements`_ 
+
+
+   -  `Overview`_ 
+
+
+   -  `Configuration`_ 
+
+
+   -  `Troubleshooting`_ 
+
+
+
+Requirements
+============
+
+This procedure requires the following minimum virtual machine and host specifications:
+
+   - 32 GB RAM
+
+
+   - Eight vCPUs
+
+
+   - 150 GB disk space
+
+
+The supported software versions for provisioning Contrail CNI for Kubernetes are:
+
+   - Kubernetes 1.6
+
+
+   - Docker Engine versions 1.11.0 to 1.13.0
+
+
+   - Ubuntu 16.04.2 or CentOS 7 operating systems
+
+
+ Preparing for Installation 
+
+Before provisioning Contrail CNI for Kubernetes, ensure the following prerequisites are met:
+
+
+#. Stop the firewall service and delete all the iptable rules.
+
+   - For Ubuntu 16.04 host OS, use the following commands:
+   ::
+
+    sudo service ufw stop
+   ::
+
+    sudo iptables -F
+
+
+   - For CentOS 7 host OS, use the following commands:
+   ::
+
+    sudo service firewalld stop
+   ::
+
+    sudo iptables -F
+
+
+
+
+#. Ensure that the Kubernetes cluster is running. You can choose any method to install Kubernetes. For quick installation steps, use the following commands:
+
+   - Commands for Ubuntu 16.04 host OS:
+
+      ::
+
+        sudo apt-get install \
+          apt-transport-https \
+          ca-certificates \
+          curl -y 
+
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        sudo bash -c 'cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+        deb http://apt.kubernetes.io/ kubernetes-xenial main
+        EOF'
+        sudo apt-get update -y
+        sudo apt-get install -y kubectl
+        sudo apt-get install -y kubelet
+        sudo apt-get install -y kubeadm
+        sudo apt-get install -y docker-engine
+
+        sudo kubeadm init 
+
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+        # If you have multi-node cluster then please copy paste the kubeadm join line 
+        # on all the slave nodes from the stdout of sudo kubeadm init command. 
+        # It looks like below
+        sudo kubeadm join --token fd554a.97d239c2234d0de352 192.0.2.0:6443
+
+
+           - Commands for CentOS 7 host OS:
+
+      ::
+
+        sudo bash -c 'cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+        [kubernetes]
+        name=Kubernetes
+        baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+        enabled=1
+        gpgcheck=1
+        repo_gpgcheck=1
+        gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+             https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+        EOF'
+
+        sudo setenforce 0 || true
+
+        yum install -y kubelet kubeadm kubectl docker
+        systemctl enable docker && systemctl start docker
+        systemctl enable kubelet && systemctl start kubelet
+
+        echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+        sudo kubeadm init --kubernetes-version v1.7.4
+
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+        # If you have multi-node cluster then please copy paste the kubeadm join line 
+        # on all the slave nodes from the stdout of sudo kubeadm init command. 
+        # It looks like below
+        sudo kubeadm join --token fd554a.97d239c2234d0de352 192.0.2.01:6443
+
+
+
+
+#. Patch LivenessProbe and ReadinessProbe of kube-dns deployment using the following commands:
+     ::
+
+      kubectl patch deploy/kube-dns --type json -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/readinessProbe", "value": {"exec": {"command": ["wget", "-O", "-", "http://192.0.2.1:8081/readiness"]}}}]' -n kube-system
+     ::
+
+      kubectl patch deploy/kube-dns --type json -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/livenessProbe", "value": {"exec": {"command": ["wget", "-O", "-", "http://192.0.2.1:10054/healthcheck/kubedns"]}}}]' -n kube-system && kubectl patch deploy/kube-dns --type json -p='[{"op": "replace", "path": "/spec/template/spec/containers/1/livenessProbe", "value": {"exec": {"command": ["wget", "-O", "-", "http://192.0.2.1:10054/healthcheck/dnsmasq"]}}}]' -n kube-system && kubectl patch deploy/kube-dns --type json -p='[{"op": "replace", "path": "/spec/template/spec/containers/2/livenessProbe", "value": {"exec": {"command": ["wget", "-O", "-", "http://192.0.2.1:10054/metrics"]}}}]' -n kube-system
+
+
+
+#. (Optional) If you are re-provisioning Contrail on the same setup, ensure that you delete the configdb and analyticsdb data from the previous installation.
+   ::
+
+    sudo rm -rf /var/lib/contrail*
+   ::
+
+    sudo rm -rf /var/lib/configdb*
+   ::
+
+    sudo rm -rf /var/lib/analyticsdb*
+
+
+
+Overview
+========
+
+Kubernetes is an open source platform for automating deployment, scaling, and operations of application containers across clusters of hosts, providing container-centric infrastructure. Kubernetes supports a pluggable framework called CNI for most of the basic network connectivity, including container pod addressing, network isolation, policy-based security, a gateway, SNAT, load-balancer, and service chaining capability for Kubernetes orchestration. Contrail supports CNI for integrating Contrail with the Kubernetes automation platform.
+
+
+Configuration
+=============
+
+To provision Contrail CNI for Kubernetes, perform the following steps:
+
+
+#. Git clone the contrail-docker repository.
+   ::
+
+    git clone https://github.com/Juniper/contrail-docker.git -b R4.0
+
+
+
+#. Change directory to ``contrail-docker/kubernetes/manifests/`` .
+   
+   ::
+
+     cd ``contrail-docker/kubernetes/manifests/`` 
+
+
+
+#. Edit the single yaml file. You can use any editor to edit the file.
+
+   - For Ubuntu 16.04 host OS:
+    ::
+
+     vim contrail-host-ubuntu.yaml
+
+
+   - For CentOS 7 host OS:
+
+    ::
+
+     vim contrail-host-centos.yaml
+
+
+
+
+#. Edit the following variables in configmap and change it according to your setup. Mandatory variables that must be changed are config_nodes, controller_nodes, analytics_nodes, analyticsdb_nodes, and api_server. Refer to `Definable Input Variables While Provisioning Contrail for Kubernetes`_  for more information.
+
+      ::
+
+        data:
+        global-config: |-
+        [GLOBAL]
+        cloud_orchestrator = kubernetes
+        sandesh_ssl_enable = False
+        enable_config_service = True
+        enable_control_service = True
+        enable_webui_service = True
+        introspect_ssl_enable = False
+        config_nodes = "192.0.2.2"
+        controller_nodes = 192.0.2.2
+        analytics_nodes = 192.0.2.2
+        analyticsdb_nodes = 192.0.2.2
+        agent-config: |-
+        [AGENT]
+        compile_vrouter_module = True
+        # Optional ctrl_data_network, if different from management
+        # ctrl_data_network = "192.0.2.3/24"
+        kubemanager-config: |-
+        [KUBERNETES]
+        cluster_name = k8s-default
+        cluster_project = {'domain': 'default-domain', 'project': 'default'}
+        cluster_network = {}
+        service_subnets = 192.0.2.4/12
+        pod_subnets = 192.0.2.5/12
+        api_server = 192.0.2.2
+        kubernetes-agent-config: |-
+        [AGENT]
+
+
+
+#. (Optional) If the setup is a single node setup then uncomment the following lines in contrail-agent daemonset.
+   
+   ::
+
+    #tolerations:
+#- key: node-role.kubernetes.io/master
+#  operator: Exists
+#  effect: NoSchedule
+
+
+
+#. Deploy Contrail using the following command.
+   ::
+
+    kubectl apply -f contrail-host-ubuntu.yaml
+
+
+
+#. Verify Contrail status on all Contrail containers. Look-up Contrail pod names using the following command.
+   
+   ::
+
+    kubectl get pods -n kube-system
+    contrail-analytics-9m545         1/1       Running   1          23h
+    contrail-analyticsdb-cpdjn       1/1       Running   1          23h
+    contrail-controller-gd5vl        1/1       Running   1          23h
+    contrail-kube-manager-82fcq      1/1       Running   1          23h
+    contrail-vrouter-agent-vwmbk     1/1       Running   1          23h
+
+
+
+#. Check the  contrail-statusfor all the pods, using the following command.
+   ::
+
+    kubectl exec -it <contrail-pod-name> -n kube-system -- contrail-status
+
+
+
+Troubleshooting
+===============
+
+-------
+Problem
+-------
+
+To check if Contrail pods are running.
+
+--------
+Solution
+--------
+
+Use the following command to list the Contrail pods:
+   ::
+
+    kubectl get pods -n kube-system -o wide | grep contrail
+
+-------
+Problem
+-------
+
+To ensure that contrail-agent pod is displayed.
+
+--------
+Solution
+--------
+
+If the setup is a single node setup then uncomment the following lines in contrail-agent daemonset.
+
+::
+
+  #tolerations:
+  #- key: node-role.kubernetes.io/master
+  #  operator: Exists
+  #  effect: NoSchedule
+
+-------
+Problem
+-------
+
+To bring up Contrail control plane pods on nodes other than the Kubernetes master.
+
+--------
+Solution
+--------
+
+Label the node as  opencontrail.org/controller=trueusing the following command:
+   ::
+
+    kubectl label node <node-name> opencontrail.org/controller=true
+
+-------
+Problem
+-------
+
+To delete the Contrail stack.
+
+--------
+Solution
+--------
+
+Use the following command to delete the Contrail stack:
+   ::
+
+    kubectl delete -f contrail-host-ubuntu.yaml
+
+**Related Documentation**
+
+-  `Installing and Provisioning Containerized Contrail Controller for Kubernetes`_ 
+
+.. _Installing and Provisioning Containerized Contrail Controller for Kubernetes: topic-120911.html
+
+.. _Definable Input Variables While Provisioning Contrail for Kubernetes: https://github.com/Juniper/contrail-docker/wiki/Definable-input-variables-while-provisioning-contrail-for-k8s

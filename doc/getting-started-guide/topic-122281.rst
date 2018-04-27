@@ -1,0 +1,51 @@
+
+================================
+Supported Platforms Contrail 4.1
+================================
+
+`Table 1`_ lists the operating system versions and the corresponding Linux or Ubuntu kernel versions supported by Contrail Release 4.1.
+
+.. _Table 1: 
+
+
+*Table 1* : Supported Platforms
+
+  +-----------------------+-----------------------+-----------------------------------------------------------------------+
+  | Contrail Release      | Orchestrator Release  | Operating System and                                                  |
+  |                       |                       | Kernel Versions                                                       |
+  +=======================+=======================+=======================================================================+
+  | Contrail Release 4.1  | Kubernetes 1.7.5      | -  Ubuntu 16.04.2—Linux kernel version 4.4.0-62-generic               |
+  +-----------------------+-----------------------+-----------------------------------------------------------------------+
+  |                       | Openshift 3.6         | -  Redhat 7.4—Linux kernel version 3.10.0-693                         |
+  +-----------------------+-----------------------+-----------------------------------------------------------------------+
+  |                       | OpenStack Ocata       | -  Redhat 7.4—Linux kernel version 3.10.0-693 (RHOSP11)               |
+  |                       |                       | -  Ubuntu 16.04.2—Linux kernel version 4.4.0-62-generic               |
+  |                       |                       | -  VMware vCenter 6.0, 6.5—Ubuntu 16.04.2 kernel version              |
+  |                       |                       |    4.4.0-62-generic                                                   |
+  +-----------------------+-----------------------+-----------------------------------------------------------------------+
+  |                       | OpenStack Newton      | -  Redhat 7.4—Linux kernel version 3.10.0-693 (RHOSP10)               |
+  |                       |                       | -  Ubuntu 16.04.2—Linux kernel version  4.4.0-62-generic              |
+  +-----------------------+-----------------------+-----------------------------------------------------------------------+
+  |                       | OpenStack Mitaka      | -  Ubuntu 14.04.5—Linux kernel versions 3.13.0-110-generic and        |
+  |                       |                       |    4.4.0-34-generic                                                   |
+  +-----------------------+-----------------------+-----------------------------------------------------------------------+
+
+
+.. note:: In Contrail Release 4.0 and later, if the stock kernel version of your Ubuntu system is other than the required version, you can upgrade the kernel for all nodes in the cluster by using the following parameter in ``cluster.json`` for Server Manager or SM-Lite provisioning or ``testbed.py`` .
+
+  ::
+
+   {
+    "cluster" : [{
+      "parameters" : {
+        "provisioning" :  {
+          "contrail" : { 
+            "kernel_upgrade" : true
+           }
+        }
+      }
+    }]
+   }
+
+
+

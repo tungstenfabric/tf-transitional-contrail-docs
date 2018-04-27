@@ -1,0 +1,408 @@
+
+=========================
+Installing Server Manager
+=========================
+
+   -  `Installation Requirements for Server Manager`_ 
+
+
+   -  `Installing Server Manager.`_ 
+
+
+   -  `Upgrading Server Manager Software`_ 
+
+
+   -  `Server Manager Installation Completion Checks`_ 
+
+
+   -  `Sample Configurations for Server Manager Templates`_ 
+
+
+
+
+Installation Requirements for Server Manager
+============================================
+
+This document provides details for installing Server Manager.
+
+
+
+Platform Support
+----------------
+
+As of Contrail 4.0, Server Manager can be installed on, and used to reimage and provision, the following platform operating systems:
+
+   - Ubuntu 16.04.01
+
+
+   - Ubuntu 16.04.02
+
+
+   - Ubuntu 14.04.5
+
+
+   - Ubuntu 14.04.4
+
+
+   - Ubuntu 14.04.2
+
+
+   - Ubuntu 14.04.1
+
+
+   - Ubuntu 14.04
+
+
+As of Contrail 4.0, Server Manager installation supports Contrail provisioning for only the following OpenStack versions:
+
+   - Ocata, on Ubuntu 16.04 platform, only
+
+
+   - Newton, on Ubuntu 16.04 platform, only
+
+
+   - Mitaka
+
+
+   - Liberty
+
+
+   - Kilo, on Contrail networking only
+
+
+
+
+Installation Prerequisites
+--------------------------
+
+Before installing Server Manager ensure the following prerequisites are met.
+
+   - The system has Internet access to get dependent packages. Ensure access is available to the Ubuntu archive ``mirrors/repos`` at ``/etc/apt/sources.list`` .
+
+
+     .. note:: Server Manager is tested with only the following versions of dependent packages: Ansible 2.2.0.0, Docker 1.13.0, Puppet 3.7.3-1, and Cobbler 2.6.3-1. These tested versions are installed during Server Manager installation.
+
+
+
+
+   - Puppet Master requires the fully-qualified domain name (FQDN) of the Server Manager for key generation. The domain name is taken from the ``/etc/hosts`` file. If the server is part of multiple domains, specify the domain name by using the ``--domain`` option during the installation.
+
+
+   - On multi-interface systems, specify the interface on which Server Manager needs to listen by using the ``--hostip`` option during installation. If the listening interface is not specified, the first available interface from the ``ifconfig`` list is used.
+
+
+   - The system administrator might need to configure the Linux kernel security module AppArmor to allow ``server-manager`` access.
+
+
+
+
+Installing Server Manager.
+==========================
+
+Server Manager and all of its components (Server Manager, monitoring, Server Manager client, Server Manager Web user interface) are provided together in a wrapper installation package:
+
+Ubuntu: ``contrail-server-manager-installer_ *<version~sku>* .deb``  
+
+You can choose to install all components at once or install individual components one at a time.
+
+Use the following steps to install and set up Server Manager and its components.
+
+
+#. Install the Server Manager packages:
+
+   Ubuntu: ``dpkg –i contrail-server-manager–installer_ *<version-sku>* .deb`` 
+
+
+   .. note:: Make sure to select the correct version package that corresponds to the platform for which you are installing.
+
+
+
+
+
+#. Set up the Server Manager components. Use the ``setup.sh`` command to install all of the components, or you can install individual components.
+
+      ``cd /opt/contrail/contrail_server_manager; ./setup.sh [--hostip= *<ip address>* ] [--domain= *<domain name>* ]`` 
+
+     - To set up all components:
+
+         ``./setup.sh --all`` 
+
+
+     - To set up only the Server Manager server:
+
+              ``./setup.sh --sm=contrail-server-manager_ *<version-sku>* .deb``  
+
+
+     - To set up only the Server Manager client:
+
+              ``setup.sh --sm-client=contrail-server-manager_ *<version-sku>* .deb`` 
+
+
+     - To set up only the Server Manager user interface:
+
+              ``setup.sh --webui=contrail-server-manager_ *<version-sku>* .deb`` 
+
+
+     - To set up only Server Manager monitoring:
+
+            ``setup.sh --sm-mon=contrail-server-manager_ *<version-sku>* .deb``  
+
+
+      Other options include:
+
+         -  ``--sm-cliff-client`` 
+
+
+         -  ``--nowebui`` 
+
+
+         -  ``--nosm-mon`` 
+
+
+
+
+#. Installation logs are located at ``/var/log/contrail/install_logs/`` .
+
+
+
+
+Finishing the Installation
+--------------------------
+
+The Server Manager service does not start automatically upon ​successful installation. You must finish the installation by modifying the following templates. Refer to the sample configuration section included in this topic for details about configuring these files.
+
+   -  ``/etc/cobbler/dhcp.template`` 
+
+
+   -  ``/etc/cobbler/named.template`` 
+
+
+   -  ``/etc/bind/named.conf.options`` 
+
+
+   -  ``/etc/cobbler/settings`` 
+
+
+   -  ``/etc/cobbler/modules.conf`` 
+
+
+   -  ``/etc/mail/sendmail.cf`` 
+
+
+
+
+Starting the Server Manager Service
+-----------------------------------
+
+When you are finished modifying the templates to match your environment, start the Server Manager service using the following command:
+
+  service contrail-server-manager start
+
+
+
+Upgrading Server Manager Software
+=================================
+
+If you are upgrading Server Manager software from a previous version to the current version, use the following guidelines to ensure successful installation.
+
+
+
+Steps for Upgrading
+-------------------
+
+Use the following steps to upgrade your Server Manager installation.
+
+
+.. note:: You do not need to manually delete your previous Server Manager installation before upgrading.
+
+
+
+
+#.   dpkg –i *<contrail-server-manager-installer*deb>* 
+
+
+
+#.   cd /opt/contrail/contrail_server_manager
+
+
+
+#.   ./setup.sh –all
+
+
+
+#. After the setup script has completed running, you can restart Server Manager by issuing:
+
+    ``service contrail-server-manager restart`` 
+
+
+It is not necessary to reconfigure the templates of DHCP, bind, and so on. Previous template configurations and configured data are preserved during the upgrade.
+
+
+
+Server Manager Installation Completion Checks
+=============================================
+
+The following are various checks you can use to investigate the status of your Server Manager installation.
+
+
+
+Server Manager Checks
+---------------------
+
+Use the following to check that the Server Manager installation is complete.
+
+   - Use the following commands to verify that the services are running:
+
+     service contrail-server-manager status
+
+     service cobblerd status
+
+     cobbler sync
+
+     service bind9 status
+
+     service isc-dhcp-server status
+
+     service apache2 status
+
+     service docker status
+
+
+   - Also verify processes using the following command:
+
+     ps auwx | grep Passenger
+
+
+
+
+Server Manager Client Checks
+----------------------------
+
+   - Verify the items listed:
+
+     which server-manager
+
+
+   - Check the client configuration at ``/etc/contrail/sm-client-config.ini``  
+
+
+   - Make sure that ``listen_ip_addr`` is configured with the correct Server Manager IP address.
+
+
+
+
+Server Manager WebUI Checks
+---------------------------
+
+   - Verify the status of the Server Manager WebUI:
+
+     service supervisor-webui-sm status
+
+
+   - Check the webui access from the browser:
+
+     - Contrail release 4.0 and greater—  http: *<server manager ip>* :9143
+
+
+     - Contrail releases 3.0, 3.1, and 3.2—  http: *<server manager ip>* :9080
+
+
+     - Contrail release 2.2 and lower—  http: *<server manager ip>* :8080
+
+
+
+
+
+Sample Configurations for Server Manager Templates
+==================================================
+
+The following are sample parameters for the Server Manager templates. Use settings specific for your environment. Typically, you configure parameters for DHCP, bind, and e-mail services.
+
+
+
+Sample Settings
+---------------
+::
+
+ bind_master: 10.XX.11.6
+
+ manage_forward_zones: ['contrail.juniper.net']
+
+ manage_reverse_zones: ['10.XX.11']
+
+ next_server: 10.XX.11.6
+
+ server: 10.XX.11.6
+
+
+
+
+
+Sample dhcp.template File
+-------------------------
+
+Add Server Manager hooks into the dhcp.template file, so that when DHCP actions occur, such as commit, release, or expire, the Server Manager is notified. The DHCP servers are detected on the Server Manager and the *Discovered* status is maintained.
+
+Use the following sample to help define the subnet blocks that the DHCP server needs to support:
+
+ https://github.com/Juniper/contrail-server-manager/blob/master/src/cobbler/dhcp.template 
+
+
+.. note:: Your DHCP template must have a separate block for each subnet for which Server Manager will be the DHCP server.
+
+
+
+
+
+Sample named.conf.options File
+------------------------------
+
+Use the following sample to help configure the ``/etc/bind/named.conf.options`` :
+
+https://github.com/Juniper/contrail-server-manager/blob/master/src/cobbler/named.conf.options.u 
+
+You can also configure the following parameter:
+   
+::
+
+ forwarders {
+ 0.0.0.0;
+ };  
+
+
+
+
+
+Sample named.template File
+--------------------------
+
+Use the following sample to help configure the ``/etc/cobbler/named.template`` :
+
+ https://github.com/Juniper/contrail-server-manager/blob/master/src/cobbler/named.template 
+
+
+
+The sendmail.cf File
+--------------------
+
+The ``sendmail.cf`` template is present with a juniper.net configuration. Populate it with configuration specific to your environment. The Server Manager uses the template to generate e-mails when reimaging or provisioning is completed.
+
+**Related Documentation**
+
+-  `Using Server Manager to Automate Provisioning`_ 
+
+-  `Using the Server Manager Web User Interface`_ 
+
+- – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+.. _Using Server Manager to Automate Provisioning: topic-92560.html
+
+.. _Using the Server Manager Web User Interface: topic-96137.html
+
+.. _Installing and Using Server Manager Lite: topic-120572.html
+
+.. _https://github.com/Juniper/contrail-server-manager/blob/master/src/cobbler/dhcp.template: 
+
+.. _https://github.com/Juniper/contrail-server-manager/blob/master/src/cobbler/named.conf.options.u: 
+
+.. _https://github.com/Juniper/contrail-server-manager/blob/master/src/cobbler/named.template: 

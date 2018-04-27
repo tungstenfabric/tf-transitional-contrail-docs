@@ -1,0 +1,138 @@
+
+===========================================
+Provisioning DPDK SRIOV with Server Manager
+===========================================
+
+If you are using Server Manager to provision or reimage target servers, you can also use it to provision and enable DPDK and SRIOV.
+
+The following is an example JSON for bringing up the DPDK vrouter as a virtual function.
+
+In the example, p3p1 and p3p2 are the physical interfaces on the host. The server JSON has these defined with the proper MAC. The p3p1_0 and p3p2_0 are the virtual functions given to vrouter.
+::
+
+    "parameters": {                                
+                "provision": {                             
+                    "contrail": {                          
+
+                    },
+                    "contrail_4": {
+                        "ctrl_data_gw": "192.xxx.2.1",
+                        "coremask": "0xf",           
+                        "huge_pages": "70",           
+                        "sriov": {                    
+                            "p3p1": {                 
+                                "VF": "31",           
+                                "physnets": [         
+                                    "physnet1"       
+                                ]                     
+                            },                        
+                            "p3p2": {                 
+                                "VF": "31",           
+                                "physnets": [         
+                                    "physnet2"       
+                                ]                     
+                            }                         
+                        }                             
+                    }                                 
+                }                                     
+            },  
+
+The following is the entire JSON as used in the example.
+::
+
+       {                                             
+            "domain": "contrail.juniper.net",             
+            "id": "dpdk-onsriov-compute",                    
+            "cluster_id": "dpdk_on_sroiv_cluster",                       
+            "contrail": {                             
+                "control_data_interface": "vlan300"   
+            },                                        
+            "ipmi_address": "10.xx.xx.104",           
+            "ipmi_username": "contrail",                  
+            "ipmi_password": "<password>",            
+            "ipmi_interface": "lanplus",              
+            "ipmi_type": "lanplus",                   
+            "network": {                              
+                "interfaces": [{                      
+                        "mac_address": "00:11:0a:68:8f:c8",
+                        "name": "p3p1"                     
+                    },                                     
+                    {                                      
+                        "mac_address": "00:11:0a:68:8f:c9",
+                        "name": "p3p2"                     
+                    },                                     
+                    {                                      
+                        "mac_address": "14:02:ec:33:1f:c8",
+                        "name": "em1",                     
+                        "dhcp": "true",                    
+                        "ip_address": "10.xx.xx.107/24",   
+                        "default_gateway": "10.xx.xx.1"    
+                    },                                     
+                    {                                      
+                        "name": "p3p1_0"                   
+                    },                                     
+                    {                                      
+                        "name": "p3p2_0"                   
+                    },                                     
+                    {                                      
+                        "bond_options": {                  
+                            "mode": "balance-rr",          
+                            "miimon": "100",               
+                            "xmit_hash_policy": "layer3+4" 
+                        },                                 
+                        "member_interfaces": [             
+                            "p3p1_0",                      
+                            "p3p2_0"                       
+                        ],                                 
+                        "name": "bond0",                   
+                        "type": "bond"                     
+                    },                                     
+                    {                                      
+                        "name": "vlan300",                 
+                        "dhcp": false,                     
+                        "ip_address": "192.xxx.2.17/27",   
+                        "parent_interface": "bond0",       
+                        "type": "vlan",                    
+                        "vlan": "300"                      
+                    }                                      
+                ],                                         
+                "management_interface": "em1",             
+                "provisioning": "kickstart"                
+            },                                             
+            "routes": [{                                   
+                "gateway": "192.xxx.2.1",                  
+                "interface": "vlan300",                    
+                "netmask": "255.255.255.224",              
+                "network": "192.xxx.2.32"                  
+            }],                                            
+            "parameters": {                                
+                "provision": {                             
+                    "contrail": {                          
+                    },
+                    "contrail_4": {
+                        "ctrl_data_gw": "192.xxx.2.1",
+                        "coremask": "0xf",           
+                        "huge_pages": "70",           
+                        "sriov": {                    
+                            "p3p1": {                 
+                                "VF": "31",           
+                                "physnets": [         
+                                    "physnet1"       
+                                ]                     
+                            },                        
+                            "p3p2": {                 
+                                "VF": "31",           
+                                "physnets": [         
+                                    "physnet2"       
+                                ]                     
+                            }                         
+                        }                             
+                    }                                 
+                }                                     
+            },                                        
+            "password": "<password>",                
+            "roles": [                                
+                "contrail-compute"                    
+            ]                                         
+        }           
+

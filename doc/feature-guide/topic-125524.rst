@@ -1,0 +1,328 @@
+
+=====================================================
+Restoring Contrail Nodes in a RHOSP-based Environment
+=====================================================
+
+Contrail nodes are virtual machines hosted on a KVM hypervisor. In the Contrail RHOSP environment, the Contrail nodes are of three types– controller nodes, analytics nodes, and analytics database nodes. From time-to-time, the system may encounter a node crash or other node failure. This topic describes how to restore one or more failed Contrail controller nodes or analytics and analytics database nodes.
+
+Use the following procedures to rebuild one or more Contrail nodes.
+
+   -  `Prerequisites`_ 
+
+
+   -  `Verify the Controller Node Status and Rebuild the Node`_ 
+
+
+   -  `Finish Rebuilding One or Two Contrail Controller Nodes`_ 
+
+
+   -  `Finish the Rebuilding of all Contrail Controller Nodes`_ 
+
+
+   -  `Rebuilding Contrail Analytics And Analytics Database Nodes`_ 
+
+
+   -  `Finish Rebuilding the Analytics Nodes`_ 
+
+
+
+Prerequisites
+=============
+
+Before attempting to rebuild one or more failed Contrail nodes, ensure that:
+
+   - The system is stable and the node has the correct status to be deployed again.
+
+
+   - The MAC address of the network interface card (NIC) used for PXE boot has not changed.
+
+
+   - If you are restoring more than one node, make a backup of the Contrail databases and make sure you have access to the backup file (*.tar.bz2). For more information about backups, see `Backing Up Contrail Databases Using JSON Format`_ .
+
+
+
+Verify the Controller Node Status and Rebuild the Node
+=======================================================
+
+This is the initial procedure for verifying the node is ready to be rebuilt.
+
+
+#. Check the node status. The failed node status should be listed as ``Power State power off`` and ``Maintenance False`` .
+
+   In this example, ``contrail-controller02`` is the node to be rebuilt, and its status is ``Power State power off`` and ``Maintenance False`` .The status indicates that ``contrail-controller02`` is ready for rebuilding.
+   
+   ::
+
+    [stack@<director-controlzone>]$ ironic node-list --fields uuid name power_state maintenance 
+    +--------------------------------------+--------------------------+-------------+-------------+
+    | UUID                                 | Name                     | Power State | Maintenance |
+    +--------------------------------------+--------------------------+-------------+-------------+
+    | 92242f30-7131-462a-bbe4-b9535d8f6b77 | contrail-controller01    | power on    | False       |
+    | 3555e9a6-eb0b-45ba-9bc0-51964cf3851f | contrail-controller02    | power off   | False       |
+    | a0adffdb-410f-471d-9647-9925d9b28ae2 | contrail-controller03    | power on    | False       |
+    +--------------------------------------+--------------------------+-------------+-------------+
+
+
+
+
+#. In some cases, the power state of a failed node could be none. If the power state is none, you must set the power to ``off`` . To set the ``Power State power off`` :
+   ::
+
+    [stack@<director-controlzone> ~]$ ironic node-set-power-state <UUID of failed node>   off
+
+
+
+#. In some cases, the  Maintenancemode could be set to  True. If this is the case, you must set the  Maintenancemode to  False.
+   ::
+
+    [stack@<director-controlzone> ~]$ ironic node-set-maintenance <UUID of failed node>  false
+
+
+
+#. Restore the node, and wait until its status turns to ACTIVE.
+   ::
+
+    [stack@ *<director-computezone>* ~]$ source ~/stackrc
+   ::
+
+    [stack@ *<director-computezone>* ~]$ openstack baremetal configure boot
+   ::
+
+    [stack@ *<director-computezone>* ~]$ nova rebuild contrail-controller-1 overcloud-compute
+   ::
+
+    [stack@<director-controlzone> ~]$ openstack server list
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | ID                                   | Name                           | Status | Networks                | Image Name     |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | 03af3384-3220-4b76-a0d0-b221d22a03a7 | contrail-controller-0          | ACTIVE | ctlplane=192.168.210.32 | overcloud-full |
+    | a905105b-efb5-4d11-bec3-23a7cd19655e | contrail-controller-1          | ACTIVE | ctlplane=192.168.210.31 | overcloud-full |
+    | 8a001ca2-0bf6-4662-ad81-252cdfccf09d | contrail-controller-2          | ACTIVE | ctlplane=192.168.210.26 | overcloud-full |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+
+
+
+
+
+#. Repeat steps 1-4 for each node that you want to restore.
+
+
+
+#. After restoration, finish rebuilding the node or nodes, using the next procedures.
+
+
+
+Finish Rebuilding One or Two Contrail Controller Nodes
+======================================================
+
+This procedure provides details to finish the rebuilding of the nodes when you are restoring one or two Contrail controller nodes.
+
+
+#. Verify the status of the rebuild process. Wait until the status turns  ACTIVE.
+   ::
+
+    [stack@director-controlzone ~]$ openstack server list
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | ID                                   | Name                           | Status | Networks                | Image Name     |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | 03af3384-3220-4b76-a0d0-b221d22a03a7 | contrail-controller-0          | ACTIVE | ctlplane=192.168.210.32 | overcloud-full |
+    | a905105b-efb5-4d11-bec3-23a7cd19655e | contrail-controller-1          | REBUILD| ctlplane=192.168.210.31 | overcloud-full |
+    | 8a001ca2-0bf6-4662-ad81-252cdfccf09d | contrail-controller-2          | ACTIVE | ctlplane=192.168.210.26 | overcloud-full |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+
+
+
+
+#. Establish an SSH connection to the node you have rebuilt and observe the journal of the  os-collect-configprocess until you see multiple occurrences of the message  No local metadata found( ``['/var/lib/os-collect-config/local-data']`` ).
+
+   If you want to rebuild two controller nodes, repeat this step for the other node before moving to the next step.
+   ::
+
+   [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.31 sudo journalctl -u os-collect-config -f
+
+
+
+#. Perform a full stack update to reconverge the stack and bring the system back to operational state.
+   ::
+
+    [stack@<director-controlzone> ~]$ source ~/stackrc
+[stack@<director-controlzone> ~]$ ./deploy.sh
+
+
+
+
+Finish the Rebuilding of all Contrail Controller Nodes
+======================================================
+
+This procedure provides details to finish the rebuilding of the nodes when you are restoring all of the Contrail controller nodes.
+
+
+#. Observe the status of the rebuild process. The status of nodes will display ``REBUILD`` while the rebuilding process is occurring.
+   
+   ::
+
+    [stack@<director-controlzone> ~]$ openstack server list
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | ID                                   | Name                           | Status | Networks                | Image Name     |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | 03af3384-3220-4b76-a0d0-b221d22a03a7 | contrail-controller-0          | REBUILD| ctlplane=192.168.210.32 | overcloud-full |
+    | a905105b-efb5-4d11-bec3-23a7cd19655e | contrail-controller-1          | REBUILD| ctlplane=192.168.210.31 | overcloud-full |
+    | 8a001ca2-0bf6-4662-ad81-252cdfccf09d | contrail-controller-2          | REBUILD| ctlplane=192.168.210.26 | overcloud-full |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+
+
+
+
+#. Wait until the status of all nodes changes to  ACTIVE.
+   ::
+
+    [stack@<director-controlzone> ~]$ openstack server list
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | ID                                   | Name                           | Status | Networks                | Image Name     |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | 03af3384-3220-4b76-a0d0-b221d22a03a7 | contrail-controller-0          | ACTIVE | ctlplane=192.168.210.32 | overcloud-full |
+    | a905105b-efb5-4d11-bec3-23a7cd19655e | contrail-controller-1          | ACTIVE | ctlplane=192.168.210.31 | overcloud-full |
+    | 8a001ca2-0bf6-4662-ad81-252cdfccf09d | contrail-controller-2          | ACTIVE | ctlplane=192.168.210.26 | overcloud-full |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+
+
+
+
+#. Establish an SSH connection to each of the nodes that have been rebuilt and observe the journal of the  os-collect-configprocess until you see multiple occurrences of the string  No local metadata found( ``['/var/lib/os-collect-config/local-data']`` ).
+   ::
+
+    [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.32 sudo journalctl -u os-collect-config -f
+    [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.31 sudo journalctl -u os-collect-config -f
+    [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.26 sudo journalctl -u os-collect-config -f
+
+
+
+
+#. Retrieve the Contrail controller databases ``backup.tar.bz2`` and put it into your Director Control Zone, and perform a database restore. For more information about backups, see `Backing Up Contrail Databases Using JSON Format`_ 
+
+
+
+#. Verify that the Contrail services are running.
+   ::
+
+    [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.31 "sudo contrail-status"
+
+
+
+#. Perform a full stack update to reconverge the stack and bring the system back to operational state.
+   ::
+
+    [stack@<director-controlzone> ~]$ source ~/stackrc
+    [stack@<director-controlzone> ~]$ ./deploy.sh
+    UPDATE_COMPLETE
+
+
+
+
+Rebuilding Contrail Analytics And Analytics Database Nodes
+==========================================================
+
+This topic describes how to rebuild failed Contrail analytics and analytics database nodes. The same procedure is used for analytics nodes and analytics database nodes.
+
+To rebuild Contrail analytics and analytics database nodes:
+
+
+#. Verify that the failed node is ready to be redeployed. To be ready, the failed node must have a ``Power State power off`` and ``Maintenance False`` .
+   ::
+
+    [stack@<director-controlzone> ~]$ ironic node-list --fields uuid name power_state maintenance 
+    +--------------------------------------+--------------------------------+-------------+-------------+
+    | UUID                                 | Name                           | Power State | Maintenance |
+    +--------------------------------------+--------------------------------+-------------+-------------+
+    | 92242f30-7131-462a-bbe4-b9535d8f6b77 | contrail-analytics01           | power on    | False       |
+    | 3555e9a6-eb0b-45ba-9bc0-51964cf3851f | contrail-analytics02           | power off   | False       |
+    | a0adffdb-410f-471d-9647-9925d9b28ae2 | contrail-analytics03           | power on    | False       |
+    +--------------------------------------+--------------------------------+-------------+-------------+
+
+
+
+
+#. In some cases, the power state might be None. If the power state is  None, set it to  off.
+   ::
+
+    [stack@<director-controlzone> ~]$ ironic node-set-power-state <UUID of failed node>  off
+
+
+
+#. In some cases, the Maintenance mode might be set to True. If maintenance mode is True, set it to False.
+   ::
+
+    [stack@<director-controlzone> ~]$ ironic node-set-maintenance <UUID of failed node>  false
+
+
+
+#. Rebuild the node, and wait for the node status to turn ACTIVE. Repeat the procedure for each node you need to replace.
+   ::
+
+    [stack@director-computezone ~]$ source ~/stackrc
+    [stack@director-computezone ~]$ openstack baremetal configure boot
+    [stack@director-computezone ~]$ nova rebuild contrail-analytics-1 overcloud-compute
+    [stack@<director-controlzone> ~]$ openstack server list
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | ID                                   | Name                           | Status | Networks                | Image Name     |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | 03af3384-3220-4b76-a0d0-b221d22a03a7 | contrail-analytics-0           | ACTIVE | ctlplane=192.168.210.32 | overcloud-full |
+    | a905105b-efb5-4d11-bec3-23a7cd19655e | contrail-analytics-1           | ACTIVE | ctlplane=192.168.210.31 | overcloud-full |
+    | 8a001ca2-0bf6-4662-ad81-252cdfccf09d | contrail-analytics-2           | ACTIVE | ctlplane=192.168.210.26 | overcloud-full |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+
+
+
+
+Finish Rebuilding the Analytics Nodes
+======================================
+
+Use this procedure to finish the rebuilding of the Contrail analytics or analytics database nodes that have been rebuilt.
+
+
+#. Observe the status of the rebuild process. Nodes undergoing rebuilding will have Status of REBUILD. Wait until the status of all nodes being rebuilt turns ACTIVE.
+   ::
+
+    [stack@<director-controlzone> ~]$ openstack server list
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | ID                                   | Name                           | Status | Networks                | Image Name     |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+    | 03af3384-3220-4b76-a0d0-b221d22a03a7 | contrail-analytics-0           | ACTIVE | ctlplane=192.168.210.32 | overcloud-full |
+    | a905105b-efb5-4d11-bec3-23a7cd19655e | contrail-analytics-1           | REBUILD| ctlplane=192.168.210.31 | overcloud-full |
+    | 8a001ca2-0bf6-4662-ad81-252cdfccf09d | contrail-analytics-2           | ACTIVE | ctlplane=192.168.210.26 | overcloud-full |
+    +--------------------------------------+--------------------------------+--------+-------------------------+----------------+
+
+
+
+
+#. Activate  os-collect-configon the node.
+   ::
+
+    [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.31 sudo systemctl start os-collect-config
+
+
+
+#. Establish an SSH connection to the node you have rebuilt and observe the journal of the  os-collect-configprocess until you see multiple occurrences of the message  No local metadata found( ``['/var/lib/os-collect-config/local-data']`` ). Repeat this step for each node being rebuilt.
+   ::
+
+    [stack@<director-controlzone> ~]$ ssh heat-admin@19x.xxx.xxx.31 sudo journalctl -u os-collect-config -f
+
+
+
+#. Perform a full stack update to reconverge the stack and bring the system back to operational state.
+   ::
+
+    [stack@<director-controlzone> ~]$ source ~/stackrc
+    [stack@<director-controlzone> ~]$ ./deploy.sh
+
+
+
+**Related Documentation**
+
+-  `Backing Up Contrail Databases Using JSON Format`_ 
+
+.. _Backing Up Contrail Databases Using JSON Format: topic-120662.html
+
+.. _Backing Up Contrail Databases Using JSON Format: topic-120662.html
+
+.. _Backing Up Contrail Databases Using JSON Format: topic-120662.html

@@ -1,0 +1,47 @@
+
+=================================
+Downloading Installation Software
+=================================
+
+All components necessary for installing the Contrail Controller are available as:
+
+   - an ``RPM`` file ( ``contrail-install-packages-1.xx-xxx.el6.noarch.rpm)`` that can be used to install the Contrail system on an appropriate CentOS operating system.
+
+
+   - a ``Debian`` file ( ``contrail-install-packages-1.xx-xxx~xxxxxx_all.deb)`` that can be used to install the Contrail system on an appropriate Ubuntu operating system.
+
+
+Versions are available for each Contrail release, for the supported Linux operating systems and versions, and for the supported versions of OpenStack.
+
+All installation images can be downloaded from https://www.juniper.net/support/downloads/?p=contrail#sw .
+
+The Contrail image includes the following software:
+
+   - All dependent software packages needed to support installation and operation of OpenStack and Contrail
+
+
+   - Contrail Controller software – all components
+
+
+   - OpenStack release currently in use for Contrail
+
+
+**Related Documentation**
+
+- – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+-  `Installing Containerized Contrail Clusters Using Server Manager`_ 
+
+-  `Installing Containerized Contrail Using Server Manager Lite (SM-Lite)`_ 
+
+-  `Download Software`_  
+
+.. _Installing the Operating System and Contrail Packages: ../../topics/task/installation/install-steps-iso-vnc.html
+
+.. _Installing Containerized Contrail Clusters Using Server Manager: topic-119335.html
+
+.. _Installing Containerized Contrail Using Server Manager Lite (SM-Lite): topic-119818.html
+
+.. _https://www.juniper.net/support/downloads/?p=contrail#sw: 
+
+.. _Download Software: https://www.juniper.net/support/downloads/?p=contrail#sw
