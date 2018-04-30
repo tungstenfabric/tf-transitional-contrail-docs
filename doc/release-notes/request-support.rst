@@ -5,10 +5,10 @@ Requesting Technical Support
 
 Technical product support is available through the Juniper Networks Technical Assistance Center (JTAC). If you are a customer with an active J-Care or Partner Support Service support contract, or are covered under warranty, and need post-sales technical support, you can access our tools and resources online or open a case with JTAC.
 
-   - JTAC policies—For a complete understanding of our JTAC procedures and policies, review the *JTAC User Guide* located at `https://www.juniper.net/us/en/local/pdf/resource-guides/7100059-en.pdf`_  .
+   - JTAC policies—For a complete understanding of our JTAC procedures and policies, review the *JTAC User Guide* located at https://www.juniper.net/us/en/local/pdf/resource-guides/7100059-en.pdf
 
 
-   - Product warranties—For product warranty information, visit `http://www.juniper.net/support/warranty/`_  .
+   - Product warranties—For product warranty information, visit http://www.juniper.net/support/warranty/ .
 
 
    - JTAC hours of operation—The JTAC centers have resources available 24 hours a day, 7 days a week, 365 days a year.
@@ -74,30 +74,3 @@ Copyright © 2018 Juniper Networks, Inc. All rights reserved.
 Juniper Networks, the Juniper Networks logo, Juniper, and Junos are registered trademarks of Juniper Networks, Inc. and/or its affiliates in the United States and other countries. All other trademarks may be property of their respective owners.
 
 Juniper Networks assumes no responsibility for any inaccuracies in this document. Juniper Networks reserves the right to change, modify, transfer, or otherwise revise this publication without notice.
-
-
-.. _https://www.juniper.net/us/en/local/pdf/resource-guides/7100059-en.pdf: https://www.juniper.net/us/en/local/pdf/resource-guides/7100059-en.pdf
-
-.. _http://www.juniper.net/support/warranty/: https://www.juniper.net/support/warranty/
-
-.. _https://www.juniper.net/customers/support/: 
-
-.. _https://prsearch.juniper.net/: 
-
-.. _https://www.juniper.net/documentation/: 
-
-.. _https://kb.juniper.net/: 
-
-.. _https://www.juniper.net/customers/csc/software/: 
-
-.. _https://kb.juniper.net/InfoCenter/: 
-
-.. _https://www.juniper.net/company/communities/: 
-
-.. _https://www.juniper.net/cm/: 
-
-.. _https://entitlementsearch.juniper.net/entitlementsearch/: 
-
-.. _https://www.juniper.net/cm/: 
-
-.. _https://www.juniper.net/support/requesting-support.html: 

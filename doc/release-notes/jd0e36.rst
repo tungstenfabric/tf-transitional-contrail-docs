@@ -148,7 +148,7 @@ The distributed SNAT feature allows virtual machines to reach the IP fabric netw
 
 Virtual machines currently can have connectivity to the external network by means of floating IP, logical router, or by having underlay forwarding enabled, all of which needs extra routing information pushed to underlay routers or SDN gateways. The logical router is centralized and already implements source NAT, with one service instance to which all traffic is forwarded for NAT. Contrail could use the existing routing infrastructure providing compute node connectivity and extended the same and provide underlay connectivity to virtual machine. This would be achieved by port address translation of virtual machine traffic with IP address of compute node. The following use cases will be supported: Virtual networks having distributed SNAT enabled would be able to communicate with IP fabric network. Session has to be initiated from virtual machine, initiation of session from external network would not be supported Virtual network could be connected to ip-fabric network via logical router, in which traffic from private virtual network would be subjected to distributed SNAT to reach ip-fabric network.
 
-See ``_  .
+See https://www.juniper.net/documentation/en_US/contrail5.0/topics/task/configuration/snat-vnc.html .
 
 
 
@@ -176,7 +176,7 @@ Breaking out each component into its on Helm chart e.g. Contrail controller with
 
 Nothing is changing in terms contrail functionality with containerization effort.
 
-See ``_  .
+See .
 
 
 
@@ -386,10 +386,6 @@ For more information, see `Security Insights Dashboard`_  .
 .. _Remote Compute: https://www.juniper.net/documentation/en_US/contrail5.0/topics/concept/remote-compute-50.html
 
 .. _Contrail Software Download: https://www.juniper.net/support/downloads/?p=contrail#sw
-
-.. _: https://www.juniper.net/documentation/en_US/contrail5.0/topics/task/configuration/snat-vnc.html
-
-.. _: 
 
 .. _new install topic cs: 
 
