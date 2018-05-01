@@ -1,0 +1,166 @@
+
+==============================
+Contrail Installation Overview
+==============================
+
+Contrail is validated on several operating systems and orchestration systems. Installation procedures vary, depending on your environment. Additionally, API tools are available to customize your system.
+
+This section provides links to the installation procedures for different validated environments.
+
+
+Installing Contrail on Different Operating Systems
+==================================================
+
+To get anticipated results, be sure to check the validated supported operating system for your version of Contrail and make sure you have the correct kernel version:
+
+ `Supported Platforms Contrail 4.1`_ 
+
+or refer to the Release Notes for your version of Contrail.
+
+You should start your validated installation by referring to the documentation section that corresponds to your operating environment, including:
+
+   -  `Juniper OpenStack Ubuntu Installation`_ 
+
+
+   -  `Using VMware vCenter with Containerized Contrail, Release 4.0.1 and Greater`_ 
+
+
+   -  `Using VMware vCenter with Contrail, through Release 4.0`_ 
+
+
+   -  `Using Red Hat with Contrail`_ 
+
+
+   -  `Using Contrail with Kubernetes Automation Platform`_ 
+
+
+   -  `Using APIs with Contrail`_ 
+
+
+
+
+Juniper OpenStack Ubuntu Installation
+-------------------------------------
+
+Refer to the following topics when you are installing Juniper OpenStack Contrail on Ubuntu.
+
+   -  `Introduction to Containerized Contrail Modules`_ 
+
+
+   -  `Downloading Installation Software`_ 
+
+
+   -  `Installing the Operating System and Contrail Packages`_ 
+
+
+   -  `Installing Containerized Contrail Clusters Using Server Manager`_ 
+
+
+   -  `Installing Containerized Contrail Using Server Manager Lite (SM-Lite)`_ 
+
+
+
+
+Using VMware vCenter with Containerized Contrail, Release 4.0.1 and Greater
+---------------------------------------------------------------------------
+
+Refer to the following topics when you are installing containerized Contrail, Release 4.0.1 and greater, on VMware vCenter.
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+
+
+Using VMware vCenter with Contrail, through Release 4.0
+--------------------------------------------------------
+
+Refer to the following topics when you are installing Contrail through Release 4.0 on VMware vCenter.
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+
+
+Using Red Hat with Contrail
+---------------------------
+
+Refer to the following topics when you are installing Contrail with Red Hat.
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+
+
+Using Contrail with Kubernetes Automation Platform
+--------------------------------------------------
+
+Refer to the following topics when you are installing containerized Contrail integrated with the Kubernetes automation platform.
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+   - – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+
+
+
+Using APIs with Contrail
+------------------------
+
+Additionally, Contrail can interact with other systems and applications using northbound APIs, enabling customization of your system. An index to current APIs is available in your installed version of Contrail at: ``http:// *<your-server-IP>* :8082/documentation/index.html`` , or you can refer to:
+
+ `Juniper Contrail Configuration API Reference`_  
+
+.. _Supported Platforms Contrail 4.1: topic-122281.html
+
+.. _Introduction to Containerized Contrail Modules: topic-119276.html
+
+.. _Downloading Installation Software: topic-83311.html
+
+.. _Installing the Operating System and Contrail Packages: topic-120313.html
+
+.. _Installing Containerized Contrail Clusters Using Server Manager: topic-119335.html
+
+.. _Installing Containerized Contrail Using Server Manager Lite (SM-Lite): topic-119818.html
+
+.. _Installing and Provisioning VMware vCenter with Containerized Contrail: topic-122501.html
+
+.. _Underlay Network Configuration for Containerized ContrailVM: topic-122503.html
+
+.. _Sample JSON Configuration Files for vCenter with Containerized Contrail 4.0.1 and Greater: topic-122504.html
+
+.. _Installing and Provisioning VMware vCenter with Contrail: topic-99368.html
+
+.. _Underlay Network Configuration for ContrailVM: topic-103872.html
+
+.. _Sample Testbed.py Files for Contrail vCenter: topic-104785.html
+
+.. _Installing Red Hat OpenShift Container Platform with Contrail Networking: topic-122950.html
+
+.. _Contrail Integration with Kubernetes: topic-119646.html
+
+.. _Installing and Provisioning Containerized Contrail Controller for Kubernetes: topic-120911.html
+
+.. _Viewing Configuration for CNI for Kubernetes: topic-120581.html
+
+.. _Using Helm to Provision Contrail with Kubernetes: topic-123087.html
+
+.. _Juniper Contrail Configuration API Reference: https://www.juniper.net/documentation/en_US/release-independent/contrail/information-products/pathway-pages/api-server/tutorial_with_rest.html

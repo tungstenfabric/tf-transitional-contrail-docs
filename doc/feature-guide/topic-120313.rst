@@ -1,0 +1,82 @@
+
+=====================================================
+Installing the Operating System and Contrail Packages
+=====================================================
+
+Install the stock CentOS or Ubuntu operating system image appropriate for your version of Contrail onto the server. See `Supported Platforms Contrail 4.0.x`_  or `Supported Platforms Contrail 4.1.`_  Then install Contrail packages separately.
+
+The following are general guidelines for installing the operating system and preparing to install Contrail.
+
+
+#. Install a CentOS or Ubuntu minimal distribution as desired on all servers. Typically, for CentOS this is a basic ISO install; for Ubuntu, use a core server install, with only OpenSSH and no other packages. Follow the published operating system installation procedure for the selected operating system; refer to the website for the operating system.
+
+
+
+#. Install Contrail Server Manager.
+
+
+
+#. Create an image.json with the Ubuntu or CentOS image to be used to reimage the target server.
+
+   Sample JSON Snippet
+   ::
+
+    {
+                   "image": [
+                     {
+                        "category": "image",
+                        "id": "ubuntu-14.04.04",
+                        "parameters": {
+                            "kickseed": "/etc/contrail_smgr/kickstarts/contrail-      ubuntu_trusty.seed",
+                            "kickstart": "/etc/contrail_smgr/kickstarts/contrail-ubuntu_trusty.ks"
+                         },
+                        "path": "/path/to/ubuntu-image.iso",
+                        "type": "ubuntu",
+                        "version": "14.04.04"
+                    }
+                  ]
+                }
+
+
+
+
+#. Use Server Manager to add the image.json, to be used for reimaging.  
+
+  ``server-manager add image –f image.json`` 
+
+
+For full installation information, see `Installing Containerized Contrail Clusters Using Server Manager`_ and– EXTERNAL LINK. PLEASE RE-INSERT. –
+
+**Related Documentation**
+
+-  `Introduction to Containerized Contrail Modules`_ 
+
+- – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+-  `Installing Containerized Contrail Clusters Using Server Manager`_ 
+
+-  `Installing Containerized Contrail Using Server Manager Lite (SM-Lite)`_ 
+
+- – EXTERNAL LINK. PLEASE RE-INSERT. –
+
+-  `Download Software`_  
+
+.. _Installing Containerized Contrail Clusters Using Server Manager: topic-119335.html
+
+.. _Installing Containerized Contrail for Single- and Multi-Node Systems Using Server Manager Lite: ../../topics/concept/install-containers-single-multi-node-SMLite.html
+
+.. _Introduction to Containerized Contrail Modules: topic-119276.html
+
+.. _Contrail Roles Overview: ../../topics/task/installation/roles-overview-vnc-40.html
+
+.. _Installing Containerized Contrail Clusters Using Server Manager: topic-119335.html
+
+.. _Installing Containerized Contrail Using Server Manager Lite (SM-Lite): topic-119818.html
+
+.. _Upgrading Contrail 3.2 to 4.0: ../../topics/concept/upgrade-32-to-40.html
+
+.. _Supported Platforms Contrail 4.0.x: https://www.juniper.net/documentation/en_US/contrail4.0/topics/reference/supported-platforms-40-vnc.html
+
+.. _Supported Platforms Contrail 4.1. : https://www.juniper.net/documentation/en_US/contrail4.1/topics/reference/supported-platforms-41-vnc.html
+
+.. _Download Software : https://www.juniper.net/support/downloads/?p=contrail#sw
