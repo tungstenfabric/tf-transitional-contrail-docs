@@ -19,10 +19,6 @@ Release Notes: Contrail 5.0
 
     `Requesting Technical Support`_
 
-    `Self-Help Online Tools and Resources`_
-
-    `Opening a Case with JTAC`_
-
 .. toctree::
    :maxdepth: 2
    :titlesonly:
@@ -53,7 +49,3 @@ Release Notes: Contrail 5.0
 .. _Deprecated Items: deprecated-items.html
 
 .. _Requesting Technical Support: request-support.html
-
-.. _Self-Help Online Tools and Resources: jd0e671.html
-
-.. _Opening a Case with JTAC: jd0e721.html
