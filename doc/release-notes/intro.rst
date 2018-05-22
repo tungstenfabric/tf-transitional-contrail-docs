@@ -1,3 +1,5 @@
+.. This work is licensed under the Creative Commons Attribution 4.0 International License.
+   To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 ============
 Introduction
@@ -7,7 +9,4 @@ Juniper Networks Contrail is an open, standards-based software solution that del
 
 These release notes accompany Release 5.0 of Juniper Networks Contrail. They describe new features, limitations, and known problems.
 
-These release notes are displayed on the Juniper Networks Contrail Documentation Web page at `https://www.juniper.net/documentation/en_US/contrail5.0/information-products /topic-collections/release-notes/index.html`_  .
-
-
-.. _https://www.juniper.net/documentation/en_US/contrail5.0/information-products /topic-collections/release-notes/index.html: https://www.juniper.net/documentation/en_US/contrail5.0/information-products/topic-collections/release-notes/index.html
+These release notes are displayed on the Juniper Networks Contrail Documentation Web page at https://www.juniper.net/documentation/en_US/contrail5.0/information-products/topic-collections/release-notes/index.html .
