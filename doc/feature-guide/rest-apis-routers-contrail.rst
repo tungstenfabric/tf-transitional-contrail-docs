@@ -1,0 +1,257 @@
+.. This work is licensed under the Creative Commons Attribution 4.0 International License.
+   To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+=====================================================================================================
+REST APIs for Extending the Contrail Cluster to Physical Routers, and Physical and Logical Interfaces
+=====================================================================================================
+
+Introduction: REST APIs for Extending Contrail Cluster
+------------------------------------------------------
+
+Use the following REST APIs when extending the Contrail cluster to include physical routers, physical interfaces, and logical interfaces.
+
+REST API for Physical Routers
+-----------------------------
+
+Use the following REST API when extending the Contrail cluster to include physical routers.
+::
+
+ {
+
+	 u'physical-router': {
+
+	    u'physical_router_management_ip': u'100.100.100.100',
+
+	    u'virtual_router_refs': [],
+
+	    u'fq_name': [
+
+	      u'default-global-system-config',
+
+	      u'test-router'
+
+	    ],
+
+	    u'name': u'test-router',
+
+	    u'physical_router_vendor_name': u'juniper',
+
+	    u'parent_type': u'global-system-config',
+
+	    u'virtual_network_refs': [],
+
+	    'id_perms': {
+
+	      u'enable': True,
+
+	      u'uuid': None,
+
+	      u'creator': None,
+
+	      u'created': 0,
+
+	      u'user_visible': True,
+
+	      u'last_modified': 0,
+
+	      u'permissions': {
+
+	        u'owner': u'cloud-admin',
+
+	        u'owner_access': 7,
+
+	        u'other_access': 7,
+
+	        u'group': u'cloud-admin-group',
+
+	        u'group_access': 7
+
+	      },
+
+	      u'description': None
+
+	    },
+
+	    u'bgp_router_refs': [],
+
+	    u'physical_router_user_credentials': {
+
+	      u'username': u'',
+
+	      u'password': u''
+
+	    },
+
+	    'display_name': u'test-router',
+
+	    u'physical_router_dataplane_ip': u'101.1.1.1'
+
+	     }
+
+	 }
+
+
+
+REST API for Physical Interfaces
+--------------------------------
+
+Use the following REST API when extending the Contrail cluster to include physical interfaces.
+::
+
+ {
+
+	 u'physical-interface': {
+
+	    u'parent_type': u'physical-router',
+
+	    'id_perms': {
+
+	      u'enable': True,
+
+	      u'uuid': None,
+
+	      u'creator': None,
+
+	      u'created': 0,
+
+	      u'user_visible': True,
+
+	      u'last_modified': 0,
+
+	      u'permissions': {
+
+	        u'owner': u'cloud-admin',
+
+	        u'owner_access': 7,
+
+	        u'other_access': 7,
+
+	        u'group': u'cloud-admin-group',
+
+	        u'group_access': 7
+
+	      },
+
+	      u'description': None
+
+	    },
+
+	    u'fq_name': [
+
+	      u'default-global-system-config',
+
+	      u'test-router',
+
+	      u'ge-0/0/1'
+
+	    ],
+
+	    u'name': u'ge-0/0/1',
+
+	    'display_name': u'ge-0/0/1'
+
+	      }
+
+	 }
+
+
+
+REST API for Logical Interfaces
+-------------------------------
+
+Use the following REST API when extending the Contrail cluster to include logical interfaces.
+::
+
+ {
+
+	 u'logical-interface': {
+
+	    u'fq_name': [
+
+	      u'default-global-system-config',
+
+	      u'test-router',
+
+	      u'ge-0/0/1',
+
+	      u'ge-0/0/1.0'
+
+	    ],
+
+	    u'parent_uuid': u'6608b8ef-9704-489d-8cbc-fed4fb5677ca',
+
+	    u'logical_interface_vlan_tag': 0,
+
+	    u'parent_type': u'physical-interface',
+
+	    u'virtual_machine_interface_refs': [
+
+	     {
+
+		u'to': [
+
+		              u'default-domain',
+
+		              u'demo',
+
+		              u'4a2edbb8-b69e-48ce-96e3-7226c57e5241'
+
+		]
+
+		      }
+
+		    ],
+
+		    'id_perms': {
+
+		          u'enable': True,
+
+		          u'uuid': None,
+
+		          u'creator': None,
+
+		          u'created': 0,
+
+		          u'user_visible': True,
+
+		          u'last_modified': 0,
+
+		          u'permissions': {
+
+		            u'owner': u'cloud-admin',
+
+		            u'owner_access': 7,
+
+		            u'other_access': 7,
+
+		            u'group': u'cloud-admin-group',
+
+		            u'group_access': 7
+
+		      },
+
+		      u'description': None
+
+		    },
+
+		    u'logical_interface_type': u'l2',
+
+		    'display_name': u'ge-0/0/1.0',
+
+		    u'name': u'ge-0/0/1.0'
+
+		      }
+
+		}
+
+
+**Related Documentation**
+
+-  `Using ToR Switches and OVSDB to Extend the Contrail Cluster to Other Instances`_ 
+
+-  `Using Device Manager to Manage Physical Routers`_ 
+
+.. _Using ToR Switches and OVSDB to Extend the Contrail Cluster to Other Instances: using-tor-ovsdb-contrail.html
+
+.. _Using Device Manager to Manage Physical Routers: using-device-manager-netconf-contrail.html
+

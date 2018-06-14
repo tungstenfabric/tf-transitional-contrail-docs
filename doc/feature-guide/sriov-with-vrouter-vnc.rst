@@ -1,0 +1,260 @@
+.. This work is licensed under the Creative Commons Attribution 4.0 International License.
+   To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+===================================================
+Configuring Single Root I/O Virtualization (SR-IOV)
+===================================================
+
+-  `Overview: Configuring SR-IOV`_ 
+
+
+-  `Configuring SR-IOV Using JSON`_ 
+
+
+-  `Preparing the testbed.py File for Provisioning a Contrail Cluster with SR-IOV`_ 
+
+
+-  `Enabling ASPM in BIOS`_ 
+
+
+-  `Configuring SR-IOV Features Without env.sriov in testbed.py`_ 
+
+
+-  `Launching SR-IOV Virtual Machines`_ 
+
+
+
+
+Overview: Configuring SR-IOV
+----------------------------
+
+Contrail 3.0 and later supports single root I/O virtualization (SR-IOV) on Ubuntu systems only.
+
+SR-IOV is an interface extension of the PCI Express (PCIe) specification. SR-IOV allows a device, such as a network adapter, to have separate access to its resources among various hardware functions.
+
+As an example, the Data Plane Development Kit (DPDK) library has drivers that run in user space for several network interface cards (NICs). However, if the application runs inside a virtual machine (VM), it does not see the physical NIC unless SR-IOV is enabled on the NIC.
+
+This topic shows how to configure SR-IOV with your Contrail system.
+
+
+
+Configuring SR-IOV Using JSON
+-----------------------------
+
+If you are provisioning your system by using JSON, you can configure SR-IOV within the ``server.json`` file.
+
+::
+
+   "parameters" : {
+    "provision": {
+        "contrail_4": {                        
+            "sriov": {
+                "p5p1": {
+                    "VF": 7,
+                    "physnets": [
+                        "physnet1"
+                    ]
+                }
+            },
+         }
+
+
+
+
+Preparing the testbed.py File for Provisioning a Contrail Cluster with SR-IOV
+-----------------------------------------------------------------------------
+
+The ``testbed.py`` file is a Python file that is configured to specify all of the options necessary for the installation of a Contrail cluster. The testbed.py file can only be used with Contrail releases through 3.x.x, or with SM-Lite provisioning with Contrail 4.0.
+An ``env.sriov`` entry in the ``testbed.py`` file is used to specify which NIC interface will be used to launch SR-IOV virtual machines (VMs).
+Each VM to be configured as SR-IOV must be listed in the ``env.sriov`` entry, along with the number of virtual functions to be used and the physical network details, as in the following example:
+
+::
+
+   env.sriov = {
+     b7s36 :[ {'interface' : 'p6p1', 'VF' : 7, 'physnets' : ['physnet1', 'physnet2']}],
+     b7s37 :[ {'interface' : 'p6p1', 'VF' : 7, 'physnets' : ['physnet1', 'physnet3']}],
+ }
+
+
+The following are required entries for each VM specified in the ``env.sriov`` :
+
+-  ``interface`` —Specify the server NIC where SR-IOV VMs will be launched.
+
+
+-  ``VF`` —Specify the number of virtual functions to be configured.
+
+
+-  ``physnets`` —Specify the name of the physical networks to be used by each VM.
+
+
+The ``testbed.py`` file is configured prior to the installation of Contrail.
+
+Use the standard Contrail installation procedure with fab tools, and upon completion, your cluster is ready to be enabled to launch SR-IOV VMs with specified NICs.
+
+
+
+Enabling ASPM in BIOS
+---------------------
+
+To use SR-IOV, it must have Active State Power Management (ASPM) enabled for PCI Express (PCIe) devices. Enable ASPM in the system BIOS.
+
+
+.. note:: The BIOS of your system might need to be upgraded to a version that can enable ASPM.
+
+
+
+
+
+Configuring SR-IOV Features Without env.sriov in testbed.py
+-----------------------------------------------------------
+
+If you are enabling SR-IOV on a system where ``testbed.py`` with ``env.sriov`` was NOT used to install, you must also complete the following:
+
+
+#. Enable the Intel Input-Output Memory Management Unit (IOMMU) on Linux, by doing the following:
+
+   - Make sure the IOMMU is turned on, using the following option line in ``/etc/default/grub:GRUB_CMDLINE_LINUX_DEFAULT="nomdmonddf nomdmonisw intel_iommu=on"`` 
+
+
+   - Enter the command ``update-grub/sys`` .
+
+
+   - Reboot the compute node.
+
+
+
+
+#. Enable the required number of VFs on the selected NIC.The following example enables seven VFs on the ``eth0`` interface.Check the configuration by using the command ``lspci -nn`` or ``ip link`` .
+
+    ``echo '7' > /sys/class/net/eth0/device/sriov_numvfs``     
+
+
+
+#. In the Nova config file on the controller, configure the names of the physical networks whose VMs can use interface VFs. The following example enables the VMs attached to ``"physnet1"`` to use the VFs of ``“eth0”`` :
+
+   ::
+
+    /etc/nova/nova.conf
+        [default]
+        pci_passthrough_whitelist = { "devname": "eth0", "physical_network": "physnet1"}
+
+
+
+
+#. Reboot Nova compute.
+
+    ``service nova-compute restart`` 
+
+
+
+#. In the Nova config file, configure a Nova Scheduler filter based on the new PCI configuration, as in the following example:
+
+   ::
+
+     /etc/nova/nova.conf
+        [default]
+        scheduler_default_filters = PciPassthroughFilter
+        scheduler_available_filters = nova.scheduler.filters.all_filters
+        scheduler_available_filters = nova.scheduler.filters.pci_passthrough_filter.PciPassthroughFilter
+
+
+
+
+#. Restart Nova scheduler.
+
+    ``service nova-scheduler restart`` 
+
+
+
+
+Launching SR-IOV Virtual Machines
+----------------------------------
+
+After ensuring that SR-IOV features are enabled on your system, use one of the following procedures to create a virtual network from which to launch an SR-IOV VM, either by using the Contrail UI or the CLI. Both methods are included.
+
+-  `Using the Contrail UI to Enable and Launch an SR-IOV Virtual Machine`_ 
+
+
+-  `Using the CLI to Enable and Launch SR-IOV Virtual Machines`_ 
+
+
+
+
+Using the Contrail UI to Enable and Launch an SR-IOV Virtual Machine
+--------------------------------------------------------------------
+
+To use the Contrail UI to enable and launch an SR-IOV VM:
+
+
+#. At **Configure > Networking > Networks** , create a virtual network with SR-IOV enabled. Ensure the virtual network is created with a subnet attached. In the Advanced section, select the **Provider Network** check box, and specify the physical network already enabled for SR-IOV (in ``testbed.py`` or ``nova.conf`` ) and its VLAN ID. See `Figure 17`_ .
+
+   .. _Figure 17: 
+
+     *Figure 17* : Edit Network
+
+    .. figure:: S018550.png
+
+
+
+#. On the virtual network, create a Neutron port ( **Configure > Networking > Ports** ), and in the **Port Binding** section, define a **Key** value of SR-IOV and a **Value** of direct. See `Figure 18`_ .
+
+   .. _Figure 18: 
+
+     *Figure 18* : Create Port
+
+    .. figure:: S018551.png
+
+
+
+#. Using the UUID of the Neutron port you created, use the ``nova boot`` command to launch the VM from that port.
+
+    ``nova boot --flavor m1.large --image <image name>--nic port-id=<uuid of above port><vm name>`` 
+
+
+
+
+Using the CLI to Enable and Launch SR-IOV Virtual Machines
+----------------------------------------------------------
+
+To use CLI to enable and launch an SR-IOV VM:
+
+
+#. Create a virtual network with SR-IOV enabled. Specify the physical network already enabled for SR-IOV (in ``testbed.py`` or ``nova.conf`` ) and its VLAN ID.
+
+   The following example creates ``vn1`` with a VLAN ID of 100 and is part of ``physnet1`` :
+
+    ``neutron net-create --provider:physical_network=physnet1 --provider:segmentation_id=100 vn1`` 
+
+
+
+#. Create a subnet in vn1.
+
+    ``neutron subnet-create vn1 a.b.c.0/24`` 
+
+
+
+#. On the virtual network, create a Neutron port on the subnet, with a binding type of direct.
+
+    ``neutron port-create --fixed-ip subnet_id=<subnet uuid>,ip_address=<IP address from above subnet> --name <name of port> <vn uuid> --binding:vnic_type direct``  
+
+   
+
+
+
+#. Using the UUID of the Neutron port created, use the ``nova boot`` command to launch the VM from that port.
+
+            ``nova boot --flavor m1.large --image *<image name>* --nic port-id=<uuid of above port><vm name>`` 
+
+
+
+#. Log in to the VM and verify that the Ethernet controller is VF by using the ``lspci`` command to list the PCI buses.
+
+   The VF that gets configured with the VLAN can be observed using the ``ip link`` command.
+
+
+**Related Documentation**
+
+-  `Configuring the Data Plane Development Kit (DPDK) Integrated with Contrail vRouter`_ 
+
+.. _Configuring the Data Plane Development Kit (DPDK) Integrated with Contrail vRouter: dpdk-with-vrouter-vnc-40.html
+

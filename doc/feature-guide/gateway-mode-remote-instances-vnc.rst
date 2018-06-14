@@ -1,0 +1,124 @@
+.. This work is licensed under the Creative Commons Attribution 4.0 International License.
+   To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+==============================================
+Using Gateway Mode to Support Remote Instances
+==============================================
+
+Extending virtual instances running non-Openstack clusters or extending bare metal servers into Contrail virtual networks can be achieved using the OVSDB protocol.
+
+Additionally, starting with Contrail Release 3.1, an experimental mode has been added that enables you to configure a Contrail compute node to run in gateway mode to support remote instances.
+
+With Contrail Release 3.2, the gateway mode can also be used with VMware, using the VMware VMs as the remote instances.
+
+-  `Gateway Mode Overview`_ 
+
+
+-  `Provisioning Gateway Mode`_ 
+
+
+-  `Configuring Gateway Mode`_ 
+
+
+-  `Configuring Gateway Mode and High Availability`_ 
+
+
+-  `Scaling`_ 
+
+
+
+
+Gateway Mode Overview
+---------------------
+
+Traffic from each external virtual instance is tagged with a unique VLAN, which is then mapped to a virtual machine interface (VMI) in the Contrail cluster. A Contrail compute node can be configured to map VLAN-tagged traffic coming on a physical port, other than the cluster's underlay IP fabric port, to a VMI configured in the Contrail cluster. The VMI corresponds to the interface of the remote instance. A vRouter on a gateway compute node operates like a local VMI, with traffic subjected to the forwarding decisions and policies that would be on the local VMI.
+
+
+.. note:: For gateway mode, one VLAN is mapped to one virtual machine interface.
+
+
+
+
+
+Provisioning Gateway Mode
+-------------------------
+
+To provision gateway mode:
+
+In ``/etc/contrail/contrail-vrouter-agent.conf`` , in the ``DEFAULT`` section add:
+
+``gateway_mode = server`` 
+
+When finished, restart ``contrail-vrouter-agent`` .
+
+
+
+Configuring Gateway Mode
+------------------------
+
+To configure gateway mode:
+
+
+#. Configure a physical router, using the host name of the compute node that acts as the gateway.
+
+
+
+#. Create a physical interface on the physical router, using the name of the interface on the compute node that will be used for the gateway traffic.
+
+
+
+#. Create a logical interface on the physical interface, using a unique VLAN ID and set the type to L2.
+
+
+
+#. Create a virtual machine interface (VMI) in the required virtual network, identifying the MAC address and IP address of the remote instance, then link the VMI to the logical interface.
+
+
+
+
+External Configuration
+----------------------
+
+The traffic from the remote instance should come to the gateway port with the required VLAN tag.
+
+
+
+Configuring Gateway Mode and High Availability
+----------------------------------------------
+
+Multiple gateway nodes can be configured to have high availability.
+
+The selection of the active gateway node is expected to be handled by using (R)STP from the switches connecting the gateway node. For this, a special virtual network is configured in Contrail that will flood the STP BPDUs.
+
+For high availability for the gateway mode, make the following changes to the gateway mode configuration procedure:
+
+
+#. On the gateway compute nodes, create logical interfaces with VLAN 0.
+
+
+
+#. Create a dummy VMI belonging to the special virtual network, following the regular gateway mode configuration procedure.
+
+
+
+#. Link the VMI to the VLAN 0 logical interfaces on the gateway nodes that will form a high availability group. This enables STP to allow traffic to one of the gateway ports, while blocking others.
+
+
+
+#. For each remote instance, create a logical interface on the gateway nodes in the high availability group. Link the logical interface to the VMI created for the remote instance. The corresponding instance IP should have active-backup mode set, which is the default mode.
+
+
+Upon completion of this procedure, Contrail will handle the switch over of the traffic to a different gateway node.
+
+
+.. note:: This procedure can also be used to set up a vCenter gateway. Because the VMware VMs are the remote instances, their traffic must be configured to arrive VLAN-tagged at the gateway node’s physical interface and their interfaces must be configured in Contrail. Using this configuration, all Contrail features available on a virtual machine interface will be applied for any traffic between VMware and Contrail.
+
+
+
+
+
+Scaling
+-------
+
+The default number of interfaces supported on a compute node is 4352. Because each remote instance has a logical interface and a virtual machine interface, up to 2K remote interfaces can be supported with the default configuration. To support 4K remote instances, the maximum number of interfaces on the compute node that is acting as the gateway should be configured to be 8K. For more information about how the vRouter options can be modified, see https://github.com/Juniper/contrail-controller/wiki/Vrouter-Module-Parameters .
+
