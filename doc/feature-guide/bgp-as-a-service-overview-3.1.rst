@@ -15,13 +15,13 @@ The BGPaaS object is associated with a virtual machine interface (VMI), not just
 
 Starting with Contrail Release 3.1, the following features and properties have been added to BGPaaS:
 
-   - By default, all BGPaaS sessions are configured to have bidirectional exchange of routes. The Boolean property  bgpaas-suppress-route-advertisementensures no advertisement of routes to the tenant VM.
+- By default, all BGPaaS sessions are configured to have bidirectional exchange of routes. The Boolean property  bgpaas-suppress-route-advertisementensures no advertisement of routes to the tenant VM.
 
 
-   - If inet6 routes are being advertised to the tenant VM, they are advertised with the IPv6 subnet's default gateway address as the BGP next hop. A Boolean property,  bgpaas-ipv4-mapped-ipv6-nexthop, causes the IPv4 subnet's default gateway, in IPv4-mapped IPv6 format, to be used instead as the next hop.
+- If inet6 routes are being advertised to the tenant VM, they are advertised with the IPv6 subnet's default gateway address as the BGP next hop. A Boolean property,  bgpaas-ipv4-mapped-ipv6-nexthop, causes the IPv4 subnet's default gateway, in IPv4-mapped IPv6 format, to be used instead as the next hop.
 
 
-   - If multiple tenant VMs in the same virtual network have BGPaaS sessions and they use eBGP, the standard BGP AS path loop prevention rules prevent routes advertised by one tenant VM from being advertised to the other tenant VMs. The  as-overridefield, added to the existing ``BgpSessionAttributes`` in the BGPaaS object, causes the control node to replace the AS number of the tenant VM with it's own AS number, when advertising routes learned from a tenant VM to another tenant VM in the same virtual network. The tenant VM does not need to implement any new functionality.
+- If multiple tenant VMs in the same virtual network have BGPaaS sessions and they use eBGP, the standard BGP AS path loop prevention rules prevent routes advertised by one tenant VM from being advertised to the other tenant VMs. The  as-overridefield, added to the existing ``BgpSessionAttributes`` in the BGPaaS object, causes the control node to replace the AS number of the tenant VM with it's own AS number, when advertising routes learned from a tenant VM to another tenant VM in the same virtual network. The tenant VM does not need to implement any new functionality.
 
 
 .. _BGP as a Service: bgp-as-a-service-overview.html

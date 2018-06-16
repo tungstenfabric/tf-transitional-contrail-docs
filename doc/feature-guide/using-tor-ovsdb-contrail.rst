@@ -421,14 +421,15 @@ When using the Juniper Networks QFX5100 Series switches, ensure the following co
 
 
 #. When using SSL to connect, CA-signed certificates must be copied to the ``/var/db/certs`` directory in the QFX device. The following example shows one way to get the certificates. The following comands could be run on any server.
-    ::
 
-     apt-get install openvswitch-common 
-     ovs-pki init 
-     ovs-pki req+sign vtep 
-     scp vtep-cert.pem root@<qfx>:/var/db/certs 
-     scp vtep-privkey.pem root@<qfx>:/var/db/certs 
-     cacert.pem file will be available in /var/lib/openvswitch/pki/switchca, when the above are done. This is the file to be provided in the above testbed (in env.ca_cert_file).  
+   ::
+
+    apt-get install openvswitch-common 
+    ovs-pki init 
+    ovs-pki req+sign vtep 
+    scp vtep-cert.pem root@<qfx>:/var/db/certs 
+    scp vtep-privkey.pem root@<qfx>:/var/db/certs 
+    cacert.pem file will be available in /var/lib/openvswitch/pki/switchca, when the above are done. This is the file to be provided in the above testbed (in env.ca_cert_file).  
 
 
 

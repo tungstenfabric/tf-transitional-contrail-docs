@@ -116,22 +116,26 @@ Contrail Firewall Policy Naming Convention
 Contrail firewall security policies and rules are named as follows:
 
 - A Contrail firewall security policy created for a Kubernetes network policy is named in the following format:
+
 ::
 
  < Namespace-name >-< Network Policy Name >
 
 For example, a network policy "world" in namespace "Hello" is named:
+
 ::
 
  Hello-world
 
 
 - Contrail firewall rules created for a Kubernetes network policy are named in the following format:
+
 ::
 
  < Namespace-name >-<PolicyType>-< Network Policy Name >-<Index of from/to blocks>-<selector type>-<rule-index>-<svc/port index>
 
 For example:
+
 ::
 
  apiVersion: networking.k8s.io/v1
@@ -152,6 +156,7 @@ For example:
            role: frontend
 
 A rule corresponding to this policy is named:
+
 ::
 
  hello-ingress-world-0-podSelector-0-0
@@ -317,25 +322,15 @@ The following firewall rules are created:
 
 The following firewall security policy is created with the following rules.
 
- +-----------------------------------+-----------------------------------+
- | Name                              | Rules                             |
- +===================================+===================================+
- | default-test-network-policy       | -  default-ingress-test-network-p |
- |                                   | olicy-0-ipBlock-0-172.17.1.0/24-0 |
- |                                   |                                   |
- |                                   | -  default-ingress-test-network-p |
- |                                   | olicy-0-ipBlock-0-cidr-172.17.0.0 |
- |                                   | /16-0                             |
- |                                   |                                   |
- |                                   | -  default-ingress-test-network-p |
- |                                   | olicy-0-namespaceSelector-1-0     |
- |                                   |                                   |
- |                                   | -  default-ingress-test-network-p |
- |                                   | olicy-0-podSelector-2-0           |
- |                                   |                                   |
- |                                   | -  default-egress-test-network-po |
- |                                   | licy-ipBlock-0-cidr-10.0.0.0/24-0 |
- +-----------------------------------+-----------------------------------+
+ +-----------------------------------+----------------------------------------------------------------------------+
+ | Name                              | Rules                                                                      |
+ +===================================+============================================================================+
+ | default-test-network-policy       | - default-ingress-test-network-p olicy-0-ipBlock-0-172.17.1.0/24-0.        |
+ |                                   | - default-ingress-test-network-p olicy-0-ipBlock-0-cidr-172.17.0.0 /16-0.  |
+ |                                   | - default-ingress-test-network-p olicy-0-namespaceSelector-1-0.            |
+ |                                   | - default-ingress-test-network-p olicy-0-podSelector-2-0.                  |
+ |                                   | - default-egress-test-network-po licy-ipBlock-0-cidr-10.0.0.0/24-0.        |
+ +-----------------------------------+----------------------------------------------------------------------------+
 
 
 

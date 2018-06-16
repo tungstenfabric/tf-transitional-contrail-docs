@@ -20,9 +20,6 @@ Starting with Contrail 4.0, some subsystems of Contrail are delivered as Docker 
 
 -  `Summary of Container Design, Configuration Management, and Orchestration`_ 
 
-
-
-
 Why Use Containers?
 -------------------
 
@@ -44,8 +41,6 @@ These dependencies lead to complexities of deployment, including:
 
 Containerizing some Contrail subsystems reduces the complexity of deploying Contrail and provides a straightforward, simple way to deploy and operate Contrail.
 
-
-
 Overview of Contrail Containers
 -------------------------------
 
@@ -65,8 +60,6 @@ The intention is to build a composable Contrail core system of containers that c
 
 .. figure:: s019890.gif
 
-
-
 Contrail 4.0 Containers
 -----------------------
 
@@ -85,9 +78,6 @@ This section describes the containers in Contrail 4.0 and their contents.
 
 
 -  `DPDK vRouter`_ 
-
-
-
 
 contrail-controller
 -------------------
@@ -114,9 +104,6 @@ The ``contrail-controller`` container includes all Contrail applications that ma
 
 - Redis for Web Ui
 
-
-
-
 contrail-analytics
 ------------------
 
@@ -142,9 +129,6 @@ The ``contrail-analytics`` container includes all Contrail analytics services, i
 
 -  ``contrail-topology`` 
 
-
-
-
 contrail-analyticsdb
 --------------------
 
@@ -161,14 +145,10 @@ In previous releases of Contrail, HAproxy and keepalive were included in most se
 
 The ``loadbalancer`` container is an optional container, and customers can choose to use their own load-balancing system.
 
-
-
 DPDK vRouter
 -------------
 
 Starting with Contrail release 5.0, you can configure the Contrail DPDK vRouter to run in a Docker container. In earlier releases, DPDK vRouter runs on a compute host. The contrail-vrouter-dpdk binary file provides data plane functionality when Contrail vRouter is run in DPDK mode in a Contrail cluster.
-
-
 
 Summary of Container Design, Configuration Management, and Orchestration
 ------------------------------------------------------------------------
@@ -188,7 +168,6 @@ The following are key features of the new architecture of Contrail containers.
 
 
 - A single tool, Ansible, is used for all levels of building, deploying, and provisioning the containers. The Ansible code for the Contrail system is named ``contrail-ansible`` and kept in a separate repository. The Contrail Ansible code is responsible for all aspects of Contrail container build, deployment, and basic container orchestration.
-
 
 **Related Documentation**
 

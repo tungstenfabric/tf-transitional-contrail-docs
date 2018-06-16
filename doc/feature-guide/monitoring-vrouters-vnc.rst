@@ -253,7 +253,7 @@ The **Networks** tab displays details about the networks associated with an indi
 +-----------------------------------+-----------------------------------+
 | **Action**                        | Click the icon to select the      |
 |                                   | action: Edit, Delete              |
-+-----------------------------------+-----------------------------------
++-----------------------------------+-----------------------------------+
 
 
 Monitor Individual vRouters ACL Tab

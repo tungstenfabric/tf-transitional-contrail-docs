@@ -5,49 +5,49 @@
 Juniper OpenStack High Availability
 ====================================
 
-   -  `Introduction`_ 
+-  `Introduction`_ 
 
 
-   -  `Contrail High Availability`_ 
+-  `Contrail High Availability`_ 
 
 
-   -  `OpenStack High Availability`_ 
+-  `OpenStack High Availability`_ 
 
 
-   -  `Supported Platforms`_ 
+-  `Supported Platforms`_ 
 
 
-   -  `Juniper OpenStack High Availability Architecture`_ 
+-  `Juniper OpenStack High Availability Architecture`_ 
 
 
-   -  `Juniper OpenStack Objectives`_ 
+-  `Juniper OpenStack Objectives`_ 
 
 
-   -  `Limitations`_ 
+-  `Limitations`_ 
 
 
-   -  `Solution Components`_ 
+-  `Solution Components`_ 
 
 
-   -  `Virtual IP with Load Balancing`_ 
+-  `Virtual IP with Load Balancing`_ 
 
 
-   -  `Failure Handling`_ 
+-  `Failure Handling`_ 
 
 
-   -  `Deployment`_ 
+-  `Deployment`_ 
 
 
-   -  `Minimum Hardware Requirement`_ 
+-  `Minimum Hardware Requirement`_ 
 
 
-   -  `Compute`_ 
+-  `Compute`_ 
 
 
-   -  `Network`_ 
+-  `Network`_ 
 
 
-   -  `Installation`_ 
+-  `Installation`_ 
 
 
 
@@ -68,13 +68,13 @@ Contrail uses Cassandra as the database. Cassandra inherently supports fault tol
 
 A highly available deployment of Contrail, at minimum, requires at least:
 
-   -  two control nodes
+-  two control nodes
 
 
-   -  three config nodes (including analytics and webui)
+-  three config nodes (including analytics and webui)
 
 
-   -  three database nodes
+-  three database nodes
 
 
 
@@ -83,10 +83,10 @@ OpenStack High Availability
 
 High availability of OpenStack is supported by deploying the OpenStack controller nodes in a redundant manner on multiple nodes. Previous releases of Contrail supported only a single instance of the OpenStack controller, and multiple instances of OpenStack posed new problems that needed to solved, including:
 
-   - State synchronization of stateful services (e.g. MySQL) across multiple instances.
+- State synchronization of stateful services (e.g. MySQL) across multiple instances.
 
 
-   - Load-balancing of requests across the multiple instances of services.
+- Load-balancing of requests across the multiple instances of services.
 
 
 
@@ -95,10 +95,10 @@ Supported Platforms
 
 Juniper OpenStack Controller has tested high availability on the following platforms:
 
-   - Linux — Ubuntu 12.04 with kernel version 3.13.0-34
+- Linux — Ubuntu 12.04 with kernel version 3.13.0-34
 
 
-   - Ubuntu Server 16.04 LTS (Xenial Xerus)
+- Ubuntu Server 16.04 LTS (Xenial Xerus)
 
 
 For a list of all operating system versions and the corresponding Linux or Ubuntu kernel versions supported by Contrail Release 5.0 on OpenStack Kilo, Liberty, Mitaka, Newton and Ocata releases, see `Supported Platforms Contrail 5.0`_ .
@@ -112,7 +112,7 @@ A typical cloud infrastructure deployment consists of a pool of resources of com
 The following figure illustrates a high-level reference architecture of a high availability deployment using Juniper OpenStack deployed as a cluster of controller nodes.
 
 
-    .. figure:: s042011.gif
+.. figure:: s042011.gif
 
 
 Juniper OpenStack Objectives
@@ -120,22 +120,22 @@ Juniper OpenStack Objectives
 
 The main objectives and requirements for Juniper OpenStack high availability are:
 
-   - 99.999% availability for tenant traffic.
+- 99.999% availability for tenant traffic.
 
 
-   - Anytime availability for cloud operations.
+- Anytime availability for cloud operations.
 
 
-   - Provide VIP-based access to the API and UI services.
+- Provide VIP-based access to the API and UI services.
 
 
-   - Load balance network operations across the cluster.
+- Load balance network operations across the cluster.
 
 
-   - Management and orchestration elasticity.
+- Management and orchestration elasticity.
 
 
-   - Failure detection and recovery.
+- Failure detection and recovery.
 
 
 
@@ -144,16 +144,16 @@ Limitations
 
 The following are limitations of Juniper OpenStack high availability:
 
-   - Only one failure is supported.
+- Only one failure is supported.
 
 
-   - During failover, a REST API call may fail. The application or user must reattempt the call.
+- During failover, a REST API call may fail. The application or user must reattempt the call.
 
 
-   - Although zero packet drop is the objective, in a distributed system such as Contrail, a few packets may drop during ungraceful failures.
+- Although zero packet drop is the objective, in a distributed system such as Contrail, a few packets may drop during ungraceful failures.
 
 
-   - Juniper OpenStack high availability is not tested with any third party load balancing solution other than HAProxy.
+- Juniper OpenStack high availability is not tested with any third party load balancing solution other than HAProxy.
 
 
 
@@ -171,7 +171,7 @@ HAProxy is run on all nodes to load balance the connections across multiple inst
 The following figure shows OpenStack services provisioned to work with HAProxy and Keepalived, with HAProxy at the front of OpenStack services in a multiple operating system node deployment. The OpenStack database is deployed in clustered mode and uses Galera for replicating data across the cluster. RabbitMQ has clustering enabled as part of a multinode Contrail deployment. The RabbitMQ configuration is further tuned to support high availability.
 
 
-    .. figure:: s042010.gif
+.. figure:: s042010.gif
 
 
 Failure Handling
@@ -179,24 +179,24 @@ Failure Handling
 
 This section describes how various types of failures are handled, including:
 
-   - Service failures
+- Service failures
 
 
-   - Node failures
+- Node failures
 
 
-   - Networking failures
+- Networking failures
 
 
- *Service Failures* 
+*Service Failures* 
 
 When an instance of a service fails, HAProxy detects the failure and load balances any subsquent requests across other active instances of the service. The supervisord process monitors for service failures and brings up the failed instances. As long as there is one instance of a service operational, the Juniper OpenStack controller continues to operate. This is true for both stateful and stateless services across Contrail and OpenStack.
 
- *Node Failures* 
+*Node Failures* 
 
 The Juniper OpenStack controller supports single node failures involving both graceful shutdown or reboots and ungraceful power failures. When a node that is the VIP master fails, the VIP moves to the next active node, as it is elected to be the VRRP master. HAProxy on the new VIP master sprays the connections over to the active service instances as before, while the failed down node is brought back online. Stateful services (MySQL, Galera, Zookeeper, and so on) require a quorum to be maintained when a node fails. As long as a quorum is maintained, the controller cluster continues to work without problems. Data integrity is also inherently preserved by Galera, Rabbit, and other stateful components in use.
 
- *Network Failures* 
+*Network Failures* 
 
 A connectivity break, especially in the control data network causes the controller cluster to partition into two. As long as the caveat of minimum number of nodes is maintained for one of the partitions, the controller cluster continues to work. Stateful services detect the partitioning and reorganize their cluster around the reachable nodes. Existing workloads continue to function and pass traffic and new workloads can be provisioned. When the connectivity is restored, the joining node becomes part of the working cluster and the system gets restored to its original state.
 
@@ -216,13 +216,13 @@ The Juniper OpenStack Controller offers a variety of deployment choices. Dependi
 Compute
 =======
 
-   - Quad core Intel(R) Xeon 2.5 Gz or higher
+- Quad core Intel(R) Xeon 2.5 Gz or higher
 
 
-   - 32 GB or higher RAM for the controller hosts (increases with number of hypervisors being supported)
+- 32 GB or higher RAM for the controller hosts (increases with number of hypervisors being supported)
 
 
-   - Minimum 1 TB disk, SSD, HDD
+- Minimum 1 TB disk, SSD, HDD
 
 
 
@@ -231,18 +231,18 @@ Network
 
 A typical deployment separates control data traffic from the management traffic.
 
-   - Dual 10 GE that is bonded (using LAG 802.3ad) for redundant control data connection.
+- Dual 10 GE that is bonded (using LAG 802.3ad) for redundant control data connection.
 
 
-   - Dual 1 GE bonded (using LAG 802.3 ad) for redundant management connection.
+- Dual 1 GE bonded (using LAG 802.3 ad) for redundant management connection.
 
 
-   - Single 10G and 1G can be used if link redundancy is not desired.
+- Single 10G and 1G can be used if link redundancy is not desired.
 
 
 The deployment needs virtual IP (VIP) addresses from the networks in which the NICs participate, external VIP on the management network and internal VIP on the control data network. External facing services are load balanced using the external VIP and the internal VIP is used for communication between other services.
 
- *Packaging* 
+*Packaging* 
 
 High availability support requires new components in the Contrail OpenStack deployment, which are packaged in ``contrail-openstack-ha`` , including HAProxy, Keepalived, Galera, and their requisite dependencies.
 
@@ -256,22 +256,22 @@ Install also supports separating OpenStack and Contrail roles on physically diff
 
 The following services are configured during high availability-enabled provisioning:
 
-   - Keepalived —- Configures VRRP and VIP using  keepalivedpackage
+- Keepalived —- Configures VRRP and VIP using  keepalivedpackage
 
 
-   - high availability proxy — Configured to load balance among services running on different nodes
+- high availability proxy — Configured to load balance among services running on different nodes
 
 
-   - Galera — Openstack MySQL clustering to achieve high availability
+- Galera — Openstack MySQL clustering to achieve high availability
 
 
-   - Glance — Support NFS server storage for glance images
+- Glance — Support NFS server storage for glance images
 
 
 Starting with Contrail Release 4.0, provisioning scripts use VIPs instead of the physical IP of the node in all OpenStack and Contrail configuration files. The following figure shows a typical three-node deployment, where Openstack and Contrail roles are co-located on three servers.
 
 
-    .. figure:: s042009.gif
+.. figure:: s042009.gif
 
 **Related Documentation**
 

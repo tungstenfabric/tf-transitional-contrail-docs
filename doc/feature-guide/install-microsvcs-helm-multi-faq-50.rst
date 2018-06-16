@@ -18,6 +18,7 @@ Frequently Asked Questions About Contrail and Helm Charts
 
 
 If your non-management interface is ``eth1`` , in the ``contrail-vrouter/values.yaml`` set the ``contrail_env.PHYSICAL_INTERFACE`` to ``eth1`` and set the ``contrail_env.VROUTER_GATEWAY`` to the IP address of the non-management gateway.
+
 ::
 
  # Sample config
@@ -33,6 +34,7 @@ If your non-management interface is ``eth1`` , in the ``contrail-vrouter/values.
 - How do I configure the Contrail control BGP server to listen on a different port?
 
   To configure a non-default BGP port, in the ``contrail-controller/values.yaml`` set the ``contrail_env.BGP`` to the desired port.
+
   ::
 
    # Sample config
@@ -71,6 +73,7 @@ For example, to pass the variable ``some_key`` to be in the section ``SOME_SECTI
 - How do I configure services for the vrouter agent?
 
   The following is an example configuration for the vrouter agent.
+
   ::
 
    # Sample config

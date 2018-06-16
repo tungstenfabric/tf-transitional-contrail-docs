@@ -171,7 +171,7 @@ The following fat flow configurations can achieve this:
 
 Case 1—Source, SI, and destination are in different computes
 
-   - Left interface of SI—Ignore source
+- Left interface of SI—Ignore source
 
 
 - Right interface of SI—Ignore destination

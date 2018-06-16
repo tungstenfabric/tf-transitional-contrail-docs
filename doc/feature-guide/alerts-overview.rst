@@ -28,7 +28,7 @@ The Contrail alert analytics API provides the following:
 
 
 For example:
-  GET http://<analytics-ip>:8081/analytics/uves/control-node/a6s40?flat
+GET http:// <analytics-ip>:8081/analytics/uves/control-node/a6s40?flat
 
 ::
 
@@ -78,7 +78,7 @@ The following examples show the API to use to display alerts and alarms and to a
 
 ::
 
-GET http://<analytics-ip>:<rest-api-port>/analytics/uves/control-node/aXXsYY&cfilt=UVEAlarms
+  GET http://<analytics-ip>:<rest-api-port>/analytics/uves/control-node/aXXsYY&cfilt=UVEAlarms
 
 This is available for all UVE table types.
 
@@ -114,22 +114,22 @@ Analytics APIs for SSE Streaming
 
 The following examples show the API to use to retrieve all or portions of SE streams.
 
-   - To retrieve an SSE-based stream of UVE updates for the control node alarms.
+- To retrieve an SSE-based stream of UVE updates for the control node alarms.
 
-  ::
+::
 
-   GET http://<analytics-ip>:<rest-api-port>/analytics/uve-stream?tablefilt=control-node
+ GET http://<analytics-ip>:<rest-api-port>/analytics/uve-stream?tablefilt=control-node
 
-   This is available for all UVE table types. If the ``tablefilt`` URL query parameter is not provided, all UVEs are retrieved.
+ This is available for all UVE table types. If the ``tablefilt`` URL query parameter is not provided, all UVEs are retrieved.
 
 
-   - To retrieve only the alerts portion of the SSE-based stream of UVE updates instead of the entire content.
+- To retrieve only the alerts portion of the SSE-based stream of UVE updates instead of the entire content.
 
-  ::
+::
 
-   GET http://<analytics-ip>:<rest-api-port>/analytics/alarms-stream?tablefilt=control-node
+ GET http://<analytics-ip>:<rest-api-port>/analytics/alarms-stream?tablefilt=control-node
 
-   This is available for all UVE table types. If the ``tablefilt`` URL query parameter is not provided, all UVEs are retrieved.
+ This is available for all UVE table types. If the ``tablefilt`` URL query parameter is not provided, all UVEs are retrieved.
 
 
 

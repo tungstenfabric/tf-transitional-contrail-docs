@@ -97,8 +97,10 @@ Testbed.py Parameters
 ---------------------
 
  ``Testbed.py`` can be used for provisioning Contrail through Releases 3.x.x. Starting with Contrail 4.0, ``testbed.py`` can only be used if you are provsioning with SM-Lite. Use parameters in this section if you are using ``testbed.py`` for provisioning.
+ 
 For QoS, the hardware queues (NIC queues) are mapped to logical queues in the agent, using the following keys:
-   - hardware_q_id—Identifier for the hardware queue.
+
+- hardware_q_id—Identifier for the hardware queue.
 
 
 - logical_queue— Defines the logical queues to map to each hardware queue.
@@ -112,22 +114,23 @@ Options to define a default hardware queue:
 
 #. Set the queue as default, without any logical queue mapping.
 
-    ``{'hardware_q_id': '1', 'default': 'True'}`` 
+   ``{'hardware_q_id': '1', 'default': 'True'}`` 
 
 
 
 #. Set the hardware queue as default with logical queue mapping.
-    ``{'hardware_q_id': '6', 'logical_queue':['17-20'], 'default': 'True'}`` 
 
-   ::
+   ``{'hardware_q_id': '6', 'logical_queue':['17-20'], 'default': 'True'}`` 
 
-      env.qos = {host4: [ {'hardware_q_id': '3', 'logical_queue':['1', '6-10', '12-15']},
-              {'hardware_q_id': '5', 'logical_queue':['2']},
-              {'hardware_q_id': '8', 'logical_queue':['3-5']},
-              {'hardware_q_id': '1', 'default': 'True'}],
-     host5: [ {'hardware_q_id': '2', 'logical_queue':['1', '3-8', '10-15']},
-              {'hardware_q_id': '6', 'logical_queue':['17-20'], 'default': 'True'}]
-    }
+  ::
+
+     env.qos = {host4: [ {'hardware_q_id': '3', 'logical_queue':['1', '6-10', '12-15']},
+             {'hardware_q_id': '5', 'logical_queue':['2']},
+             {'hardware_q_id': '8', 'logical_queue':['3-5']},
+             {'hardware_q_id': '1', 'default': 'True'}],
+    host5: [ {'hardware_q_id': '2', 'logical_queue':['1', '3-8', '10-15']},
+             {'hardware_q_id': '6', 'logical_queue':['17-20'], 'default': 'True'}]
+   }
 
 
 

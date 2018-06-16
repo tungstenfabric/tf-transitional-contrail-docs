@@ -24,7 +24,7 @@ Problem Example
 ===============
 
 The troubleshooting examples in this topic are based on the following problem example. A ``net-delete`` of the virtual machine 2a8120ec-bd18-49f4-aca0-acfc6e8fe74f returned the following messages that there are two VMIs that still have back-references to the stale VM.
-The two VMIs must be deleted first, then the Neutron ``net-delete *<vm_ID>* `` command will complete without errors.
+The two VMIs must be deleted first, then the Neutron ``net-delete<vm_ID>`` command will complete without errors.
 
 ::
 

@@ -637,14 +637,11 @@ You can verify the routing policy in the control node.
 
 Point your browser to:
 
-``http:// *<control-node>* :8083/Snh_ShowRoutingPolicyReq?search_string=failover`` 
+``http://<control-node>:8083/Snh_ShowRoutingPolicyReq?search_string=failover`` 
 
 See the following example.
 
-
 .. figure:: s018745.png
-
-
 
 Verify Routing Policy Configuration in the Control Node
 --------------------------------------------------------
@@ -653,7 +650,7 @@ You can verify the routing policy configuration in the control node.
 
 Point your browser to:
 
-``http:// *<control-node>* :8083/Snh_ShowBgpRoutingPolicyConfigReq?search_string=failover`` 
+``http://<control-node>:8083/Snh_ShowBgpRoutingPolicyConfigReq?search_string=failover`` 
 
 See the following example.
 
@@ -669,7 +666,7 @@ You can verify the routing policy configuration on the internal routing instance
 
 Point your browser to:
 
-``http:// *<control-node>* :8083/Snh_ShowBgpInstanceConfigReq?search_string= *<name-of-internal-vrf>*   `` 
+``http://<control-node>:8083/Snh_ShowBgpInstanceConfigReq?search_string=<name-of-internal-vrf>`` 
 
 See the following example.
 
@@ -680,7 +677,7 @@ You can also verify the routing policy on the routing instance operational objec
 
 Point your browser to:
 
-``http:// *<control-node>* :8083/Snh_ShowRoutingInstanceReq?x= *<name-of-internal-vrf>*   `` 
+``http://<control-node>:8083/Snh_ShowRoutingInstanceReq?x=<name-of-internal-vrf>`` 
 
 See the following example.
 

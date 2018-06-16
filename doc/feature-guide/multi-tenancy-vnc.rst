@@ -103,7 +103,9 @@ Supporting Utilities
 --------------------
 
 -  ``/opt/contrail/utils/chmod.py`` —- To change permissions and ownership (user or group membership) of a resource. Requires the resource type (for example, ``virtual-network`` ) and the resource FQN (for example, ``default-domain:default-project:default-virtual-network`` ).
+
 Invoke python /opt/contrail/utils/chmod.py -h to see usage information
+
 Example 1 - See current permissions:
 
 ::

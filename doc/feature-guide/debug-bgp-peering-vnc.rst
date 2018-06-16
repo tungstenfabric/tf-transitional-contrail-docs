@@ -100,11 +100,8 @@ Use this procedure to launch various introspects to verify the setup of the BGP 
 #. Verify the command line arguments that are passed to the control-node.
    On the control-node, use ``ps aux | grep control-node`` to see the arguments that are passed to the control-node.
 
-   ~~~~~~~
-   Example
-   ~~~~~~~
-
-
+   **Example**
+  
    ::
 
     /usr/bin/control-node --map-user <ip address> --map-password <ip address>--hostname nodea22 --host-ip <ip address> --bgp-port 179 --discovery-server <ip address>  

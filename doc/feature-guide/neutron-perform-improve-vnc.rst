@@ -39,7 +39,7 @@ The Neutron plugin has an inefficient list retrieval operation, especially at sc
 - reads a list of resources (for example. ``GET /virtual-networks`` ), then
 
 
-- iterates and reads in the details of the resource ( ``GET /virtual-network/ *<uuid>* `` ).
+- iterates and reads in the details of the resource ( ``GET /virtual-network/<uuid>`` ).
 
 
 As a result, the API server spends most of the time in this type of GET operation just waiting for results from the Cassandra database.
@@ -75,13 +75,13 @@ When a network has the ``shared`` attribute set, users in other tenants or proje
 
 Users can also launch a virtual machine directly on that network, using:
 
-``nova boot *<other-parameters>* –nic net-id= *<shared-net-id>* `` 
+``nova boot<other-parameters>–nic net-id=<shared-net-id>`` 
 
 *Using the Router:External Attribute* 
 
 When a network has the ``router:external`` attribute set, users in other tenants or projects, including non-admin users, can use that network for allocating floating IPs, using:
 
-``neutron floatingip-create *<router-external-net-id>* ``  
+``neutron floatingip-create<router-external-net-id>``  
 
 then associating the IP address pool with their instances.
 

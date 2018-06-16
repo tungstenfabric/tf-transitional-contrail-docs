@@ -14,10 +14,10 @@ The following are ways to enable BGP MD5 authentication and set the keys on the 
 
 #. If the ``md5`` key is not included in the provisioning, and the node is already provisioned, you can run the following script with an argument for md5:
 
-			::
+		::
 
-				contrail-controller/src/config/utils/provision_control.py
-				host@<your_node>:/opt/contrail/utils# python provision_control.py --host_name <host_name> --host_ip <host_ip> --router_asn <asn> --api_server_ip <api_ip> --api_server_port <api_port> --oper add --md5 “juniper” --admin_user admin --admin_password <password>  --admin_tenant_name admin
+			contrail-controller/src/config/utils/provision_control.py
+			host@<your_node>:/opt/contrail/utils# python provision_control.py --host_name <host_name> --host_ip <host_ip> --router_asn <asn> --api_server_ip <api_ip> --api_server_port <api_port> --oper add --md5 “juniper” --admin_user admin --admin_password <password>  --admin_tenant_name admin
 
 #. You can also use the web user interface to configure MD5.
 
@@ -37,8 +37,6 @@ The following are ways to enable BGP MD5 authentication and set the keys on the 
 
 
 			- Configure the MD5 authentication by selecting **Authentication Mode>MD5** and entering the **Authentication Key** value.
-
-
 
 **Related Documentation**
 

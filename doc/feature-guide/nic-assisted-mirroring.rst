@@ -17,13 +17,13 @@ The NIC is programmed to do VLAN port mirroring, so that iany packet with the co
 
 The following are cautions to observe when using NIC-assisted mirroring:
 
-   - VM traffic sent to another VM running on the same compute node will not be mirrored when NIC-assisted mirroring is selected.
+- VM traffic sent to another VM running on the same compute node will not be mirrored when NIC-assisted mirroring is selected.
 
 
-   - Traffic coming in from the fabric interface will not be mirrored.
+- Traffic coming in from the fabric interface will not be mirrored.
 
 
-   - When a VLAN interface is used as the fabric interface, traffic will be tagged first with the NIC-assisted mirroring VLAN, followed by the VLAN tag on the fabric interface. The NIC-assisted mirroring VLAN will be the inner tag and the fabric interface VLAN will be the outer tag.
+- When a VLAN interface is used as the fabric interface, traffic will be tagged first with the NIC-assisted mirroring VLAN, followed by the VLAN tag on the fabric interface. The NIC-assisted mirroring VLAN will be the inner tag and the fabric interface VLAN will be the outer tag.
 
 
 The NIC must be programmed for VLAN port mirroring. While configuring mirroring in Contrail, the user can indicate NIC-assisted mirroring with the VLAN tag. The Contrail UI supports NIC-assisted mirroring configuration in the Ports page and in the Policies page with an additional flag for NIC-assisted mirroring and the VLAN tag to be used.

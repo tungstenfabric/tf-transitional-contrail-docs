@@ -80,7 +80,9 @@ Support for Bonding Options
 
 ​Contrail provides support for bond interface options.
 The default bond interface options are:
+
  ``miimon=100, mode=802.3ad(lacp), xmit_hash_policy=layer3+4`` 
+ 
 For Contrail 4.0 and later, in theprovisioning file bond section, anything other than name and member are treated as a bond interface option, and provisioned as such. The following is an example:
 
   ::

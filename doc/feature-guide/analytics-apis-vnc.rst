@@ -9,7 +9,7 @@ The Contrail **analytics-api** server provides a REST API interface to extract t
 
 APIs are used by the Contrail Web user interface to present the operational state to users. Other applications might also use the server's REST APIs for analytics or other uses.
 
-This section describes some of the more common APIs and their uses. To see all of the available APIs, navigate the URL tree at the REST interface, starting at the root **http:// *<ip>* : *<analytics-api-port>* .** You can also view Contrail API information at: http://configuration-schema-documentation.s3-website-us-west-1.amazonaws.com/R3.2/ .
+This section describes some of the more common APIs and their uses. To see all of the available APIs, navigate the URL tree at the REST interface, starting at the root **http://<ip>: <analytics-api-port>.** You can also view Contrail API information at: http://configuration-schema-documentation.s3-website-us-west-1.amazonaws.com/R3.2/ .
 
 -  `User-Visible Entities`_ 
 

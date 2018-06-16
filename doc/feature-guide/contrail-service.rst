@@ -55,12 +55,15 @@ Sample Output
 ::
 
  [root@host service supervisor-analytics status  
+
 ::
 
  supervisord (pid  32116) is running... [
+
 ::
 
  [root@host]# service contrail-collector restart 
+
 ::
 
     
@@ -70,6 +73,7 @@ Sample Output
 ::
  
 [root@host]# service contrail-collector stop 
+
 ::
 
 
@@ -78,6 +82,7 @@ Sample Output
 ::
 
  [root@host]# service contrail-collector start 
+
 ::
 
 
@@ -86,6 +91,7 @@ Sample Output
 ::
 
  [root@host]# service contrail-collector status 
+ 
 ::
 
 

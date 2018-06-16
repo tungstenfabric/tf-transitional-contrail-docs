@@ -132,24 +132,24 @@ After performing all of the troubleshooting procedures for link-local services, 
 
    - Ensure that the metadata proxy is enabled, as follows:
 
-       ``service_neutron_metadata_proxy = True``  
+     ``service_neutron_metadata_proxy = True``  
 
-       ``service_quantum_metadata_proxy = True`` (on older installations)
+     ``service_quantum_metadata_proxy = True`` (on older installations)
 
 
    - Check to see if the metadata proxy shared secret is set:
 
-       ``neutron_metadata_proxy_shared_secret`` 
+     ``neutron_metadata_proxy_shared_secret`` 
 
-       ``quantum_metadata_proxy_shared_secret`` (on older installations)​
+     ``quantum_metadata_proxy_shared_secret`` (on older installations)​
 
-      If the shared secret is set in ``nova.conf`` , the same secret must be configured on each compute node in the file ``/etc/contrail/contrail-vrouter-agent.conf`` , and the same shared secret must be updated in the ``METADATA`` section as ``metadata_proxy_secret= *<secret>* `` .
+    If the shared secret is set in ``nova.conf`` , the same secret must be configured on each compute node in the file ``/etc/contrail/contrail-vrouter-agent.conf`` , and the same shared secret must be updated in the ``METADATA`` section as ``metadata_proxy_secret=<secret>``
 
 
 
 
 #. Restart the vrouter agent after modifying the shared secret:
 
-    ``service contrail-vrouter restart`` 
+   ``service contrail-vrouter restart`` 
 
 

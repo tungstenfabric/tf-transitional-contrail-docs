@@ -213,7 +213,7 @@ The statistics are sent as a counter that has been aggregated over a time period
 
 A current sample from your system can be obtained from the UVE at:
 
-``http:// *<analytics-ip>* :8081/analytics/uves/user-defined-log-statistic/ *<name>* `` 
+``http://<analytics-ip>:8081/analytics/uves/user-defined-log-statistic/<name>`` 
 
 You can also use the statistics table ``UserDefinedLogStatTable`` to get historical data with all supported aggregations such as SUM, AVG, and the like.
 

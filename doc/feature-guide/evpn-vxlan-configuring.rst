@@ -13,15 +13,15 @@ In EVPNs, MAC address learning is driven by the control plane, rather than by th
 
 With EVPN, MAC learning is confined to the virtual networks to which the virtual machine belongs, thus isolating traffic between multiple virtual networks. In this manner, virtual networks can share the same MAC addresses without any traffic crossover.
 
- *Unicast in EVPNs* 
+*Unicast in EVPNs* 
 
 Unicast forwarding is based on MAC addresses where traffic can terminate on a local endpoint or is encapsulated to reach the remote endpoint. Encapsulation can be MPLS/UDP, MPLS/GRE, or VXLAN.
 
- *BUM Traffic in EVPN* 
+*BUM Traffic in EVPN* 
 
 Multicast and broadcast traffic is flooded in a virtual network. The replication tree is built by the control plane, based on the advertisements of end nodes (virtual machines) sent by forwarders. Each virtual network has one distribution tree, a method that avoids maintaining multicast states at fabric nodes, so the nodes are unaffected by multicast. The replication happens at the edge forwarders. Per-group subscription is not provided. Broadcast, unknown unicast, and multicast (BUM) traffic is handled the same way, and gets flooded in the virtual network to which the virtual machine belongs.
 
- *VXLAN* 
+*VXLAN* 
 
 VXLAN is an overlay technology that encapsulates MAC frames into a UDP header at Layer 2. Communication is established between two virtual tunnel endpoints (VTEPs). VTEPs encapsulate the virtual machine traffic into a VXLAN header, as well as strip off the encapsulation. Virtual machines can only communicate with each other when they belong to the same VXLAN segment. A 24-bit virtual network identifier (VNID) uniquely identifies the VXLAN segment. This enables having the same MAC frames across multiple VXLAN segments without traffic crossover. Multicast in VXLAN is implemented as Layer 3 multicast, in which endpoints subscribe to groups.
 
@@ -334,7 +334,3 @@ To set the priority of encapsulation methods to VXLAN:
 .. |s018510.png| image:: s018510.png
 
 .. |s018509.png| image:: s018509.png
-
-.. |s018509.png| image:: s018509.png
-
-.. |s018510.png| image:: s018510.png

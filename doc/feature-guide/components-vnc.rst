@@ -5,11 +5,10 @@
 Contrail Description
 ====================
 
-   -  `Contrail Major Components`_ 
+-  `Contrail Major Components`_ 
 
 
-   -  `Contrail Solution`_ 
-
+-  `Contrail Solution`_ 
 
 Contrail Major Components
 -------------------------
@@ -19,23 +18,22 @@ The following are the major components of Contrail.
 Contrail Control Nodes
 ----------------------
 
-   - Responsible for the routing control plane, configuration management, analytics, and the user interface.
+- Responsible for the routing control plane, configuration management, analytics, and the user interface.
 
 
-   - Provide APIs to integrate with an orchestration system or a custom user interface.
+- Provide APIs to integrate with an orchestration system or a custom user interface.
 
 
-   - Horizontally scalable, can run on multiple servers.
+- Horizontally scalable, can run on multiple servers.
 
 
 Contrail Compute Nodes – XMPP Agent and vRouter
 -----------------------------------------------
 
-   - Responsible for managing the data plane.
+- Responsible for managing the data plane.
 
 
-   - Functionality can reside on a host OS.
-
+- Functionality can reside on a host OS.
 
 Contrail Solution
 -----------------

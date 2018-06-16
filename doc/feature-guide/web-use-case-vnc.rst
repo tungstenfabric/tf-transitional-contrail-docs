@@ -56,17 +56,17 @@ This example provides basic steps for setting up a simple multi-tier network app
 
    - A network named **public** with IP address **10.84.41.0/24** 
 
-      This is a special use virtual network for floating IP addresses— it is assigned an address block from the public floating address pool that is assigned to each web server. The assigned block is the only address block advertised outside of the data center to clients that want to reach the web services provided.
+     This is a special use virtual network for floating IP addresses— it is assigned an address block from the public floating address pool that is assigned to each web server. The assigned block is the only address block advertised outside of the data center to clients that want to reach the web services provided.
 
 
    - A network named **frontend** with IP address **192.168.1.0/24** 
 
-      This network is the location where the web server virtual machine instances are launched and attached. The virtual machines are identified with private addresses that have been assigned to this virtual network.
+     This network is the location where the web server virtual machine instances are launched and attached. The virtual machines are identified with private addresses that have been assigned to this virtual network.
 
 
    - A network named **backend** with IP address **192.168.2.0/24** 
 
-      This network is the location where the database server virtual machines instances are launched and attached. The virtual machines are identified with private addresses that have been assigned to this virtual network.
+     This network is the location where the database server virtual machines instances are launched and attached. The virtual machines are identified with private addresses that have been assigned to this virtual network.
 
 
    For more information; see `Creating a Virtual Network with OpenStack Contrail`_ or `Creating a Virtual Network with Juniper Networks Contrail`_ .
@@ -208,3 +208,8 @@ Sample Physical Topology Addressing
 
 .. _Sample Network Configuration for Devices for Simple Tiered Web Application: code-example-vnc.html
 
+.. _Creating Projects in OpenStack for Configuring Tenants in Contrail: creating-projects-vnc.html
+
+.. _Creating a Virtual Network with OpenStack Contrail: creating-virtual-network-vnc.html
+
+.. _Creating a Virtual Network with Juniper Networks Contrail: creating-virtual-network-juniper-vnc.html

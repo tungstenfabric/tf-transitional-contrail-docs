@@ -18,13 +18,13 @@ Before you begin, ensure that the following tasks are completed:
    - IP connectivity has been verified between all nodes of the Contrail Controller.
 
 
-   - You can access the Contrail user interface at **http:// *nn.nn.nn.nn* :8080** , where ** *nn.nn.nn.nn* ** is the IP address of the configuration node server that is running the **contrail-webui** service.
+   - You can access the Contrail user interface at **http://nn.nn.nn.nn:8080** , where **nn.nn.nn.nn** is the IP address of the configuration node server that is running the **contrail-webui** service.
 
 
 To configure BGP peering in the control node:
 
 
-#. From the Contrail Controller module control node ( **http:// *nn.nn.nn.nn* :8080** ), select **Configure > Infrastructure > BGP Routers** ; see `Figure 3`_ .
+#. From the Contrail Controller module control node ( **http://nn.nn.nn.nn:8080** ), select **Configure > Infrastructure > BGP Routers** ; see `Figure 3`_ .
 
    
 

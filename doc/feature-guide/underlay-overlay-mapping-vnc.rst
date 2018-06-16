@@ -380,7 +380,7 @@ To enable the **Physical Topology** section in the Contrail Web UI:
 
 #. Add the following lines to the ``/etc/contrail/config.global.js`` file of all the ``contrail-webui`` nodes:
     
-    ::
+   ::
 
     config.optFeatureList = {};
     config.optFeatureList.mon_infra_underlay = true;

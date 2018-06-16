@@ -493,8 +493,6 @@ Contrail Commands and APIs
    neutron-perform-improve-vnc.rst
    using-vpc-vpis-vnc.rst
 
-.. _: OUTPUT-BASE-FILENAME-title.html
-
 .. _END USER LICENSE AGREEMENT: copyright.html
 
 .. _Table of Contents: OUTPUT-BASE-FILENAME-TOC.html

@@ -148,205 +148,105 @@ The following is an example output of NodeStatus obtained from the Rest API:
 ::
 
  http://:8081/analytics/uves/control-...ilt=NodeStatus .
-
  {
-
-     NodeStatus:  {
-
-     process_info:  [
-
-      {
-
+     NodeStatus:{
+     process_info:[
+ {
      process_name: "contrail-control",
-
      process_state: "PROCESS_STATE_RUNNING",
-
      last_stop_time: null,
-
      start_count: 1,
-
      core_file_list: [ ],
-
      last_start_time: "1409002143776558",
-
      stop_count: 0,
-
      last_exit_time: null,
-
      exit_count: 0
-
      },
-
-      {
-
+ {
      process_name: "contrail-control-nodemgr",
-
      process_state: "PROCESS_STATE_RUNNING",
-
      last_stop_time: null,
-
      start_count: 1,
-
      core_file_list: [ ],
-
      last_start_time: "1409002141773481",
-
      stop_count: 0,
-
      last_exit_time: null,
-
      exit_count: 0
-
      },
-
-      {
-
+ {
      process_name: "contrail-dns",
-
      process_state: "PROCESS_STATE_RUNNING",
-
      last_stop_time: null,
-
      start_count: 1,
-
      core_file_list: [ ],
-
      last_start_time: "1409002145778383",
-
      stop_count: 0,
-
      last_exit_time: null,
-
      exit_count: 0
-
      },
-
-      {
-
+ {
      process_name: "contrail-named",
-
      process_state: "PROCESS_STATE_RUNNING",
-
      last_stop_time: null,
-
      start_count: 1,
-
      core_file_list: [ ],
-
      last_start_time: "1409002147780118",
-
      stop_count: 0,
-
      last_exit_time: null,
-
      exit_count: 0
-
      }
-
      ],
-
-     process_status:  [
-
-      {
-
+     process_status:[
+ {
      instance_id: "0",
-
      module_id: "ControlNode",
-
      state: "Functional",
-
      description: null,
-
-     connection_infos:  [
-
-      {
-
-     server_addrs:  [
-
+     connection_infos:[
+ {
+     server_addrs:[
      "10.84.13.45:8443"
-
      ],
-
-      {
-
-     server_addrs:  [
-
+ {
+     server_addrs:[
      "10.84.13.45:8086"
-
      ],
-
      status: "Up",
-
      type: "Collector",
-
      name: null,
-
      description: "Established"
-
      },
-
-      {
-
-     server_addrs:  [
-
+ {
+     server_addrs:[
      "10.84.13.45:5998"
-
      ],
-
      status: "Up",
-
      type: "Discovery",
-
      name: "Collector",
-
      description: "SubscribeResponse"
-
      },
-
-      {
-
-     server_addrs:  [
-
+ {
+     server_addrs:[
      "10.84.13.45:5998"
-
      ],
-
      status: "Up",
-
      type: "Discovery",
-
      name: "IfmapServer",
-
      description: "SubscribeResponse"
-
      },
-
-      {
-
-     server_addrs:  [
-
+ {
+     server_addrs:[
      "10.84.13.45:5998"
-
      ],
-
      status: "Up",
-
      type: "Discovery",
-
      name: "xmpp-server",
-
      description: "Publish Response - HeartBeat"
-
      }
-
      ]
-
      }
-
      ]
-
      }
-
  }
 
 

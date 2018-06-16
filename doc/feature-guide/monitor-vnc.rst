@@ -29,6 +29,7 @@ See `Table 37`_ for descriptions of the items available under each of the menu 
 	| Infrastructure    | Shows “at-a-glance” status view of the infrastructure components, including the numbers of virtual   |
 	| > Dashboard       | routers, control nodes, analytics nodes, and config nodes currently operational, and a bubble chart  |
 	|                   | of virtual routers showing the CPU and memory utilization, log messages, system information, and     |
+	|                   |                                                                                                      |
 	|                   | alerts. See `Monitor > Infrastructure > Dashboard`_.                                                 |
 	+-------------------+------------------------------------------------------------------------------------------------------+
 	| Infrastructure    | View a summary for all control nodes in the system, and for each control node, view:                 |
@@ -36,6 +37,7 @@ See `Table 37`_ for descriptions of the items available under each of the menu 
 	|                   |  -  Console information for a specified time period.                                                 |
 	|                   |  -  A list of all peers with details about type, ASN, and the like.                                  |
 	|                   |  -  A list of all routes, including next hop, source, local preference, and the like.                |
+	|                   |                                                                                                      |
 	|                   | See `Monitor > Infrastructure > Control Nodes`_.                                                     |
 	+-------------------+------------------------------------------------------------------------------------------------------+
 	| Infrastructure    | View a summary of all vRouters in the system, and for each vRouter, view:                            |
@@ -45,6 +47,7 @@ See `Table 37`_ for descriptions of the items available under each of the menu 
 	|                   |     the like.                                                                                        |
 	|                   |  -  A list of all associated networks with their ACLs and VRFs.                                      |
 	|                   |  -  A list of all active flows with source and destination details, size, and time.                  |
+	|                   |                                                                                                      |
 	|                   | See `Monitor > Infrastructure > Virtual Routers`_.                                                   |
 	+-------------------+------------------------------------------------------------------------------------------------------+
 	| Infrastructure    | View activity for the analytics nodes, including memory and CPU usage, analytics host names,         |
@@ -58,13 +61,17 @@ See `Table 37`_ for descriptions of the items available under each of the menu 
 	|                   |  -  Inter VN traffic in and out.                                                                     |
 	|                   |  -  The most active ports, peers, and flows for a specified duration.                                |
 	|                   |  -  All traffic ingress and egress from connected networks, including their attached policies.       |
+	|                   |                                                                                                      |
 	|                   | See `Monitor > Networking`_.                                                                         |
 	+-------------------+------------------------------------------------------------------------------------------------------+
 	| Networking        | For all virtual networks for all projects in the system, view graphical traffic statistics,including:|
 	| > Dashboard       |  -  Total traffic in and out.                                                                        |
 	|                   |  -  Inter VN traffic in and out.                                                                     |
+	|                   |                                                                                                      |
 	|                   | You can view the statistics in varying levels of granularity, for example, for a whole project,      |
-	|                   | or for a single network. See `Monitor > Networking`_.                                                |
+	|                   | or for a single network.                                                                             |
+	|                   |                                                                                                      |
+	|                   | See `Monitor > Networking`_.                                                                         |
 	+-------------------+------------------------------------------------------------------------------------------------------+
 	| Networking        | View essential information about projects in the system including name, associated networks,         |
 	| > Projects        | and traffic in and out.                                                                              |

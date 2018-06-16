@@ -21,10 +21,10 @@ To set the ``cloud_admin`` user, use the following fields in ``/etc/contrail/con
 
 -  ``aaa_mode`` —Takes one of these values:
 
-	-  ``no-auth`` 
+  -  ``no-auth`` 
 
 
-	-  ``cloud-admin`` 
+  -  ``cloud-admin`` 
 
 
 -  ``cloud_admin_role`` —The user with this role has full access to everything. By default, this is set to "admin". This role must be configured in Keystone.

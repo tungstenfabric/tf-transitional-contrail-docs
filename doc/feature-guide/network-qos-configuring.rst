@@ -42,7 +42,7 @@ CLI for Nova flavor has the following format:
 where:
  ``<flavor_name>`` is the name of an existing Nova flavor.
 
- ``vif_ *<direction>* _ *<param_name>* `` is the inbound or outbound QoS data name.
+ ``vif_<direction>_<param_name>`` is the inbound or outbound QoS data name.
 
 QoS ``vif`` types include the following:
 

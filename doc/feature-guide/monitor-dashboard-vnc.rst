@@ -82,21 +82,21 @@ Bubble charts use the following color-coding scheme:
 
 *Control Nodes* 
 
-  - Blue—working as configured.
+- Blue—working as configured.
 
 
-  - Red—error, at least one configured peer is down.
+- Red—error, at least one configured peer is down.
 
 
 *vRouters* 
 
-  - Blue—working, but no instance is launched.
+- Blue—working, but no instance is launched.
 
 
-  - Green—working with at least one instance launched.
+- Green—working with at least one instance launched.
 
 
-  - Red—error, there is a problem with connectivity or a vRouter is in a failed state.
+- Red—error, there is a problem with connectivity or a vRouter is in a failed state.
 
 
 **Related Documentation**

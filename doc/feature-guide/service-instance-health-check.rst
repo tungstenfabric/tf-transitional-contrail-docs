@@ -142,7 +142,7 @@ Creating a Health Check with the Contrail User Interface
 To create a health check with the Contrail Web UI:
 
 
-#. Navigate to Configure > Services > Health Check Service , and click to open the Create screen. See `FigureÂ 147`_ .
+#. Navigate to Configure > Services > Health Check Service , and click to open the Create screen. See `Figure 147`_ .
 
    .. _Figure 147: 
 
@@ -152,7 +152,7 @@ To create a health check with the Contrail Web UI:
 
 
 
-#. Complete the fields to define the permissions for the health check, see `TableÂ 41`_ .
+#. Complete the fields to define the permissions for the health check, see `Table 41`_ .
 
    .. _Table 41: 
 
@@ -212,7 +212,7 @@ The Contrail vRouter agent is responsible for providing the health check service
 
 The vRouter agent acts on the status provided by the script to withdraw or restore the exported interface routes. It is also responsible for providing a link-local metadata IP for allowing the script to communicate with the destination IP from the underlay network, using appropriate NAT translations. In a running system, this information is displayed in the vRouter agent introspect at:
 
-http:// *<compute-node-ip>* :8085/Snh_HealthCheckSandeshReq?uuid= 
+http://*<compute-node-ip>*:8085/Snh_HealthCheckSandeshReq?uuid= 
 
 
 .. note:: Running health check creates flow entries to perform translation from underlay to overlay. Consequently, in a heavily loaded environment with a full flow table, it is possible to observe false failures.

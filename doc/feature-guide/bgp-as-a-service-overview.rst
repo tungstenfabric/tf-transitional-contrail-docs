@@ -7,13 +7,13 @@ BGP as a Service
 
 The BGP as a Service (BGPaaS) feature allows a guest virtual machine (VM) to place routes in its own virtual routing and forwarding (VRF) instance using BGP.
 
-   -  `Contrail BGPaaS Features`_ 
+-  `Contrail BGPaaS Features`_ 
 
 
-   -  `BGPaaS Customer Use Cases`_ 
+-  `BGPaaS Customer Use Cases`_ 
 
 
-   -  `Configuring BGPaaS`_ 
+-  `Configuring BGPaaS`_ 
 
 
 
@@ -25,34 +25,34 @@ Using BGPaaS with Contrail requires the guest VM to have connectivity to the con
 
 With the BGPaaS feature:
 
-   - The vRouter agent is able to accept BGP connections from the VMs and proxy them to the control node.
+- The vRouter agent is able to accept BGP connections from the VMs and proxy them to the control node.
 
 
-   - The vRouter agent always selects one of the control nodes that it is using as an XMPP server.
+- The vRouter agent always selects one of the control nodes that it is using as an XMPP server.
 
 
 Starting with Contrail Release 3.0, the following features have been added to BGPaaS:
 
-   - All BGPaaS sessions are configured to have bidirectional exchange of routes.
+- All BGPaaS sessions are configured to have bidirectional exchange of routes.
 
 
-   - If inet6 routes are being advertised to the tenant VM, they are advertised with the IPv6 subnet's default gateway address as the BGP next hop.
+- If inet6 routes are being advertised to the tenant VM, they are advertised with the IPv6 subnet's default gateway address as the BGP next hop.
 
 
-   - If multiple tenant VMs in the same virtual network have BGPaaS sessions and they use eBGP, standard loop prevention rules prevent routes advertised by one tenant VM from being advertised to other tenant VMs
+- If multiple tenant VMs in the same virtual network have BGPaaS sessions and they use eBGP, standard loop prevention rules prevent routes advertised by one tenant VM from being advertised to other tenant VMs
 
 
 A second BGP session for high availability can also be configured appropriately using one more BGP router object in the Contrail configuration and the peering session (from the VNF’s point of view) to the DNS IP address (reserved by Contrail).
 
 The following are caveats:
 
-   - BGP sessions must use IPv4 transport.
+- BGP sessions must use IPv4 transport.
 
 
-   - The VNF must support RFC 2545, *Use of BGP-4 Multiprotocol Extensions for IPv6 Inter-Domain Routing* , to carry IPv6 routes over the IPv4 peer.
+- The VNF must support RFC 2545, *Use of BGP-4 Multiprotocol Extensions for IPv6 Inter-Domain Routing* , to carry IPv6 routes over the IPv4 peer.
 
 
-   - Only IPv4 (inet) and IPv6 (inet6) address families are supported.
+- Only IPv4 (inet) and IPv6 (inet6) address families are supported.
 
 
 The initial implementation of BGPaaS Version 1, supported in Contrail Release 3.0, allowed a tenant VM to establish BGP sessions to the default gateway and DNS server in the VM’s subnet. A limitation of this implementation was that the tenant VM could advertise routes into the virtual network to which the VM belonged, however, the VM could not receive any routes. The tenant VM was required to use a static default route, with the subnet's default gateway as the next hop.
@@ -63,13 +63,13 @@ The BGPaaS object is associated with a virtual machine interface (VMI), not just
 
 Starting with Contrail Release 3.1, the following features and properties have been added to BGPaaS:
 
-   - By default, all BGPaaS sessions are configured to have bidirectional exchange of routes. The Boolean property  bgpaas-suppress-route-advertisementensures no advertisement of routes to the tenant VM.
+- By default, all BGPaaS sessions are configured to have bidirectional exchange of routes. The Boolean property  bgpaas-suppress-route-advertisementensures no advertisement of routes to the tenant VM.
 
 
-   - If inet6 routes are being advertised to the tenant VM, they are advertised with the IPv6 subnet's default gateway address as the BGP next hop. A Boolean property,  bgpaas-ipv4-mapped-ipv6-nexthop, causes the IPv4 subnet's default gateway, in IPv4-mapped IPv6 format, to be used instead as the next hop.
+- If inet6 routes are being advertised to the tenant VM, they are advertised with the IPv6 subnet's default gateway address as the BGP next hop. A Boolean property,  bgpaas-ipv4-mapped-ipv6-nexthop, causes the IPv4 subnet's default gateway, in IPv4-mapped IPv6 format, to be used instead as the next hop.
 
 
-   - If multiple tenant VMs in the same virtual network have BGPaaS sessions and they use eBGP, the standard BGP AS path loop prevention rules prevent routes advertised by one tenant VM from being advertised to the other tenant VMs. The  as-overridefield, added to the existing ``BgpSessionAttributes`` in the BGPaaS object, causes the control node to replace the AS number of the tenant VM with it's own AS number, when advertising routes learned from a tenant VM to another tenant VM in the same virtual network. The tenant VM does not need to implement any new functionality.
+- If multiple tenant VMs in the same virtual network have BGPaaS sessions and they use eBGP, the standard BGP AS path loop prevention rules prevent routes advertised by one tenant VM from being advertised to the other tenant VMs. The  as-overridefield, added to the existing ``BgpSessionAttributes`` in the BGPaaS object, causes the control node to replace the AS number of the tenant VM with it's own AS number, when advertising routes learned from a tenant VM to another tenant VM in the same virtual network. The tenant VM does not need to implement any new functionality.
 
 
 
@@ -79,15 +79,13 @@ BGPaaS Customer Use Cases
 
 This section provides example scenarios for implementing BGPaaS with Contrail.
 
-   -  `Dynamic Tunnel Insertion Within a Tenant Overlay`_ 
+-  `Dynamic Tunnel Insertion Within a Tenant Overlay`_ 
 
 
-   -  `Dynamic Network Reachability of Applications`_ 
+-  `Dynamic Network Reachability of Applications`_ 
 
 
-   -  `Liveness Detection for High Availability`_ 
-
-
+-  `Liveness Detection for High Availability`_ 
 
 
 Dynamic Tunnel Insertion Within a Tenant Overlay
@@ -100,7 +98,7 @@ BGPaaS allows the migration of brownfield VNFs into Contrail, preserving the app
 The following figure is a generic example showing the need to insert a dynamic tunnel into a virtual network.
 
 
-    .. figure:: S018554.png
+.. figure:: S018554.png
 
 
 
@@ -125,10 +123,10 @@ Configuring BGPaaS
 
 The following are methods for configuring BGPaaS:
 
-   -  `Configuring BGPaaS Using VNC API`_ 
+-  `Configuring BGPaaS Using VNC API`_ 
 
 
-   -  `Using the Contrail User Interface to Configure BGPaaS`_ 
+-  `Using the Contrail User Interface to Configure BGPaaS`_ 
 
 
 
@@ -143,35 +141,35 @@ To use VNC APIs to configure BGPaaS:
 
 #. Access the default project.
 
-    ``default_project = self._vnc_lib.project_read(fq_name=[u'default-domain', ‘bgpaas-tenant’])`` 
+   ``default_project = self._vnc_lib.project_read(fq_name=[u'default-domain', ‘bgpaas-tenant’])`` 
 
 
 
 #. Create a BGPaaS object.
 
-    ``bgpaas_obj = BgpAsAService(name=‘bgpaas_1’, parent_obj=default_project)`` 
+   ``bgpaas_obj = BgpAsAService(name=‘bgpaas_1’, parent_obj=default_project)`` 
 
 
 
 #. Attach the BGP object to a precreated VMI.
 
-    ``bgpaas_obj.add_virtual_machine_interface(vmi)`` 
+   ``bgpaas_obj.add_virtual_machine_interface(vmi)`` 
 
 
 
 #. Set the ASN. It must be an eBGP session.
 
-    ``bgpaas_obj.set_autonomous_system('65000')`` 
+   ``bgpaas_obj.set_autonomous_system('65000')`` 
 
    If the ASN is not set, the primary instance IP will be chosen.
 
-    ``bgpaas_obj.set_bgpaas_ip_address(u’10.1.1.5’)`` 
+   ``bgpaas_obj.set_bgpaas_ip_address(u’10.1.1.5’)`` 
 
 
 
 #. Set session attributes.
 
-    ``bgp_addr_fams = AddressFamilies(['inet’, ‘inet6’])bgp_sess_attrs = BgpSessionAttributes(address_families=bgp_addr_fams,hold_time=60)bgpaas_obj.set_bgpaas_session_attributes(bgp_sess_attrs)self._vnc_lib.bgp_as_a_service_create(bgpaas_obj)`` 
+   ``bgp_addr_fams = AddressFamilies(['inet’, ‘inet6’])bgp_sess_attrs = BgpSessionAttributes(address_families=bgp_addr_fams,hold_time=60)bgpaas_obj.set_bgpaas_session_attributes(bgp_sess_attrs)self._vnc_lib.bgp_as_a_service_create(bgpaas_obj)`` 
 
 
 
@@ -181,7 +179,7 @@ Deleting a BGPaaS Object
 
 To delete a BGPaaS object:
 
- ``fq_name=[u'default-domain', ‘bgpaas-tenant’, ‘bgpaas_1’]bgpaas_obj = self._vnc_lib.bgp_as_a_service_read(fq_name=fq_name)bgpaas_obj.del_virtual_machine_interface(vmi)self._vnc_lib.bgp_as_a_service_update(bgpaas_obj)self._vnc_lib.bgp_as_a_service_delete(id=bgpaas_obj.get_uuid())`` 
+``fq_name=[u'default-domain', ‘bgpaas-tenant’, ‘bgpaas_1’]bgpaas_obj = self._vnc_lib.bgp_as_a_service_read(fq_name=fq_name)bgpaas_obj.del_virtual_machine_interface(vmi)self._vnc_lib.bgp_as_a_service_update(bgpaas_obj)self._vnc_lib.bgp_as_a_service_delete(id=bgpaas_obj.get_uuid())`` 
 
 
 
@@ -194,7 +192,7 @@ To configure BGPaaS within a tenant:
 #. Within a tenant in Contrail, navigate to **Configure > Services > BGP as a Service** . Select the + icon to access the window **Create BGP as a Service** .
 
 
-    .. figure:: S018555.png
+   .. figure:: S018555.png
 
 
 

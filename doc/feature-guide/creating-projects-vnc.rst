@@ -10,13 +10,13 @@ In Contrail, a tenant configuration is called a project. A project is created fo
 Projects are created, managed, and edited at the OpenStack **Projects** page.
 
 
-#. Click the **Admin** tab on the OpenStack dashboard, then click the **Projects** link to access the **Projects** page; see `Figure 50`_ .
+#. Click the **Admin** tab on the OpenStack dashboard, then click the **Projects** link to access the **Projects** page; see `Figure 50`_ 
 
    .. _Figure 50: 
 
-     *Figure 50* : OpenStack Projects
+   *Figure 50* : OpenStack Projects
 
-    .. figure:: s041521.gif
+   .. figure:: s041521.gif
 
 
 
@@ -24,9 +24,9 @@ Projects are created, managed, and edited at the OpenStack **Projects** page.
 
    .. _Figure 51: 
 
-     *Figure 51* : Add Project
+   *Figure 51* : Add Project
 
-    .. figure:: s041522.gif
+   .. figure:: s041522.gif
 
 
 

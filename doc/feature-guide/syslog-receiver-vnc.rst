@@ -26,7 +26,9 @@ Redirecting System Logs to Contrail Collector
 
 You can enable the contrail-collector to receive system logs by giving a valid ``syslog_port`` as a command line option:
  ``--DEFAULT.syslog_port <arg>`` 
+
 or by adding ``syslog_port`` in the DEFAULT section​ of the configuration file at ``/etc/contrail/contrail-collector.conf`` .
+
 For nodes to send system logs to the contrail-collector, the system log configuration for the node should be set up to direct the system logs to contrail-collector.
 
 Example

@@ -17,9 +17,9 @@ Controller Configuration
 
    - Configure contrailctl configurations in /etc/contrailctl/controller.conf .
 
-   See examples on github at:
+     See examples on github at:
 
-   `contrail-docker/tools/python-contrailctl/examples/configs/controller.conf`_  
+     `contrail-docker/tools/python-contrailctl/examples/configs/controller.conf`_  
 
 
    - Start the controller container. For more information, see `How to run Contrail Docker containers`_  .
@@ -121,7 +121,7 @@ Manually configure contrailctl on all containers and sync the configs
 
 
 
-#. Manually configure /etc/contrailctl/controller.conf with new nodes for various *._list configurations and config_seed_list. See examples at: https://github.com/Juniper/contrail-docker/blob/master/tools/python-contrailctl/examples/configs/controller.conf 
+#. Manually configure /etc/contrailctl/controller.conf with new nodes for various*._list configurations and config_seed_list. See examples at: https://github.com/Juniper/contrail-docker/blob/master/tools/python-contrailctl/examples/configs/controller.conf 
 
 
 

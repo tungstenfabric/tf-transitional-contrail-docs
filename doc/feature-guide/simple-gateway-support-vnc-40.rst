@@ -367,7 +367,7 @@ The following procedure dynamically creates the ``vgw1`` interface, with ``20.30
    Use the ``subnets`` option to specify the subnets defined for virtual network vn1.
    Use the ``routes`` option to specify the routes in the public network that are injected into vn1.
    In the following example, the virtual machines in ``vn1`` can access subnets ``8.8.8.0/24`` and ``9.9.9.0/24`` in the public network:
-     python /opt/contrail/utils/provision_vgw_interface.py --oper create --interface vgw1 --subnets 20.30.40.0/24 30.40.50.0/24 --routes 8.8.8.0/24 9.9.9.0/24 --vrf default-domain:admin:vn1:vn1
+   python /opt/contrail/utils/provision_vgw_interface.py --oper create --interface vgw1 --subnets 20.30.40.0/24 30.40.50.0/24 --routes 8.8.8.0/24 9.9.9.0/24 --vrf default-domain:admin:vn1:vn1
 
 
 How to Dynamically Delete a Virtual Gateway

@@ -22,7 +22,7 @@ Contrail makes creating a virtual network very easy for a self-service user. You
 
 #. Complete the fields in **Add IP Address Management** : The fields are described in `Table 8`_ .
 
-    .. _Table 8: 
+   .. _Table 8: 
 
 
    *Table 8* : Add IP Address Management Fields
@@ -61,16 +61,15 @@ Contrail makes creating a virtual network very easy for a self-service user. You
 
    .. _Figure 54: 
 
-     *Figure 54* : Create Network
+   *Figure 54* : Create Network
 
-    .. figure:: s041528.gif
+   .. figure:: s041528.gif
 
 
 
 #. Complete the fields in the **Create Network** window with values that identify the network name, network policy, and IP options as needed. See field descriptions in `Table 9`_ .
 
-    .. _Table 9: 
-
+   .. _Table 9: 
 
    *Table 9* : Create Network Fields
 

@@ -322,13 +322,9 @@ To set up and add a vCenter compute node, add the server JSON configuration for 
 
 .. _Underlay Network Configuration for Containerized ContrailVM: vcenter-as-compute-deployment-scenarios-401.html
 
-.. _Installing Containerized Contrail Using Server Manager Lite (SM-Lite): 
-
 .. _Sample JSON Configuration Files for vCenter with Containerized Contrail 4.0.1 and Greater: vmware-sample-json-vcenter-401.html
 
 .. _Sample JSON Configuration Files for vCenter with Containerized Contrail 4.0.1 and Greater: vmware-sample-json-vcenter-401.html
-
-.. _Installing Containerized Contrail Using Server Manager Lite (SM-Lite): 
 
 .. _Underlay Network Configuration for Containerized ContrailVM: vcenter-as-compute-deployment-scenarios-401.html
 

@@ -43,10 +43,10 @@ Complete these steps to configure Contrail DPDK vRouter to run in a Docker conta
 
 #. Run the following commands:
 
-::
+   ::
 
-  /opt/contrail/bin/dpdk_nic_bind.py -b ixgbe 0000:02:00.0 
- /opt/contrail/bin/dpdk_nic_bind.py -s 
- taskset 0xf /usr/bin/contrail-vrouter-dpdk --no-daemon
+     /opt/contrail/bin/dpdk_nic_bind.py -b ixgbe 0000:02:00.0 
+    /opt/contrail/bin/dpdk_nic_bind.py -s 
+    taskset 0xf /usr/bin/contrail-vrouter-dpdk --no-daemon
 
 

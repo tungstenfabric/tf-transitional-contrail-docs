@@ -59,7 +59,7 @@ The query fields available on the screen for the **Flow Series** tab are describ
   +-----------------------------------+-----------------------------------+
   | **Select**                        | Click the edit button (pencil     |
   |                                   | icon) to open a **Select** window |
-  |                                   | (`Figure 2`_), where you can      |
+  |                                   | (`Figure 166`_), where you can    |
   |                                   | click one or more boxes to select |
   |                                   | the fields to display from the    |
   |                                   | flow series, such as **Source VN, |
@@ -79,7 +79,7 @@ The query fields available on the screen for the **Flow Series** tab are describ
   +-----------------------------------+-----------------------------------+
   | **Filter**                        | Click the edit button (pencil     |
   |                                   | icon) to open a **Filter** window |
-  |                                   | (`Figure 3`_), where you can      |
+  |                                   | (`Figure 167`_), where you can    |
   |                                   | select filter items to sort by,   |
   |                                   | the sort order, and limits to the |
   |                                   | number of results returned.       |
@@ -140,10 +140,10 @@ The following is an example flow series query that returns the time series of th
 
 The query returns tabular time series data, see `Figure 170`_ , for the following combinations of Source VN and Dest VN:
 
-   - Flow Class 1: Source VN = default-domain:demo:front-end, Dest VN=__UNKNOWN__
+- Flow Class 1: Source VN = default-domain:demo:front-end, Dest VN=__UNKNOWN__
 
 
-   - Flow Class 2: Source VN = default-domain:demo:front-end, Dest VN=default-domain:demo:back-end
+- Flow Class 2: Source VN = default-domain:demo:front-end, Dest VN=default-domain:demo:back-end
 
 
 .. _Figure 170: 
@@ -199,7 +199,7 @@ The query fields available on the screen for the **Flow Records** tab are descri
   +-----------------------------------+-----------------------------------+
   | **Select**                        | Click the edit button (pencil     |
   |                                   | icon) to open a **Select** window |
-  |                                   | (`Figure 8`_), where you can      |
+  |                                   | (`Figure 168`_), where you can    |
   |                                   | click one or more boxes to select |
   |                                   | attributes to display for the     |
   |                                   | flow records, including **Setup   |

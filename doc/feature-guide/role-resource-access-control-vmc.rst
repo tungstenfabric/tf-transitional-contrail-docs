@@ -229,21 +229,17 @@ Modify the cloud admin credential files if the ``cloud_admin_role`` role is chan
 
    - API server
 
-      ``service supervisor-config restart`` 
+     ``service supervisor-config restart`` 
 
 
    - Neutron server
 
-      ``service neutron-server restart`` 
+     ``service neutron-server restart`` 
 
 
    - WebUI
 
-      ``service supervisor-webui restart`` 
-
-
-
-
+     ``service supervisor-webui restart`` 
 
 Global Read-Only Role
 ---------------------

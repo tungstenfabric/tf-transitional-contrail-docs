@@ -22,40 +22,40 @@ To set up virtual functions for the physical interface of a vRouter:
 
 #. Within ``env.sriov`` , create SR-IOV virtual functions on the compute nodes ( ``host1`` and ``host2`` , in this example). Virtual functions are usually identified with the following naming scheme: ``p6p2_1`` , ``p6p2_2`` , and so on. For example:
 
-   ::
+			::
 
-					env.sriov = {
+				env.sriov = {
 
-					host1 :[ {'interface' : 'p6p2', 'VF' : 7, 'physnets' : ['physnet1']}],
-					host2 :[ {'interface' : 'p6p2', 'VF' : 7, 'physnets’ : ['physnet1']}]
+				host1 :[ {'interface' : 'p6p2', 'VF' : 7, 'physnets' : ['physnet1']}],
+				host2 :[ {'interface' : 'p6p2', 'VF' : 7, 'physnets’ : ['physnet1']}]
 
-					}
+				}
 
 
 
 
 #. Specify the virtual function interfaces in the ``control_data`` section of the ``testbed.py`` file, with or without a VLAN, so that they can be used by the vRouter. For example:
 
-   ::
+			::
 
-    control_data = {
+				control_data = {
 
-     host1 : { 'ip': '10.x.x.100/2x', 'gw' : '10.x.x.254','device':'p6p2_1' }, 
-     host2 : { 'ip': '10.x.x.200/2x', 'gw' : '10.x.x.254','device':'p6p2_2' }
+				host1 : { 'ip': '10.x.x.100/2x', 'gw' : '10.x.x.254','device':'p6p2_1' }, 
+				host2 : { 'ip': '10.x.x.200/2x', 'gw' : '10.x.x.254','device':'p6p2_2' }
 
-     }
+				}
 
 
 
 #. Optionally, for bonded interfaces ( ``bond0`` in this example), specify the virtual functions in the ``bond`` section of the ``testbed.py`` file, with or without a VLAN. For example:
 
-		::
+			::
 
-			bond= {
+				bond= {
 
-			host1 : {'name':'bond0','member':['p6p2_4','p6p1_5'],'mode':'balance-xor' },
-			host2 : {'name':'bond0','member':['p6p2_2','p6p1_3'],'mode':'balance-xor' }
+				host1 : {'name':'bond0','member':['p6p2_4','p6p1_5'],'mode':'balance-xor' },
+				host2 : {'name':'bond0','member':['p6p2_2','p6p1_3'],'mode':'balance-xor' }
 
-			}
+				}
 
 

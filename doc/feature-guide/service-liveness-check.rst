@@ -36,14 +36,50 @@ The service instance health check is used with service template version 2.
 Health Check Object Configuration
 ----------------------------------
 
- `Table 21`_ shows the configurable properties of the health check object.
+`Table 21`_ shows the configurable properties of the health check object.
 
-    .. _Table 21: 
+.. _Table 21: 
 
+*Table 21* : Health Check Configurable Parameters
 
-   *Table 21* : Health Check Configurable Parameters
-
-
++-----------------------------------+-----------------------------------+
+| Field                             | Description                       |
++===================================+===================================+
+| - enabled                         | Indicates that health check is    |
+|                                   | enabled. The default is False.    |
++-----------------------------------+-----------------------------------+
+| - health-check-type               | Indicates the health check type:  |
+|                                   | link-local, end-to-end,           |
+|                                   | bgp-as-a-service, and so on.. The |
+|                                   | default is link-local.            |
++-----------------------------------+-----------------------------------+
+| - monitor-type                    | The protocol type to be used:     |
+|                                   | PING or HTTP.                     |
++-----------------------------------+-----------------------------------+
+| - delay                           | The delay, in seconds, to repeat  |
+|                                   | the health check.                 |
++-----------------------------------+-----------------------------------+
+| - timeout                         | The number of seconds to wait for |
+|                                   | a response.                       |
++-----------------------------------+-----------------------------------+
+| - max-retries                     | The number of retries to attempt  |
+|                                   | before declaring an instance      |
+|                                   | health down.                      |
++-----------------------------------+-----------------------------------+
+| - http-method                     | When the monitor protocol is      |
+|                                   | HTTP, the type of HTTP method     |
+|                                   | used, such as GET, PUT, POST, and |
+|                                   | so on.                            |
++-----------------------------------+-----------------------------------+
+| - url-path                        | When the monitor protocol is      |
+|                                   | HTTP, the URL to be used. For all |
+|                                   | other cases, such as ICMP, the    |
+|                                   | destination IP address.           |
++-----------------------------------+-----------------------------------+
+| - expected-codes                  | When the monitor protocol is      |
+|                                   | HTTP, the expected return code    |
+|                                   | for HTTP operations.              |
++-----------------------------------+-----------------------------------+
 
 Health Check Modes
 ------------------
@@ -99,6 +135,36 @@ To create a health check with the Contrail Web UI:
 
 
    *Table 22* : Create Health Check Fields
+   
+   +-----------------------------------+-----------------------------------+
+   | Field                             | Description                       |
+   +===================================+===================================+
+   | Name                              | Enter a name for the health check |
+   |                                   | service you are creating.         |
+   +-----------------------------------+-----------------------------------+
+   | Protocol                          | Select from the list the protocol |
+   |                                   | to use for the health check,      |
+   |                                   | PING, HTTP, BFD, and so on.       |
+   +-----------------------------------+-----------------------------------+
+   | Monitor Target                    | Select from the list the address  |
+   |                                   | of the target to be monitored by  |
+   |                                   | the health check.                 |
+   +-----------------------------------+-----------------------------------+
+   | Delay (secs)                      | The delay, in seconds, to repeat  |
+   |                                   | the health check.                 |
+   +-----------------------------------+-----------------------------------+
+   | Timeout (secs)                    | The number of seconds to wait for |
+   |                                   | a response.                       |
+   +-----------------------------------+-----------------------------------+
+   | Retries                           | The number of retries to attempt  |
+   |                                   | before declaring an instance      |
+   |                                   | health down.                      |
+   +-----------------------------------+-----------------------------------+
+   | Health Check Type                 | Select from the list the type of  |
+   |                                   | health check—link-local,          |
+   |                                   | end-to-end, segment-based,        |
+   |                                   | bgp-as-a-service, and so on.      |
+   +-----------------------------------+-----------------------------------+
 
 
 
@@ -109,12 +175,12 @@ Using the Health Check
 A REST API can be used to create a health check object and define its associated properties, then a link is added to the VM interface.
 The health check object can be linked to multiple VM interfaces. Additionally, a VM interface can be associated with multiple health check objects. The following is an example:
 
-  ::
+::
 
-   HealthCheckObject 1 ---------------- VirtualMachineInterface 1 ---------------- HealthCheckObject 2   
-      |  
-      |  
-VirtualMachineInterface 2 
+ HealthCheckObject 1 ---------------- VirtualMachineInterface 1 ---------------- HealthCheckObject 2   
+   |  
+   |  
+ VirtualMachineInterface 2 
 
 
 
@@ -126,7 +192,7 @@ The Contrail vRouter agent is responsible for providing the health check service
 
 The vRouter agent acts on the status provided by the script to withdraw or restore the exported interface routes. It is also responsible for providing a link-local metadata IP for allowing the script to communicate with the destination IP from the underlay network, using appropriate NAT translations. In a running system, this information is displayed in the vRouter agent introspect at:
 
- ``http:// *<compute-node-ip>* :8085/Snh_HealthCheckSandeshReq?uuid=`` 
+``http:// <compute-node-ip>:8085/Snh_HealthCheckSandeshReq?uuid=`` 
 
 
 .. note:: Running health check creates flow entries to perform translation from underlay to overlay. Consequently, in a heavily loaded environment with a full flow table, it is possible to observe false failures.

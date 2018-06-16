@@ -452,6 +452,7 @@ The following steps are performed on the Neutron server host.
 #. To install the Avi LBaaS plugin, continue with steps from the readme file that downloads with the Avi LBaaS software. You can perform either a local installation or a manual installation. The following are sample installation steps.
 
    - For a local installation:
+
    ::
 
     # LBaaS v1 driver
@@ -474,6 +475,7 @@ The following steps are performed on the Neutron server host.
 
 
    - For a manual installation:
+   
    ::
 
     # LBaaS v1 driver

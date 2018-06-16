@@ -9,14 +9,8 @@ This topic provides steps for installing Contrail with microservices architectur
 
    -  `Installation Procedure`_ 
 
-
-
-
 Installation Procedure
 ----------------------
-
-
-
 
 #. Reimage the node to CentOS 7.4.
    ::

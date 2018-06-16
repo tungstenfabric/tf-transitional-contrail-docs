@@ -324,9 +324,10 @@ View the Floating IP Object in the API Server
 
 Use the following to view the floating IP pool information in the API server. API server requests can be made on http port 8082.
 The Contrail API servers have the virtual-network public_vn object that contains floating IP pool information. Use the following to view the floating-ip-pools object information.
- ``curl http://<API-Server_IP>:8082/virtual-network/<UUID_of_VN>`` 
 
- *Example* 
+``curl http://<API-Server_IP>:8082/virtual-network/<UUID_of_VN>`` 
+
+*Example* 
 
 ::
 
@@ -520,7 +521,8 @@ View floating-ips in floating-ip-pools in the API Server
 
 Once you have located the floating-ip-pools object, use the following to review its floating-ips object.
 The floating-ips object should display the floating IP that is shown in the Contrail UI. The floating IP should have a reference to the virtual machine interface (VMI) object that is bound to the floating IP.
- *Example* 
+
+*Example* 
 
 ::
 
@@ -650,9 +652,9 @@ Use the following to retrieve the virtual machine interface of the virtual machi
 
 
 #. Using ``quantum port-list`` to get the virtual machine interface:
-   ~~~~~~~
-   Example
-   ~~~~~~~
+   
+   **Example**
+   
 
 
    ::
@@ -835,8 +837,10 @@ Querying Routes in the Public Virtual Network
 =============================================
 
 On each control-node, a query on the routes in the **public_vn** lists the routes that are pushed by the MX gateway, which in the following example are 0.0.0.0/0 and 10.204.218.0/24.
+
 In the following results, the floating IP route of 10.204.217.32 is installed by the compute node (nodec10) that hosts that virtual machine.
- *Example* 
+
+*Example* 
 
 - Using the Contrail UI:
 

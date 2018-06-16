@@ -469,5 +469,3 @@ Use the following steps to delete a load balancer.
 
 
 .. |s042494.png| image:: s042494.png
-
-.. |s042494.png| image:: s042494.png

@@ -217,12 +217,12 @@ The  storage_osd_disksor  storage_osd_ssd_diskis needed to provision the disks f
 
 
 .. note:: The disks added to Ceph are not included in the OS disk. The  partitionparameter in the server JSON lists only the required OS disks.
-          ::
+  ::
 
-            "parameters": {  
-            "partition": "/dev/sda"
-            }
-          The disks added to Ceph cannot be part of LVM.
+    "parameters": {  
+    "partition": "/dev/sda"
+    }
+    The disks added to Ceph cannot be part of LVM.
 
 
 

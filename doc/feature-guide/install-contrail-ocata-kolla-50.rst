@@ -92,6 +92,7 @@ To set up the base host:
 
 
    - If “roles” is not specified, the following roles are assumed.
+   
    ::
 
     config_database:
