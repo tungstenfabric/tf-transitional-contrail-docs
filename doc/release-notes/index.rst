@@ -1,9 +1,9 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
-   
-===========================
-Release Notes: Contrail 5.0
-===========================
+
+=============================
+Release Notes: Contrail 5.0.1
+=============================
 
     `Table of Contents`_
 
@@ -21,6 +21,8 @@ Release Notes: Contrail 5.0
 
     `Requesting Technical Support`_
 
+    `Revision History`_
+
 
 .. toctree::
    :maxdepth: 2
@@ -28,8 +30,8 @@ Release Notes: Contrail 5.0
    :glob:
    :hidden:
 
-   contrail-release-notes-5.0-title.rst
-   intro.rst
+   contrail-release-notes-5.0.1-title.rst
+   introduction.rst
    new-and-changed-features.rst
    supported-platforms-50-vnc.rst
    known-behavior.rst
@@ -37,9 +39,9 @@ Release Notes: Contrail 5.0
    deprecated-items.rst
    request-support.rst
 
-.. _Table of Contents: contrail-release-notes-5.0-title.html
+.. _Table of Contents: contrail-release-notes-5.0.1-title.html
 
-.. _Introduction: intro.html
+.. _Introduction: introduction.html
 
 .. _New and Changed Features: new-and-changed-features.html
 
@@ -53,3 +55,4 @@ Release Notes: Contrail 5.0
 
 .. _Requesting Technical Support: request-support.html
 
+.. _Revision History: request-support.html

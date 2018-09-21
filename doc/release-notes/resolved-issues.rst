@@ -5,4 +5,25 @@
 Resolved Issues
 ===============
 
-You can research limitations that are resolved with this release in Launchpad at: https://launchpad.net/juniperopenstack/+milestone/r5.0.0
+This section lists limitations that are resolved with this release.
+
+-  `Resolved Issues in Contrail Release 5.0.1`_ 
+
+
+-  `Resolved Issues in Contrail Release 5.0`_ 
+
+Resolved Issues in Contrail Release 5.0.1
+-----------------------------------------
+
+You can research limitations that are resolved with Contrail Release 5.0.1 in Launchpad at:
+
+https://launchpad.net/juniperopenstack/+milestone/r5.0.1 .
+
+
+
+Resolved Issues in Contrail Release 5.0
+---------------------------------------
+
+You can research limitations that are resolved with Contrail Release 5.0 in Launchpad at:
+
+https://launchpad.net/juniperopenstack/r5.0/r5.0.0 .
