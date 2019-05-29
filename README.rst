@@ -1,7 +1,18 @@
 Contrail Documentation
 ======================
 
-This repository stores documentation for OpenContrail in reStructuredText (RST) format. Each deliverable ("book") is in one subdirectory of the docs folder. 
+This repository stores documentation for OpenContrail in reStructuredText (RST) format. Each deliverable ("book") is in one subdirectory of the docs folder.
+
+!!CAVEATS!!
+-----------
+
+Currently the documentation is either completely or partially about Contrail rather than Tungsten Fabric. We are transitioning this documentation to Tungsten Fabric and updating references and links accordingly.
+
+This is a work in progress. 
+
+Feel free to use the documentation in this repository but do not link to it, as it will not always be available in this location. The documents will move when the transition to Tungsten Fabric is complete.
+
+When the work is complete, the content will be moved to the `docs` repo on `gerrit.tungsten.io`.
 
 Prerequisites
 -------------
