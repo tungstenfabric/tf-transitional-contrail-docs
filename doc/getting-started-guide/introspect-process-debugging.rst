@@ -1,21 +1,21 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-=========================================================
-Debugging Processes Using the Contrail Introspect Feature
-=========================================================
+================================================================
+Debugging Processes Using the Tungsten Fabric Introspect Feature
+================================================================
 
-This topic describes how to use the Sandesh infrastructure and the Contrail Introspect feature to debug processes.
+This topic describes how to use the Sandesh infrastructure and the Tungsten Fabric Introspect feature to debug processes.
 
 Introspect is a mechanism for taking a program object and querying information about it.
 
-Sandesh is the name of a unified infrastructure in the Contrail Virtual Networking solution.
+Sandesh is the name of a unified infrastructure in the Tungsten Fabric Virtual Networking solution.
 
-Sandesh is a way for the Contrail daemons to provide a request-response mechanism. Requests and responses are defined in Sandesh format and the Sandesh compiler generates code to process the requests and send responses.
+Sandesh is a way for the Tungsten Fabric daemons to provide a request-response mechanism. Requests and responses are defined in Sandesh format and the Sandesh compiler generates code to process the requests and send responses.
 
-Sandesh also provides a way to use a Web browser to send Sandesh requests to a Contrail daemon and get the Sandesh responses. This feature is used to debug processes by looking into the operational status of the daemons.
+Sandesh also provides a way to use a Web browser to send Sandesh requests to a Tungsten Fabric daemon and get the Sandesh responses. This feature is used to debug processes by looking into the operational status of the daemons.
 
-Each Contrail daemon starts an HTTP server, with the following page types:
+Each Tungsten Fabric daemon starts an HTTP server, with the following page types:
 
 - The main index.html listing all Sandesh modules and the links to them.
 
@@ -29,7 +29,7 @@ Each Contrail daemon starts an HTTP server, with the following page types:
 - An automatically generated page that shows all code needed for rendering and all HTTP server-client interactions.
 
 
-You can display the HTTP introspect of a Contrail daemon directly by accessing the following Introspect ports:
+You can display the HTTP introspect of a Tungsten Fabric daemon directly by accessing the following Introspect ports:
 
 -  *<controller-ip>* :8083. This port displays the *contrail-control* introspect port.
 
@@ -37,7 +37,7 @@ You can display the HTTP introspect of a Contrail daemon directly by accessing t
 -  *<compute-ip>* :8085 This port displays the *contrail-vrouter-agent* introspect port.
 
 
-Another way to launch the Introspect page is by browsing to a particular node page using the Contrail Web user interface.
+Another way to launch the Introspect page is by browsing to a particular node page using the Tungsten Fabric Web user interface.
 
 `Figure 69`_ shows the contrail-control infrastructure page. Notice the Introspect link at the bottom of the Control Nodes Details tab window.
 
@@ -47,7 +47,7 @@ Another way to launch the Introspect page is by browsing to a particular node pa
 
  .. figure:: s042485.png
 
-The following are the Sandesh modules for the Contrail control process (contrail-control) Introspect port.
+The following are the Sandesh modules for the Tungsten Fabric control process (contrail-control) Introspect port.
 
 - bgp_peer.xml
 
@@ -112,7 +112,7 @@ The following are the Sandesh modules for the Contrail control process (contrail
 
 .. figure:: s042487.png
 
-The following are the Sandesh modules for the Contrail vRouter agent ( ``contrail-vrouter-agent`` ) Introspect port.
+The following are the Sandesh modules for the Tungsten Fabric vRouter agent ( ``contrail-vrouter-agent`` ) Introspect port.
 
 - agent.xml
 

@@ -1,31 +1,31 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-==============================
-Contrail Getting Started Guide
-==============================
+=====================================
+Tungsten Fabric Getting Started Guide
+=====================================
 
 Overview
 
-  Understanding Contrail
+  Understanding Tungsten Fabric
 
-    `Contrail Overview`_
+    `Tungsten Fabric Overview`_
 
-    `Contrail Description`_
+    `Tungsten Fabric Description`_
 
-Installing and Upgrading Contrail
+Installing and Upgrading Tungsten Fabric
 
   Server Requirements and Supported Platforms
 
     `Server Requirements and Supported Platforms`_
 
-  Installing Contrail and Provisioning Roles
+  Installing Tungsten Fabric and Provisioning Roles
 
     `Downloading Installation Software`_
 
-    `Overview of contrail-ansible-deployer used in Contrail Command for Installing Contrail with Microservices Architecture`_
+    `Overview of contrail-ansible-deployer used in Tungsten Fabric Command for Installing Tungsten Fabric with Microservices Architecture`_
 
-    `Installing Contrail with OpenStack and Kolla Ansible`_
+    `Installing Tungsten Fabric with OpenStack and Kolla Ansible`_
 
     `Configuring the Control Node with BGP`_
 
@@ -33,39 +33,39 @@ Installing and Upgrading Contrail
 
   Installation and Configuration Scenarios
 
-    `Setting Up and Using a Simple Virtual Gateway with Contrail 4.0`_
+    `Setting Up and Using a Simple Virtual Gateway with Release 4.0`_
 
     `Simple Underlay Connectivity without Gateway`_
 
     `Dynamic Kernel Module Support (DKMS) for vRouter`_
 
-  Upgrading Contrail Software
+  Upgrading Tungsten Fabric Software
 
-  Contrail Command
+  Tungsten Fabric Command
 
-  Using Contrail with Red Hat
+  Using Tungsten Fabric with Red Hat
 
-Configuring Contrail
+Configuring Tungsten Fabric
 
   Configuring Virtual Networks
 
-    `Creating Projects in OpenStack for Configuring Tenants in Contrail`_
+    `Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric`_
 
-    `Creating a Virtual Network with Juniper Networks Contrail`_
+    `Creating a Virtual Network with Tungsten Fabric`_
 
-    `Creating a Virtual Network with OpenStack Contrail`_
+    `Creating a Virtual Network with OpenStack Tungsten Fabric`_
 
-    `Creating an Image for a Project in OpenStack Contrail`_
+    `Creating an Image for a Project in OpenStack Tungsten Fabric`_
 
     `Creating a Floating IP Address Pool`_
 
     `Using Security Groups with Virtual Machines (Instances)`_
 
-    `Support for IPv6 Networks in Contrail`_
+    `Support for IPv6 Networks in Tungsten Fabric`_
 
     `Configuring EVPN and VXLAN`_
 
-  Example of Deploying a Multi-Tier Web Application Using Contrail
+  Example of Deploying a Multi-Tier Web Application Using Tungsten Fabric
 
     `Example\:\ Deploying a Multi-Tier Web Application`_
 
@@ -91,7 +91,7 @@ Configuring Contrail
 
     `Customized Hash Field Selection for ECMP Load Balancing`_
 
-    `Using the Contrail Heat Template`_
+    `Using the Tungsten Fabric Heat Template`_
 
     `Service Chain Route Reorigination`_
 
@@ -99,17 +99,17 @@ Configuring Contrail
 
   Examples\:\ Configuring Service Chaining
 
-Monitoring and Troubleshooting the Network Using Contrail Analytics
+Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
 
-  Understanding Contrail Analytics
+  Understanding Tungsten Fabric Analytics
 
-    `Understanding Contrail Analytics`_
+    `Understanding Tungsten Fabric Analytics`_
 
-    `Contrail Alerts`_
+    `Tungsten Fabric Alerts`_
 
-    `Underlay Overlay Mapping in Contrail`_
+    `Underlay Overlay Mapping in Tungsten Fabric`_
 
-  Configuring Contrail Analytics
+  Configuring Tungsten Fabric Analytics
 
     `Analytics Scalability`_
 
@@ -117,19 +117,19 @@ Monitoring and Troubleshooting the Network Using Contrail Analytics
 
     `Role-Based Access Control for Analytics`_
 
-    `System Log Receiver in Contrail Analytics`_
+    `System Log Receiver in Tungsten Fabric Analytics`_
 
-    `Sending Flow Messages to the Contrail System Log`_
+    `Sending Flow Messages to the Tungsten Fabric System Log`_
 
     `More Efficient Flow Queries`_
 
-    `Ceilometer Support in a Contrail Cloud`_
+    `Ceilometer Support in a Tungsten Fabric Cloud`_
 
-  Using Contrail Analytics to Monitor and Troubleshoot the Network
+  Using Tungsten Fabric Analytics to Monitor and Troubleshoot the Network
 
     `Monitoring the System`_
 
-    `Debugging Processes Using the Contrail Introspect Feature`_
+    `Debugging Processes Using the Tungsten Fabric Introspect Feature`_
 
     `Monitor > Infrastructure > Dashboard`_
 
@@ -213,41 +213,41 @@ Monitoring and Troubleshooting the Network Using Contrail Analytics
 
 .. _Table of Contents: OUTPUT-BASE-FILENAME-TOC.html
 
-.. _Contrail Overview: overview-virtual-network-controller.html
+.. _Tungsten Fabric Overview: overview-virtual-network-controller.html
 
-.. _Contrail Description: components-vnc.html
+.. _Tungsten Fabric Description: components-vnc.html
 
 .. _Server Requirements and Supported Platforms: hardware-reqs-vnc.html
 
 .. _Downloading Installation Software: download-software-vnc.html
 
-.. _Overview of contrail-ansible-deployer used in Contrail Command for Installing Contrail with Microservices Architecture: install-contrail-overview-ansible-50.html
+.. _Overview of contrail-ansible-deployer used in Tungsten Fabric Command for Installing Tungsten Fabric with Microservices Architecture: install-contrail-overview-ansible-50.html
 
-.. _Installing Contrail with OpenStack and Kolla Ansible: install-contrail-ocata-kolla-50.html
+.. _Installing Tungsten Fabric with OpenStack and Kolla Ansible: install-contrail-ocata-kolla-50.html
 
 .. _Configuring the Control Node with BGP: admin-control-node.html
 
 .. _Role and Resource-Based Access Control: role-resource-access-control-vmc.html
 
-.. _Setting Up and Using a Simple Virtual Gateway with Contrail 4.0: simple-gateway-support-vnc-40.html
+.. _Setting Up and Using a Simple Virtual Gateway with Release 4.0: simple-gateway-support-vnc-40.html
 
 .. _Simple Underlay Connectivity without Gateway: underlay-no-gateway.html
 
 .. _Dynamic Kernel Module Support (DKMS) for vRouter: dkms-support-vncxml.html
 
-.. _Creating Projects in OpenStack for Configuring Tenants in Contrail: creating-projects-vnc.html
+.. _Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric: creating-projects-vnc.html
 
-.. _Creating a Virtual Network with Juniper Networks Contrail: creating-virtual-network-juniper-vnc.html
+.. _Creating a Virtual Network with Tungsten Fabric: creating-virtual-network-juniper-vnc.html
 
-.. _Creating a Virtual Network with OpenStack Contrail: creating-virtual-network-vnc.html
+.. _Creating a Virtual Network with OpenStack Tungsten Fabric: creating-virtual-network-vnc.html
 
-.. _Creating an Image for a Project in OpenStack Contrail: creating-image-vnc.html
+.. _Creating an Image for a Project in OpenStack Tungsten Fabric: creating-image-vnc.html
 
 .. _Creating a Floating IP Address Pool: creating-ip-address-pool-vnc.html
 
 .. _Using Security Groups with Virtual Machines (Instances): creating-security-groups.html
 
-.. _Support for IPv6 Networks in Contrail: ipv6-networks-vnc.html
+.. _Support for IPv6 Networks in Tungsten Fabric: ipv6-networks-vnc.html
 
 .. _Configuring EVPN and VXLAN: evpn-vxlan-configuring.html
 
@@ -271,17 +271,17 @@ Monitoring and Troubleshooting the Network Using Contrail Analytics
 
 .. _Customized Hash Field Selection for ECMP Load Balancing: custom-field-hash-vnc.html
 
-.. _Using the Contrail Heat Template: heat-template-vnc.html
+.. _Using the Tungsten Fabric Heat Template: heat-template-vnc.html
 
 .. _Service Chain Route Reorigination: service-chain-route-reorig-vnc.html
 
 .. _Service Instance Health Checks: service-instance-health-check.html
 
-.. _Understanding Contrail Analytics: analytics-overview-vnc.html
+.. _Understanding Tungsten Fabric Analytics: analytics-overview-vnc.html
 
-.. _Contrail Alerts: alerts-overview.html
+.. _Tungsten Fabric Alerts: alerts-overview.html
 
-.. _Underlay Overlay Mapping in Contrail: underlay-overlay-mapping-vnc.html
+.. _Underlay Overlay Mapping in Tungsten Fabric: underlay-overlay-mapping-vnc.html
 
 .. _Analytics Scalability: analytics-scalability-vnc.html
 
@@ -289,17 +289,17 @@ Monitoring and Troubleshooting the Network Using Contrail Analytics
 
 .. _Role-Based Access Control for Analytics: rbac-analytics.html
 
-.. _System Log Receiver in Contrail Analytics: syslog-receiver-vnc.html
+.. _System Log Receiver in Tungsten Fabric Analytics: syslog-receiver-vnc.html
 
-.. _Sending Flow Messages to the Contrail System Log: send-flow-msg-syslog.html
+.. _Sending Flow Messages to the Tungsten Fabric System Log: send-flow-msg-syslog.html
 
 .. _More Efficient Flow Queries: efficient-flow-queries.html
 
-.. _Ceilometer Support in a Contrail Cloud: ceilometer-configuring.html
+.. _Ceilometer Support in a Tungsten Fabric Cloud: ceilometer-configuring.html
 
 .. _Monitoring the System: monitor-vnc.html
 
-.. _Debugging Processes Using the Contrail Introspect Feature: introspect-process-debugging.html
+.. _Debugging Processes Using the Tungsten Fabric Introspect Feature: introspect-process-debugging.html
 
 .. _Monitor > Infrastructure > Dashboard: monitor-dashboard-vnc.html
 

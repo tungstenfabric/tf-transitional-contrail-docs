@@ -25,7 +25,7 @@ Each server must have a minimum of:
 
 -  `Downloading Installation Software`_ 
 
-.. _Supported Platforms Contrail 5.0: 
+.. _Supported Platforms Tungsten Fabric 5.0: 
 
 .. _Downloading Installation Software: download-software-vnc.html
 

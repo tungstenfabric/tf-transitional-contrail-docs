@@ -1,16 +1,16 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-=====================================
-Support for IPv6 Networks in Contrail
-=====================================
+============================================
+Support for IPv6 Networks in Tungsten Fabric
+============================================
 
-Starting with Contrail Release 2.0, support for IPv6 overlay networks is provided.
+Starting with Release 2.0, support for IPv6 overlay networks is provided.
 
--  `Overview: IPv6 Networks in Contrail`_ 
+-  `Overview: IPv6 Networks in Tungsten Fabric`_ 
 
 
--  `Creating IPv6 Virtual Networks in Contrail`_ 
+-  `Creating IPv6 Virtual Networks in Tungsten Fabric`_ 
 
 
 -  `Adding IPv6 Peers`_ 
@@ -18,8 +18,8 @@ Starting with Contrail Release 2.0, support for IPv6 overlay networks is provide
 
 
 
-Overview: IPv6 Networks in Contrail
------------------------------------
+Overview: IPv6 Networks in Tungsten Fabric
+------------------------------------------
 
 The following features are supported for IPv6 networks and overlay. The underlay network must be IPv4.
 
@@ -85,7 +85,7 @@ The following features are supported for IPv6 networks and overlay. The underlay
 - Diagnostics for IPv6
 
 
-- Contrail Device Manager
+- Tungsten Fabric Device Manager
 
 
 - Virtual customer premises equipment (vCPE)
@@ -93,10 +93,10 @@ The following features are supported for IPv6 networks and overlay. The underlay
 
 
 
-Creating IPv6 Virtual Networks in Contrail
--------------------------------------------
+Creating IPv6 Virtual Networks in Tungsten Fabric
+-------------------------------------------------
 
-You can create an IPv6 virtual network from the Contrail user interface in the same way you create an IPv4 virtual network. When you create a new virtual network by selecting **Configure > Networking > Networks** , the Edit fields accept IPv6 addresses, as shown in the following image.
+You can create an IPv6 virtual network from the Tungsten Fabric user interface in the same way you create an IPv4 virtual network. When you create a new virtual network by selecting **Configure > Networking > Networks** , the Edit fields accept IPv6 addresses, as shown in the following image.
 
 
 .. figure:: s042015.gif
@@ -106,7 +106,7 @@ You can create an IPv6 virtual network from the Contrail user interface in the s
 Address Assignments
 -------------------
 
-When virtual machines are launched with an IPv6 virtual network created in the Contrail user interface, the virtual machine interfaces get assigned addresses from all the families configured in the virtual network.
+When virtual machines are launched with an IPv6 virtual network created in the Tungsten Fabric user interface, the virtual machine interfaces get assigned addresses from all the families configured in the virtual network.
 
 The following is a sample of IPv6 instances with address assignments, as listed in the OpenStack Horizon user interface.
 
@@ -131,7 +131,7 @@ Also, ``dhclient -6`` can be run from within the virtual machine to get IPv6 add
 Adding IPv6 Peers
 -----------------
 
-The procedure to add an IPv6 BGP peer in Contrail is similar to adding an IPv4 peer. Select **Configure > Infrastructure > BGP Peers** , include ``inet6-vpn`` in the Address Family list to allow advertisement of IPv6 addresses.
+The procedure to add an IPv6 BGP peer in Tungsten Fabric is similar to adding an IPv4 peer. Select **Configure > Infrastructure > BGP Peers** , include ``inet6-vpn`` in the Address Family list to allow advertisement of IPv6 addresses.
 
 A sample is shown in the following.
 
