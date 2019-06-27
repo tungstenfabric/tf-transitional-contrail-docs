@@ -5,7 +5,7 @@
 Configuring EVPN and VXLAN
 ==========================
 
-Contrail supports Ethernet VPNs (EVPN) and Virtual Extensible Local Area Networks (VXLAN).
+Tungsten Fabric supports Ethernet VPNs (EVPN) and Virtual Extensible Local Area Networks (VXLAN).
 
 EVPN is a flexible solution that uses Layer 2 overlays to interconnect multiple edges (virtual machines) within a data center. Traditionally, the data center is built as a flat Layer 2 network with issues such as flooding, limitations in redundancy and provisioning, and high volumes of MAC address learning, which cause churn during node failures. EVPNs are designed to address these issues without disturbing flat MAC connectivity.
 
@@ -27,7 +27,7 @@ VXLAN is an overlay technology that encapsulates MAC frames into a UDP header at
 
 *Design Details of EVPN and VXLAN* 
 
-In Contrail Release 1.03 and later, EVPN is enabled by default. The supported forwarding modes include:
+In Release 1.03 and later, EVPN is enabled by default. The supported forwarding modes include:
 
 - Fallback bridging—IPv4 traffic lookup is performed using the IP FIB. All non-IPv4 traffic is directed to a MAC FIB.
 
@@ -77,12 +77,12 @@ The following table summarizes the traffic and encapsulation types supported for
 Configuring the VXLAN Identifier Mode
 =====================================
 
-You can configure the global VXLAN identifier mode to select an auto-generated VNID or a user-generated VXLAN ID, either through the Contrail Web UI or by modifying a python file.
+You can configure the global VXLAN identifier mode to select an auto-generated VNID or a user-generated VXLAN ID, either through the Tungsten Fabric Web UI or by modifying a python file.
 
 To configure the global VXLAN identifier mode:
 
 
-#. From the Contrail Web UI, select **Configure > Infrastucture > Global Config** .
+#. From the Tungsten Fabric Web UI, select **Configure > Infrastucture > Global Config** .
 
    The Global Config options and values are displayed in the Global Config window.
 
@@ -122,12 +122,12 @@ Alternatively, you can set the VXLAN identifier mode by using Python to modify t
 Configuring Forwarding
 ======================
 
-In Contrail, the default forwarding mode is enabled for fallback bridging (IP FIB and MAC FIB). The mode can be changed, either through the Contrail Web UI or by using python provisioning commands.
+In Tungsten Fabric, the default forwarding mode is enabled for fallback bridging (IP FIB and MAC FIB). The mode can be changed, either through the Tungsten Fabric Web UI or by using python provisioning commands.
 
 To change the forwarding mode:
 
 
-#. From the Contrail Web UI, select **Configure > Networking > Networks** .
+#. From the Tungsten Fabric Web UI, select **Configure > Networking > Networks** .
 
 
 
@@ -186,7 +186,7 @@ Under the Advanced Options select the forwarding mode from the following choices
 
 
 
-#. Restart the Contrail Web user interface process (webui).
+#. Restart the Tungsten Fabric Web user interface process (webui).
 
 
 Alternatively, you can use the following python provisioning command to change the forwarding mode:
@@ -203,12 +203,12 @@ Options:
 Configuring the VXLAN Identifier
 ================================
 
-The VXLAN identifier can be set only if the VXLAN network identifier mode has been set to User Configured. You can then set the VXLAN ID by either using the Contrail Web UI or by using Python commands.
+The VXLAN identifier can be set only if the VXLAN network identifier mode has been set to User Configured. You can then set the VXLAN ID by either using the Tungsten Fabric Web UI or by using Python commands.
 
 To configure the global VXLAN identifier:
 
 
-#. From the Contrail Web UI, select **Configure > Networking > Networks** .
+#. From the Tungsten Fabric Web UI, select **Configure > Networking > Networks** .
 
 
 
@@ -247,11 +247,11 @@ The default encapsulation mode for EVPN is MPLS over UDP. All packets on the fab
 
 VXLAN has its own header and uses a VNID label to carry the traffic over the fabric. A VNID is assigned with every virtual network and is shared by all virtual machines in the virtual network. The VNID is mapped to the VRF of the virtual network to which it belongs.
 
-The priority order in which to apply encapsulation methods is determined by the sequence of methods set either from the Contrail Web UI or in the ``encap.py`` file.
+The priority order in which to apply encapsulation methods is determined by the sequence of methods set either from the Tungsten Fabric Web UI or in the ``encap.py`` file.
 
 To configure the global VXLAN identifier mode:
 
-- From the Contrail Web UI, select **Configure > Infrastucture > Global Config** .
+- From the Tungsten Fabric Web UI, select **Configure > Infrastucture > Global Config** .
 
 
 - The Global Config options are displayed.

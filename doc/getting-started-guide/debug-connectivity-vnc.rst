@@ -10,7 +10,7 @@ Example: Debugging Connectivity Using Monitoring for Troubleshooting
 Using Monitoring to Debug Connectivity
 ======================================
 
-This example shows how you can use monitoring to debug connectivity in your Contrail system. You can use the demo setup in Contrail to use these steps on your own.
+This example shows how you can use monitoring to debug connectivity in your Tungsten Fabric system. You can use the demo setup in Tungsten Fabric to use these steps on your own.
 
 #. Navigate to **Monitor -> Networking -> Networks ->**   ``default-domain:demo:vn0`` , **Instance**   ``ed6abd16-250e-4ec5-a382-5cbc458fb0ca`` with **IP address**   ``192.168.0.252`` in the virtual network ``vn0`` ; see `Figure 126`_ 
 
