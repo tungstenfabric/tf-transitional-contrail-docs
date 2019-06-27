@@ -52,7 +52,7 @@ The following are the key attributes of domain name service in a virtual world:
 Defining Multiple Virtual Domain Name Servers
 =============================================
 
-Contrail provides the flexibility to define multiple virtual domain name servers under each domain in the system. Each virtual domain name server is an authoritative server for the DNS domain configured. `Figure 42`_ shows examples of virtual DNS servers defined in **default-domain** , providing the name service for the DNS domains indicated.
+Tungsten Fabric provides the flexibility to define multiple virtual domain name servers under each domain in the system. Each virtual domain name server is an authoritative server for the DNS domain configured. `Figure 42`_ shows examples of virtual DNS servers defined in **default-domain** , providing the name service for the DNS domains indicated.
 
 .. _Figure 42: 
 
@@ -113,7 +113,7 @@ DNS records can be added statically. DNS record types **A, CNAME, PTR** , and **
 Configuring DNS Using the Interface
 ===================================
 
-DNS can be configured by using the user interface or by using scripts. The following procedure shows how to configure DNS through the Juniper Networks Contrail interface.
+DNS can be configured by using the user interface or by using scripts. The following procedure shows how to configure DNS through the Tungsten Fabric interface.
 
 
 #. Access **Configure > DNS > Servers** to create or delete virtual DNS servers and records.

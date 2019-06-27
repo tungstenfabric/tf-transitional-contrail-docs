@@ -1,11 +1,11 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-=========================================================
-Creating a Virtual Network with Juniper Networks Contrail
-=========================================================
+===============================================
+Creating a Virtual Network with Tungsten Fabric
+===============================================
 
-Contrail makes creating a virtual network very easy for a self-service user. You create networks and network policies at the user dashboard, then associate policies with each network. The following procedure shows how to create a virtual network when using Juniper Networks Contrail.
+Tungsten Fabric makes creating a virtual network very easy for a self-service user. You create networks and network policies at the user dashboard, then associate policies with each network. The following procedure shows how to create a virtual network when using Tungsten Fabric.
 
 
 #. You need to create an IP address management (IPAM) for your project for to create a virtual network. Select **Configure > Networking > IP Address Management** , then click the **Create** button.
@@ -102,11 +102,11 @@ Now you can create a network policy, see.
 
 **Related Documentation**
 
--  `Creating an Image for a Project in OpenStack Contrail`_ 
+-  `Creating an Image for a Project in OpenStack Tungsten Fabric`_ 
 
-.. _Creating a Network Policy—Juniper Networks Contrail: 
+.. _Creating a Network Policy—Tungsten Fabric: 
 
-.. _Creating an Image for a Project in OpenStack Contrail: creating-image-vnc.html
+.. _Creating an Image for a Project in OpenStack Tungsten Fabric: creating-image-vnc.html
 
 
 .. |s042494.png| image:: s042494.png

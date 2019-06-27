@@ -5,7 +5,7 @@
 Using contrailctl to Configure Services Within Containers
 =========================================================
 
-Starting with Contrail 4.0, some subsystems of Contrail are delivered as Docker containers. The ``contrailctl`` tool is a set of commands that enable a user to make some changes to the configuration file within a Contrail container.
+Starting with Release 4.0, some subsystems of Tungsten Fabric are delivered as Docker containers. The ``contrailctl`` tool is a set of commands that enable a user to make some changes to the configuration file within a Tungsten Fabric container.
 
 -  `What is contrailctl?`_ 
 
@@ -15,15 +15,15 @@ Starting with Contrail 4.0, some subsystems of Contrail are delivered as Docker 
 What is contrailctl?
 --------------------
 
-Starting with Contrail 4.0, some modules of the Contrail architecture have been grouped by function into Docker containers. Each container has an INI-based configuration file to maintain the specific configuration for that container. The ``contrailctl`` is a tool within the container that provides the user a simple command structure for provisioning and operating the Contrail services packaged in the container.
+Starting with Release 4.0, some modules of the Tungsten Fabric architecture have been grouped by function into Docker containers. Each container has an INI-based configuration file to maintain the specific configuration for that container. The ``contrailctl`` is a tool within the container that provides the user a simple command structure for provisioning and operating the Tungsten Fabric services packaged in the container.
 
-Because it is complex to provision and manage the various services within Contrail containers, the ``contrailctl`` tool helps configure the services in the container to be in sync with the container-specific configuration files.
+Because it is complex to provision and manage the various services within Tungsten Fabric containers, the ``contrailctl`` tool helps configure the services in the container to be in sync with the container-specific configuration files.
 
 The ``contrailctl`` tool is driven by the single INI-based configuration file per container, for example, the ``/etc/contrailctl/controller.conf`` for the controller container. Any state changes of the services within the container must be made according to the configuration in the ``contrailctl`` configuration file for that container. The ``contrailctl`` configuration files are available on each node at a default location of ``/etc/contrailctl/*.conf`` .
 
 Any changes made to the configuration files in the node are available within the container.
 
-Each Contrail container has a separate ``contrailctl`` configuration file, currently:
+Each Tungsten Fabric container has a separate ``contrailctl`` configuration file, currently:
 
 -  ``contrail-controller`` — ``/etc/contrailctl/controller.conf`` 
 
@@ -120,9 +120,9 @@ The following example shows the procedure to sync a configuration change within 
 
 **Related Documentation**
 
--  `Introduction to Containerized Contrail Modules`_ 
+-  `Introduction to Containerized Tungsten Fabric Modules`_ 
 
-.. _Introduction to Containerized Contrail Modules: containers-overview.html
+.. _Introduction to Containerized Tungsten Fabric Modules: containers-overview.html
 
 
 .. _https://github.com/Juniper/contrail-docker/tree/master/tools/python-contrailctl/examples/configs: https://github.com/Juniper/contrail-docker/tree/master/tools/python-contrailctl/examples/configs
