@@ -21,7 +21,7 @@ Simple Routing of Packets Without a Gateway
 
 For simple enterprise use cases and public cloud environments, it is possible to directly route packets using the IP fabric network without using an SDN gateway.
 
-The primary use for Contrail in this mode is to manage distributed security policy for workloads or bare metal servers.
+The primary use for Tungsten Fabric in this mode is to manage distributed security policy for workloads or bare metal servers.
 
 The following features can be enabled when using this method:
 
@@ -42,7 +42,7 @@ The following features can be enabled when using this method:
 Supported Use Cases
 -------------------
 
-Starting with Contrail 4.1, the IP fabric network present in the default project can be marked for IP fabric based forwarding without tunneling. When two virtual networks with this type of configuration communicate, traffic will be forwarded directly using the underlay.
+Starting with release 4.1, the IP fabric network present in the default project can be marked for IP fabric based forwarding without tunneling. When two virtual networks with this type of configuration communicate, traffic will be forwarded directly using the underlay.
 
 The following use cases for no SDN gateway are supported.
 
@@ -96,7 +96,7 @@ Vrouters use the ip-fabric routing instance to apply policy and the default rout
 
 It is expected that the ToR propagates these routes to the rest of the underlay network. When using the prefix per vrouter mode, the ToR might also be configured with static routes pointing to the compute nodes, instead of peering with the control node.
 
-Vhost interface is also added in the default routing instance. Policy and security groups can be applied on this interface as well, so that traffic from the applications and services running on the host can be subjected to all policy decisions possible in Contrail.
+Vhost interface is also added in the default routing instance. Policy and security groups can be applied on this interface as well, so that traffic from the applications and services running on the host can be subjected to all policy decisions possible in Tungsten Fabric.
 
 The IP fabric network is a Layer 3-only network and the vrouter only looks at the routing table for all forwarding decisions.
 
@@ -126,7 +126,7 @@ When the vhost and the VN are using different subnets, an ARP request from the v
 Broadcast and Multicast Traffic
 -------------------------------
 
-In Contrail 4.1, broadcast or multicast traffic from VMs in the IP fabric network and from VNs having IP fabric network as the provider network is handled in the normal way, using the native routing instance of the interface from which it originates.. DHCP requests from these VMs are served by the vrouter agent.
+In release 4.1, broadcast or multicast traffic from VMs in the IP fabric network and from VNs having IP fabric network as the provider network is handled in the normal way, using the native routing instance of the interface from which it originates.. DHCP requests from these VMs are served by the vrouter agent.
 
 Implementation
 --------------

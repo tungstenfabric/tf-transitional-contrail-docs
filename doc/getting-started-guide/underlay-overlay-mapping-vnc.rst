@@ -2,13 +2,13 @@
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 ====================================
-Underlay Overlay Mapping in Contrail
+Underlay Overlay Mapping in Tungsten Fabric
 ====================================
 
--  `Overview: Underlay Overlay Mapping using Contrail Analytics`_ 
+-  `Overview: Underlay Overlay Mapping using Tungsten Fabric Analytics`_ 
 
 
--  `Underlay Overlay Analytics Available in Contrail`_ 
+-  `Underlay Overlay Analytics Available in Tungsten Fabric`_ 
 
 
 -  `Architecture and Data Collection`_ 
@@ -32,13 +32,13 @@ Underlay Overlay Mapping in Contrail
 -  `IPFIX and sFlow Configuration`_ 
 
 
--  `Sending pRouter Information to the SNMP Collector in Contrail`_ 
+-  `Sending pRouter Information to the SNMP Collector in Tungsten Fabric`_ 
 
 
 -  `pRouter UVEs`_ 
 
 
--  `Contrail User Interface for Underlay Overlay Analytics`_ 
+-  `Tungsten Fabric User Interface for Underlay Overlay Analytics`_ 
 
 
 -  `Enabling Physical Topology on the Web UI`_ 
@@ -78,18 +78,18 @@ Underlay Overlay Mapping in Contrail
 
 
 
-Overview: Underlay Overlay Mapping using Contrail Analytics
-===========================================================
+Overview: Underlay Overlay Mapping using Tungsten Fabric Analytics
+==================================================================
 
 Today’s cloud data centers consist of large collections of interconnected servers that provide computing and storage capacity to run a variety of applications. The servers are connected with redundant TOR switches, which in turn, are connected to spine routers. The cloud deployment is typically shared by multiple tenants, each of whom usually needs multiple isolated networks. Multiple isolated networks can be provided by overlay networks that are created by forming tunnels (for example, gre, ip-in-ip, mac-in-mac) over the underlay or physical connectivity.
 
-As data flows in the overlay network, Contrail can provide statistics and visualization of the traffic in the underlay network.
+As data flows in the overlay network, Tungsten Fabric can provide statistics and visualization of the traffic in the underlay network.
 
 
-Underlay Overlay Analytics Available in Contrail
-================================================
+Underlay Overlay Analytics Available in Tungsten Fabric
+=======================================================
 
-Starting with Contrail Release 2.20, you can view a variety of analytics related to underlay and overlay traffic in the Contrail Web user interface. The following are some of the analytics that Contrail provides for statistics and visualization of overlay underlay traffic.
+Starting with release 2.20, you can view a variety of analytics related to underlay and overlay traffic in the Tungsten Fabric Web user interface. The following are some of the analytics that Tungsten Fabric provides for statistics and visualization of overlay underlay traffic.
 
 - View the topology of the underlay network.
 
@@ -110,14 +110,14 @@ Given an overlay flow, you can get the underlay path used for that flow and map 
 Architecture and Data Collection
 ================================
 
-Accumulation of the data to map an overlay flow to its underlay path is performed in several steps across Contrail modules.
+Accumulation of the data to map an overlay flow to its underlay path is performed in several steps across Tungsten Fabric modules.
 
 The following outlines the essential steps:
 
 
 #. The SNMP collector module polls physical routers.
 
-   The SNMP collector module receives the authorizations and configurations of the physical routers from the Contrail config module, and polls all of the physical routers, using SNMP protocol. The collector uploads the data to the Contrail analytics collectors. The SNMP information is stored in the pRouter UVEs (physical router user visible entities).
+   The SNMP collector module receives the authorizations and configurations of the physical routers from the Tungsten Fabric config module, and polls all of the physical routers, using SNMP protocol. The collector uploads the data to the Tungsten Fabric analytics collectors. The SNMP information is stored in the pRouter UVEs (physical router user visible entities).
 
 
 
@@ -129,13 +129,13 @@ The following outlines the essential steps:
 
 #. The topology module reads the SNMP information.
 
-   The Contrail topology module reads SNMP information from the pRouter UVEs from the analytics API, computes the neighbor list, and writes the neighbor information into the pRouter UVEs. This neighbor list is used by the Contrail WebUI to display the physical topology.
+   The Tungsten Fabric topology module reads SNMP information from the pRouter UVEs from the analytics API, computes the neighbor list, and writes the neighbor information into the pRouter UVEs. This neighbor list is used by the Tungsten Fabric Web UI to display the physical topology.
 
 
 
-#. The Contrail user interface reads and displays the topology and statistics.
+#. The Tungsten Fabric user interface reads and displays the topology and statistics.
 
-   The Contrail user interface module reads the topology information from the Contrail analytics and displays the physical topology. It also uses information stored in the analytics to display graphs for link statistics, and to show the map of the overlay flows on the underlay network.
+   The Tungsten Fabric user interface module reads the topology information from the Tungsten Fabric analytics and displays the physical topology. It also uses information stored in the analytics to display graphs for link statistics, and to show the map of the overlay flows on the underlay network.
 
 
 
@@ -189,7 +189,7 @@ The ``service`` command can be used to start, stop, and restart the new services
 External Interfaces Configuration for Underlay Overlay Mapping
 ==============================================================
 
-This section outlines the external interface configurations necessary for successful underlay overlay mapping for Contrail analytics.
+This section outlines the external interface configurations necessary for successful underlay overlay mapping for Tungsten Fabric analytics.
 
 
 Physical Topology
@@ -206,7 +206,7 @@ The typical physical topology includes:
 - Spine switches connected to core switches.
 
 
-The following is an example of how the topology is depicted in the Contrail WebUI analytics.
+The following is an example of how the topology is depicted in the Tungsten Fabric WebUI analytics.
 
 .. _Figure 59: 
 
@@ -273,7 +273,7 @@ The following shows a sample sFlow configuration. In the sample, the IP variable
 Example: IPFIX Configuration
 ----------------------------
 
-The following is a sample IPFIX configuration from a Juniper Networks device. The IP address variable *<ip_sflow collector>* represents the sflow collector (control-collector analytics node) and *<source ip>* represents the source (outgoing) interface on the router/switch device used for sending flow data to the collector. This could also be the lo0 address, if it s reachable from the Contrail cluster.
+The following is a sample IPFIX configuration from a Juniper Networks device. The IP address variable *<ip_sflow collector>* represents the sflow collector (control-collector analytics node) and *<source ip>* represents the source (outgoing) interface on the router/switch device used for sending flow data to the collector. This could also be the lo0 address, if it s reachable from the Tungsten Fabric cluster.
 
 ::
 
@@ -322,14 +322,14 @@ The following is a sample IPFIX configuration from a Juniper Networks device. Th
  set forwarding-options sampling instance sample-ins1 family inet output inline-jflow source-address <source ip>
 
 
-Sending pRouter Information to the SNMP Collector in Contrail
-=============================================================
+Sending pRouter Information to the SNMP Collector in Tungsten Fabric
+====================================================================
 
 Information about the physical devices must be sent to the SNMP collector before the full analytics information can be read and displayed. Typically, the pRouter information is taken from the ``contrail-config`` file.
 
  *SNMP collector getting pRouter information from contrail-config file* 
 
-The physical routers are added to the ``contrail-config`` by using the Contrail user interface or by using direct API, by means of provisioning or other scripts. Once the configuration is in the ``contrail-config`` , the ``contrail-snmp-collector`` gets the physical router information from ``contrail-config`` . The SNMP collector uses this list and the other configuration parameters to perform SNMP queries and to populate pRouter UVEs.
+The physical routers are added to the ``contrail-config`` by using the Tungsten Fabric user interface or by using direct API, by means of provisioning or other scripts. Once the configuration is in the ``contrail-config`` , the ``contrail-snmp-collector`` gets the physical router information from ``contrail-config`` . The SNMP collector uses this list and the other configuration parameters to perform SNMP queries and to populate pRouter UVEs.
 
 .. _Figure 60: 
 
@@ -366,16 +366,16 @@ The following is sample output of a pRouter UVE.
 .. figure:: s042435.gif
 
 
-Contrail User Interface for Underlay Overlay Analytics
-======================================================
+Tungsten Fabric User Interface for Underlay Overlay Analytics
+=============================================================
 
-The topology view and related functionality is accessed from the Contrail Web user interface, **Monitor > Physical Topology** .
+The topology view and related functionality is accessed from the Tungsten Fabric Web user interface, **Monitor > Physical Topology** .
 
 
 Enabling Physical Topology on the Web UI
 ========================================
 
-To enable the **Physical Topology** section in the Contrail Web UI:
+To enable the **Physical Topology** section in the Tungsten Fabric Web UI:
 
 
 #. Add the following lines to the ``/etc/contrail/config.global.js`` file of all the ``contrail-webui`` nodes:
@@ -391,14 +391,14 @@ To enable the **Physical Topology** section in the Contrail Web UI:
 
    ``service supervisor-webui restart`` 
 
-   The **Physical Topology** section is now available on the Contrail Web UI.
+   The **Physical Topology** section is now available on the Tungsten Fabric Web UI.
 
 
 
 Viewing Topology to the Virtual Machine Level
 =============================================
 
-In the Contrail user interface, it is possible to drill down through displayed topology to the virtual machine level. The following diagram shows the virtual machines instantiated on a7s36 vRouter and the full physical topology related to each.
+In the Tungsten Fabric user interface, it is possible to drill down through displayed topology to the virtual machine level. The following diagram shows the virtual machines instantiated on a7s36 vRouter and the full physical topology related to each.
 
 .. _Figure 63: 
 
@@ -501,7 +501,7 @@ Example: Overlay to Underlay Flow Map Schema
 
 
 
-The schema for underlay data across pRouters is defined in the Contrail installation at:
+The schema for underlay data across pRouters is defined in the Tungsten Fabric installation at:
 ``http://<host ip>:8081/analytics/table/StatTable.UFlowData.flow/schema``  
 
 Example: Flow Data Schema for Underlay
@@ -594,7 +594,7 @@ Module Operations for Overlay Underlay Mapping
 SNMP Collector Operation
 ========================
 
-The Contrail SNMP collector uses a Net-SNMP library to talk to a physical router or any SNMP agent. Upon receiving SNMP packets, the data is translated to the Python dictionary, and corresponding UVE objects are created. The UVE objects are then posted to the SNMP collector.
+The Tungsten Fabric SNMP collector uses a Net-SNMP library to talk to a physical router or any SNMP agent. Upon receiving SNMP packets, the data is translated to the Python dictionary, and corresponding UVE objects are created. The UVE objects are then posted to the SNMP collector.
 The SNMP module sleeps for some configurable period, then forks a collector process and waits for the process to complete. The collector process goes through a list of devices to be queried. For each device, it forks a greenlet task (Python coroutine), accumulates SNMP data, writes the summary to a JSON file, and exits. The parent process then reads the JSON file, creates UVEs, sends the UVEs to the collector, then goes to sleep again.
 The pRouter UVE sent by the SNMP collector carries only the raw MIB information.
 
@@ -694,7 +694,7 @@ The corresponding pRouter UVE definition is the following.
 IPFIX and sFlow Collector Operation
 ===================================
 
-An IPFIX and sFlow collector has been implemented in the Contrail collector. The collector receives the IPFIX and sFlow samples and stores them as statistics samples in the analytics database.
+An IPFIX and sFlow collector has been implemented in the Tungsten Fabric collector. The collector receives the IPFIX and sFlow samples and stores them as statistics samples in the analytics database.
 
 Example: IPFIX sFlow Collector Data
 -----------------------------------
@@ -746,14 +746,14 @@ This section provides a variety of links where you can research errors that may 
 System Logs
 -----------
 
-Logs for ``contrail-snmp-collector`` and ``contrail-topology`` are in the following locations on an installed Contrail system:
+Logs for ``contrail-snmp-collector`` and ``contrail-topology`` are in the following locations on an installed Tungsten Fabric system:
 ``/var/log/contrail/contrail-snmp-collector-stdout.log`` 
 ``/var/log/contrail/contrail-topology.log`` 
 
 Introspect Utility
 ------------------
 
-Use URLs of the following forms on your Contrail system to access the introspect utilities for SNMP data and for topology data.
+Use URLs of the following forms on your Tungsten Fabric system to access the introspect utilities for SNMP data and for topology data.
 - SNMP data introspect
 
 ``http://<host ip>:5920/Snh_SandeshUVECacheReq?x=PRouterEntry``  
@@ -766,7 +766,7 @@ Use URLs of the following forms on your Contrail system to access the introspect
 Script to add pRouter Objects
 =============================
 
-The usual mechanism for adding pRouter objects to ``contrail-config`` is through Contrail UI. But you also have the ability to add these objects using the Contrail ``vnc-api`` . To add one pRouter, save the file with the name ``cfg-snmp.py`` , and then execute the command as shown:
+The usual mechanism for adding pRouter objects to ``contrail-config`` is through Tungsten Fabric UI. But you also have the ability to add these objects using the Tungsten Fabric ``vnc-api`` . To add one pRouter, save the file with the name ``cfg-snmp.py`` , and then execute the command as shown:
 ``python cfg-snmp.py`` 
 
 Example: Content for cfg-snmp.py
@@ -836,11 +836,11 @@ Example: Content for cfg-snmp.py
 
 **Related Documentation**
 
--  `Understanding Contrail Analytics`_ 
+-  `Understanding Tungsten Fabric Analytics`_ 
 
--  `Contrail Alerts`_ 
+-  `Tungsten Fabric Alerts`_ 
 
-.. _Understanding Contrail Analytics: analytics-overview-vnc.html
+.. _Understanding Tungsten Fabric Analytics: analytics-overview-vnc.html
 
-.. _Contrail Alerts: alerts-overview.html
+.. _Tungsten Fabric Alerts: alerts-overview.html
 

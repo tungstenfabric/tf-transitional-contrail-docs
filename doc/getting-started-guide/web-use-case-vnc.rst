@@ -29,7 +29,7 @@ Multi-Tier Web Application Overview
 
 A common requirement for a cloud tenant is to create a tiered web application in leased cloud space. The tenant enjoys the favorable economics of a private IT infrastructure within a shared services environment. The tenant seeks speedy setup and simplified operations.
 
-The following example shows how to set up a simple tiered web application using Contrail. The example has a web server that a user accesses by means of a public floating IP address. The front-end web server gets the content it serves to customers from information stored in a SQL database server that resides on a back-end network. The web server can communicate directly with the database server without going through any gateways. The public (or client) can only communicate to the web server on the front-end network. The client is not allowed to communicate directly with any other parts of the infrastructure. See `Figure 37`_ .
+The following example shows how to set up a simple tiered web application using Tungsten Fabric. The example has a web server that a user accesses by means of a public floating IP address. The front-end web server gets the content it serves to customers from information stored in a SQL database server that resides on a back-end network. The web server can communicate directly with the database server without going through any gateways. The public (or client) can only communicate to the web server on the front-end network. The client is not allowed to communicate directly with any other parts of the infrastructure. See `Figure 37`_ .
 
 .. _Figure 37: 
 
@@ -46,9 +46,9 @@ Example: Setting Up Virtual Networks for a Simple Tiered Web Application
 This example provides basic steps for setting up a simple multi-tier network application. Basic creation steps are provided, along with links to the full explanation for each of the creation steps. Refer to the links any time you need more information about completing a step.
 
 
-#. Working with a system that has the Contrail software installed and provisioned, create a project named **demo** .
+#. Working with a system that has the Tungsten Fabric software installed and provisioned, create a project named **demo** .
 
-   For more information; see `Creating Projects in OpenStack for Configuring Tenants in Contrail`_ .
+   For more information; see `Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric`_ .
 
 
 
@@ -69,7 +69,7 @@ This example provides basic steps for setting up a simple multi-tier network app
    This network is the location where the database server virtual machines instances are launched and attached. The virtual machines are identified with private addresses that have been assigned to this virtual network.
 
 
-   For more information; see `Creating a Virtual Network with OpenStack Contrail`_ or `Creating a Virtual Network with Juniper Networks Contrail`_ .
+   For more information; see `Creating a Virtual Network with OpenStack Tungsten Fabric`_ or `Creating a Virtual Network with Juniper Networks Tungsten Fabric`_ .
 
 
 
@@ -126,7 +126,7 @@ Verify your web setup.
 
 #. To demonstrate this web application setup, go to the client machine, open a browser, and navigate to the address in the **public** network that is assigned to the web server in the **frontend** network.
 
-   The result will display the Contrail interface with various data populated, verifying that the web server is communicating with the database server in the **backend** network and retrieving data.
+   The result will display the Tungsten Fabric interface with various data populated, verifying that the web server is communicating with the database server in the **backend** network and retrieving data.
 
    The client machine only has access to the public IP address. Attempts to browse to any of the addresses assigned to the **frontend** network or to the **backend** network should fail.
 
@@ -200,11 +200,11 @@ Sample Physical Topology Addressing
 
 -  `Sample Network Configuration for Devices for Simple Tiered Web Application`_ 
 
-.. _Creating Projects in OpenStack for Configuring Tenants in Contrail: creating-projects-vnc.html
+.. _Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric: creating-projects-vnc.html
 
-.. _Creating a Virtual Network with OpenStack Contrail: creating-virtual-network-vnc.html
+.. _Creating a Virtual Network with OpenStack Tungsten Fabric: creating-virtual-network-vnc.html
 
-.. _Creating a Virtual Network with Juniper Networks Contrail: creating-virtual-network-juniper-vnc.html
+.. _Creating a Virtual Network with Juniper Networks Tungsten Fabric: creating-virtual-network-juniper-vnc.html
 
 .. _Sample Network Configuration for Devices for Simple Tiered Web Application: code-example-vnc.html
 
