@@ -5,7 +5,7 @@
 Role and Resource-Based Access Control
 ======================================
 
--  `Contrail Role and Resource-Based Access (RBAC) Overview`_ 
+-  `Tungsten Fabric Role and Resource-Based Access (RBAC) Overview`_ 
 
 
 -  `API-Level Access Control`_ 
@@ -23,16 +23,16 @@ Role and Resource-Based Access Control
 -  `Upgrading from Previous Releases`_ 
 
 
--  `Configuring RBAC Using the Contrail User Interface`_ 
+-  `Configuring RBAC Using the Tungsten Fabric User Interface`_ 
 
 
 -  `RBAC Resources`_ 
 
 
-Contrail Role and Resource-Based Access (RBAC) Overview
+Tungsten Fabric Role and Resource-Based Access (RBAC) Overview
 -------------------------------------------------------
 
-Contrail Release 3.0 and later supports role and resource-based access control (RBAC) with API operation-level access control.
+Release 3.0 and later supports role and resource-based access control (RBAC) with API operation-level access control.
 
 The RBAC implementation relies on user credentials obtained from Keystone from a token present in an API request. Credentials include user, role, tenant, and domain information.
 
@@ -80,7 +80,7 @@ The following is an example access control list (ACL) object for a project in wh
 Rule Sets and ACL Objects
 -------------------------
 
-The following are the features of rule sets for access control objects in Contrail.
+The following are the features of rule sets for access control objects in Tungsten Fabric.
 
 - The rule set for validation is the union of rules from the ACL attached to:
 
@@ -141,7 +141,7 @@ Access is allowed as follows:
 Configuration
 -------------
 
-This section describes the parameters used in Contrail RBAC.
+This section describes the parameters used in Tungsten Fabric RBAC.
 
 -  `Parameter: aaa-mode`_ 
 
@@ -174,7 +174,7 @@ The ``aaa-mode`` can be set to the following values:
 
 
 
-.. note:: The ``multi_tenancy`` parameter is deprecated, starting with Contrail 3.0. The parameter should be removed from the configuration. Instead, use the ``aaa_mode`` parameter for RBAC to take effect.
+.. note:: The ``multi_tenancy`` parameter is deprecated, starting with release 3.0. The parameter should be removed from the configuration. Instead, use the ``aaa_mode`` parameter for RBAC to take effect.
 
           If the ``multi_tenancy`` parameter is not removed, the ``aaa-mode`` setting is ignored.
 
@@ -241,9 +241,9 @@ Global Read-Only Role
 
 You can configure a global read-only role ( ``global_read_only_role`` ).
 
-A ``global_read_only_role`` allows read-only access to all Contrail resources. The ``global_read_only_role`` must be configured in Keystone. The default ``global_read_only_role`` is not set to any value.
+A ``global_read_only_role`` allows read-only access to all Tungsten Fabric resources. The ``global_read_only_role`` must be configured in Keystone. The default ``global_read_only_role`` is not set to any value.
 
-A ``global_read_only_role`` user can use the Contrail Web Ui to view the global configuration of Contrail default settings.
+A ``global_read_only_role`` user can use the Tungsten Fabric Web Ui to view the global configuration of Tungsten Fabric default settings.
 
 
 
@@ -253,7 +253,7 @@ Setting the Global Read-Only Role
 To set the global read-only role:
 
 
-#. The ``cloud_admin`` user sets the ``global_read_only_role`` in the Contrail API:
+#. The ``cloud_admin`` user sets the ``global_read_only_role`` in the Tungsten Fabric API:
 
    ``/etc/contrail/contrail-api.conf`` 
 
@@ -271,7 +271,7 @@ To set the global read-only role:
 Parameter Changes in /etc/neutron/api-paste.ini
 -----------------------------------------------
 
-Contrail RBAC operation is based upon a user token received in the ``X-Auth-Token`` header in API requests. The following change must be made in ``/etc/neutron/api-paste.ini`` to force Neutron to pass the user token in requests to the Contrail API server:
+Tungsten Fabric RBAC operation is based upon a user token received in the ``X-Auth-Token`` header in API requests. The following change must be made in ``/etc/neutron/api-paste.ini`` to force Neutron to pass the user token in requests to the Tungsten Fabric API server:
 
 ::
 
@@ -286,7 +286,7 @@ Contrail RBAC operation is based upon a user token received in the ``X-Auth-Toke
 Utilities
 ---------
 
-This section describes the utilities available for Contrail RBAC.
+This section describes the utilities available for Tungsten Fabric RBAC.
 
 -  `Utility: rbacutil.py`_ 
 
@@ -386,16 +386,16 @@ The utility ``chmod2.py`` enables updating object permissions, including:
 Upgrading from Previous Releases
 --------------------------------
 
-The ``multi_tenancy`` parameter is deprecated, starting with Contrail 3.1. The parameter should be removed from the configuration. Instead, use the ``aaa_mode`` parameter for RBAC to take effect.
+The ``multi_tenancy`` parameter is deprecated, starting with release 3.1. The parameter should be removed from the configuration. Instead, use the ``aaa_mode`` parameter for RBAC to take effect.
 
 If the ``multi_tenancy`` parameter is not removed, the ``aaa-mode`` setting is ignored.
 
 
 
-Configuring RBAC Using the Contrail User Interface
---------------------------------------------------
+Configuring RBAC Using the Tungsten Fabric User Interface
+---------------------------------------------------------
 
-To use the Contrail UI with RBAC:
+To use the Tungsten Fabric UI with RBAC:
 
 
 #. Set the aaa_mode to no_auth.
@@ -411,7 +411,7 @@ To use the Contrail UI with RBAC:
    ``service contrail-analytics-api restart`` 
 
 
-You can use the Contrail UI to configure RBAC at both the API level and the object level. API level access control can be configured at the global, domain, and project levels. Object level access is available from most of the create or edit screens in the Contrail UI.
+You can use the Tungsten Fabric UI to configure RBAC at both the API level and the object level. API level access control can be configured at the global, domain, and project levels. Object level access is available from most of the create or edit screens in the Tungsten Fabric UI.
 
 
 
