@@ -5,7 +5,7 @@
 Service Instance Health Checks
 ==============================
 
-In Contrail Release 3.0 and greater, a service instance health check can be used to determine the liveliness of a service provided by a virtual machine (VM).
+In release 3.0 and greater, a service instance health check can be used to determine the liveliness of a service provided by a virtual machine (VM).
 
 -  `Health Check Object`_ 
 
@@ -31,7 +31,7 @@ Health Check Object
 -  `Health Check Object Configuration`_ 
 
 
--  `Creating a Health Check with the Contrail User Interface`_ 
+-  `Creating a Health Check with the Tungsten User Interface`_ 
 
 
 -  `Using the Health Check`_ 
@@ -114,17 +114,17 @@ Restrictions include:
 
 
 
-.. note:: In versions prior to Contrail 4.1, end-to-end health check is not supported on a transparent service chain. However, a link-local health check is possible on a transparent service instance if the corresponding service instance interface is configured with its IP address. Contrail 4.1 supports a segment-based health check for transparent service chain.
+.. note:: In versions prior to 4.1, end-to-end health check is not supported on a transparent service chain. However, a link-local health check is possible on a transparent service instance if the corresponding service instance interface is configured with its IP address. Version 4.1 supports a segment-based health check for transparent service chain.
 
 
 
 
 
 
-Creating a Health Check with the Contrail User Interface
+Creating a Health Check with the Tungsten Fabric User Interface
 --------------------------------------------------------
 
-To create a health check with the Contrail Web UI:
+To create a health check with the Tungsten Fabric Web UI:
 
 
 #. Navigate to **Configure > Services > Health Check Service** , and click to open the **Create** screen. See `Figure 58`_ .
@@ -183,7 +183,7 @@ The health check object can be linked to multiple VM interfaces. Additionally, a
 Health Check Process
 --------------------
 
-The Contrail vRouter agent is responsible for providing the health check service. The agent spawns a Python script to monitor the status of a service hosted on a VM on the same compute node, and the script updates the status to the vRouter agent.
+The Tungsten Fabric vRouter agent is responsible for providing the health check service. The agent spawns a Python script to monitor the status of a service hosted on a VM on the same compute node, and the script updates the status to the vRouter agent.
 
 The vRouter agent acts on the status provided by the script to withdraw or restore the exported interface routes. It is also responsible for providing a link-local metadata IP for allowing the script to communicate with the destination IP from the underlay network, using appropriate NAT translations. In a running system, this information is displayed in the vRouter agent introspect at:
 
@@ -199,7 +199,7 @@ Bidirectional Forwarding and Detection Health Check over Virtual Machine Interfa
 
 
 
-Contrail Release 4.1 adds support for BFD-based health checks for VMIs.
+Release 4.1 adds support for BFD-based health checks for VMIs.
 
 Health check for VMIs is already supported as poll-based checks with ping and curl commands. When enabled, these health checks run periodically, once every few seconds. Consequently, failure detection times can be quite large, always in seconds.
 
@@ -211,7 +211,7 @@ Bidirectional Forwarding and Detection Health Check for BGPaaS
 
 
 
-Contrail Release 4.1 adds support for BFD-based health check for BGP as a Service (BGPaaS) sessions.
+Release 4.1 adds support for BFD-based health check for BGP as a Service (BGPaaS) sessions.
 
 This health check should not be confused with the BFD-based health check over VMIs feature, also introduced in Release 4.1. The BFD-based health check for VMIs cannot be used for a BGPaaS session, because the session shares a tenant destination address over a set of VMIs, with only one VMI active at any given time.
 
@@ -219,13 +219,13 @@ This health check should not be confused with the BFD-based health check over VM
 
 When the BFD-based health check for BGP as a Service (BGPaaS) is configured, any time a BFD-for-BGP session is detected as down by the health-checker, corresponding logs and alarms are generated.
 
-To enable this health check, configure the ``ServiceHealthCheckType`` property and associate it with a bgp-as-a-service configuration object. This can also be accomplished in the Contrail WebUI.
+To enable this health check, configure the ``ServiceHealthCheckType`` property and associate it with a bgp-as-a-service configuration object. This can also be accomplished in the Tungsten Fabric Web UI.
 
 
 Health Check of Transparent Service Chain
 -----------------------------------------
 
-Contrail 4.1 enhances service chain redundancy by implementing an end-to-end health check for the transparent service chain. The service health check monitors the status of the service chain and if there is a failure, the control node no longer considers the service chain as a valid next hop, triggering traffic failover.
+Release 4.1 enhances service chain redundancy by implementing an end-to-end health check for the transparent service chain. The service health check monitors the status of the service chain and if there is a failure, the control node no longer considers the service chain as a valid next hop, triggering traffic failover.
 
 A segment-based health check is used to verify the health of a single instance in a transparent service chain. The user creates a service-health-check object, with type segment-based, and attaches it to either the left or right interface of the service instance. The service health check packet is injected to the interface to which it is attached. When the packet comes out of the other interface, a reply packet is injected on that interface. If health check requests fail after 30-second retries, the service instance is considered unhealthy and the service VLAN routes of the left and right interfaces are removed. When the agent receives health check replies successfully, it adds the retracted routes back onto both interfaces, which triggers the control node to start reoriginating routes to other service instances on that service chain.
 
@@ -235,11 +235,11 @@ For more information, see https://github.com/Juniper/contrail-controller/blob/ma
 Service Instance Fate Sharing
 -----------------------------
 
-A service chain contains multiple service instances (SI) and the failure of a single SI can cause a traffic black hole. In releases prior to Contrail Release 5.0, when an SI fails, the service chain continues to forward packets and routes reoriginate on both sides of the service chain. The packets are dropped in the SI or by the vRouter causing a black hole.
+A service chain contains multiple service instances (SI) and the failure of a single SI can cause a traffic black hole. In releases prior to Release 5.0, when an SI fails, the service chain continues to forward packets and routes reoriginate on both sides of the service chain. The packets are dropped in the SI or by the vRouter causing a black hole.
 
-Starting in Contrail Release 5.0, when one or more than one SI in a service chain fails, reorigination of routes on both sides of the service chain is stopped and routes automatically converge to a backup service chain that is part of another Contrail cluster. SI fate sharing brings down the service chain and the gateway nodes automatically reroutes traffic to an alternate cluster.
+Starting in Release 5.0, when one or more than one SI in a service chain fails, reorigination of routes on both sides of the service chain is stopped and routes automatically converge to a backup service chain that is part of another Tungsten Fabric cluster. SI fate sharing brings down the service chain and the gateway nodes automatically reroutes traffic to an alternate cluster.
 
-Starting in Contrail Release 4.1, **segment-based** health check type is used to verify the health of a SI in a service chain. To identify a failure of an SI, segment-based health check is configured either on the egress or ingress interface of the SI. When SI health check fails, the vRouter agent drops an SI route or a connected route. A connected route is also dropped if the vRouter agent restarts due to a software failure, when a compute node reboots, or when long-lived graceful restart (LLGR) is not enabled. You can detect an SI failure by keeping track of corresponding connected routes of the service chain address.
+Starting in Release 4.1, **segment-based** health check type is used to verify the health of a SI in a service chain. To identify a failure of an SI, segment-based health check is configured either on the egress or ingress interface of the SI. When SI health check fails, the vRouter agent drops an SI route or a connected route. A connected route is also dropped if the vRouter agent restarts due to a software failure, when a compute node reboots, or when long-lived graceful restart (LLGR) is not enabled. You can detect an SI failure by keeping track of corresponding connected routes of the service chain address.
 
 
 .. note:: When an SI is scaled out, the connected route for an SI interface goes down only when all associated VMs have failed.

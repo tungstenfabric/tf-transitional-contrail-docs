@@ -5,7 +5,7 @@
 Service Chaining
 ================
 
-Contrail Controller supports chaining of various Layer 2 through Layer 7 services such as firewall, NAT, IDP, and so on.
+Tungsten Fabric Controller supports chaining of various Layer 2 through Layer 7 services such as firewall, NAT, IDP, and so on.
 
 -  `Service Chaining Basics`_ 
 
@@ -27,11 +27,11 @@ Services are offered by instantiating service virtual machines to dynamically ap
 
 .. figure:: s041619.gif
 
-When you create a service chain, the Contrail software creates tunnels across the underlay network that span through all services in the chain. `Figure 52`_ shows two end points and two compute nodes, each with one service instance and traffic going to and from one end point to the other.
+When you create a service chain, the Tungsten Fabric software creates tunnels across the underlay network that span through all services in the chain. `Figure 52`_ shows two end points and two compute nodes, each with one service instance and traffic going to and from one end point to the other.
 
 .. _Figure 52: 
 
-*Figure 52* : Contrail Service Chain
+*Figure 52* : Tungsten Fabric Service Chain
 
 .. figure:: s041901.gif
 

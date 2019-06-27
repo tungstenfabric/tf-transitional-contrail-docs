@@ -1,9 +1,9 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-=================================================
-Sending Flow Messages to the Contrail System Log
-=================================================
+=======================================================
+Sending Flow Messages to the Tungsten Fabric System Log
+=======================================================
 
 The ``contrail-vrouter-agent`` can be configured to send flow messages and other messages to the system log (syslog). To send flow messages to syslog, configure the following parameters in ``/etc/contrail/contrail-vrouter-agent.conf`` .
 
@@ -21,9 +21,9 @@ The following parameters are under the section ``DEFAULT`` :
 -  ``log_level=SYS_INFO`` —Changes the logging level of ``contrail-vrouter-agent`` to INFO.
 
 
-If syslog is enabled, flow messages are *not* sent to Contrail Analytics because the two destinations are mutually exclusive.
+If syslog is enabled, flow messages are *not* sent to Tungsten Fabric Analytics because the two destinations are mutually exclusive.
 
-Flow log sampling settings apply regardless of the flow log destination specified. If sampling is enabled, the syslog messages will be sampled using the same rules that would apply to Contrail Analytics. If non-sampled flow data is required, sampling must be disabled by means of configuration settings.
+Flow log sampling settings apply regardless of the flow log destination specified. If sampling is enabled, the syslog messages will be sampled using the same rules that would apply to Tungsten Fabric Analytics. If non-sampled flow data is required, sampling must be disabled by means of configuration settings.
 
 Flow events for termination will include both the appropriate tear-down fields and the appropriate setup fields.
 
