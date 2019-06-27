@@ -5,7 +5,7 @@
 Support for Multicast
 =====================
 
-This section describes how the Contrail Controller supports broadcast and multicast.
+This section describes how the Tungsten Fabric Controller supports broadcast and multicast.
 
 -  `Subnet Broadcast`_ 
 

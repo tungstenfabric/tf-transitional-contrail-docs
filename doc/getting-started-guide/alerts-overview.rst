@@ -1,22 +1,22 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-===============
-Contrail Alerts
-===============
+======================
+Tungsten Fabric Alerts
+======================
 
-Starting with Contrail 3.0 and greater, Contrail alerts are provided on a per-user visible entity (UVE) basis.
+Starting with Release 3.0 and greater, Tungsten Fabric alerts are provided on a per-user visible entity (UVE) basis.
 
-Contrail analytics raise or clear alerts using Python-coded rules that examine the contents of the UVE and the configuration of the object. Some rules are built in. Others can be added using Python *stevedore* plugins.
+Tungsten Fabric analytics raise or clear alerts using Python-coded rules that examine the contents of the UVE and the configuration of the object. Some rules are built in. Others can be added using Python *stevedore* plugins.
 
-This topic describes Contrail alerts capabilities.
+This topic describes Tungsten Fabric alerts capabilities.
 
 
 
 Alert API Format
 ----------------
 
-The Contrail alert analytics API provides the following:
+The Tungsten Fabric alert analytics API provides the following:
 
 - Read access to the alerts as part of the UVE GET APIs.
 
