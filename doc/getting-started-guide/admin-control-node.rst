@@ -9,22 +9,22 @@ An important task after a successful installation is to configure the control no
 
 Before you begin, ensure that the following tasks are completed:
 
-- The Contrail Controller base system image has been installed on all servers.
+- The Tungsten Fabric Controller base system image has been installed on all servers.
 
 
 - The role-based services have been assigned and provisioned.
 
 
-- IP connectivity has been verified between all nodes of the Contrail Controller.
+- IP connectivity has been verified between all nodes of the Tungsten Fabric Controller.
 
 
-- You can access the Contrail user interface at **http://nn.nn.nn.nn:8080** , where **nn.nn.nn.nn** is the IP address of the configuration node server that is running the **contrail-webui** service.
+- You can access the Tungsten Fabric user interface at **http://nn.nn.nn.nn:8080** , where **nn.nn.nn.nn** is the IP address of the configuration node server that is running the **contrail-webui** service.
 
 
 To configure BGP peering in the control node:
 
 
-#. From the Contrail Controller module control node ( **http://nn.nn.nn.nn:8080** ), select **Configure > Infrastructure > BGP Routers** ; see `Figure 2`_ .
+#. From the Tungsten Fabric Controller module control node ( **http://nn.nn.nn.nn:8080** ), select **Configure > Infrastructure > BGP Routers** ; see `Figure 2`_ .
 
    .. _Figure 2: 
 
@@ -130,13 +130,13 @@ To configure BGP peering in the control node:
 
 **Related Documentation**
 
--  `Creating a Virtual Network with Juniper Networks Contrail`_ 
+-  `Creating a Virtual Network with Tungsten Fabric`_ 
 
--  `Creating a Virtual Network with OpenStack Contrail`_ 
+-  `Creating a Virtual Network with OpenStack Tungsten Fabric`_ 
 
-.. _Creating a Virtual Network with Juniper Networks Contrail: creating-virtual-network-juniper-vnc.html
+.. _Creating a Virtual Network with Tungsten Fabric: creating-virtual-network-juniper-vnc.html
 
-.. _Creating a Virtual Network with OpenStack Contrail: creating-virtual-network-vnc.html
+.. _Creating a Virtual Network with OpenStack Tungsten Fabric: creating-virtual-network-vnc.html
 
 
 .. |s042494.png| image:: s042494.png

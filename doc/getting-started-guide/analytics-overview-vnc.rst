@@ -1,11 +1,11 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-================================
-Understanding Contrail Analytics
-================================
+=======================================
+Understanding Tungsten Fabric Analytics
+=======================================
 
-Contrail is a distributed system of compute nodes, control nodes, configuration nodes, database nodes, web UI nodes, and analytics nodes.
+Tungsten Fabric is a distributed system of compute nodes, control nodes, configuration nodes, database nodes, web UI nodes, and analytics nodes.
 
 The analytics nodes are responsible for the collection of system state information, usage statistics, and debug information from all of the software modules across all of the nodes of the system. The analytics nodes store the data gathered across the system in a database that is based on the Apache Cassandra open source distributed database management system. The database is queried by means of an SQL-like language and representational state transfer (REST) APIs.
 
@@ -24,23 +24,23 @@ Debug information collected by the analytics nodes includes the following types:
 
 Statistics information related to flows, CPU and memory usage, and the like is also collected by the analytics nodes and can be queried at the user interface to provide historical analytics and time-series information. The queries are performed using REST APIs.
 
-Analytics data is written to a database in Contrail. The data expires after the default time-to-live (TTL) period of 48 hours. This default TTL time can be changed as needed by changing the value of the ``database_ttl`` value in the cluster configuration.
+Analytics data is written to a database in Tungsten Fabric. The data expires after the default time-to-live (TTL) period of 48 hours. This default TTL time can be changed as needed by changing the value of the ``database_ttl`` value in the cluster configuration.
 
 **Related Documentation**
 
--  `Contrail Alerts`_ 
+-  `Tungsten Fabric Alerts`_ 
 
 -  `Analytics Scalability`_ 
 
 -  `High Availability for Analytics`_ 
 
--  `Ceilometer Support in a Contrail Cloud`_ 
+-  `Ceilometer Support in a Tungsten Fabric Cloud`_ 
 
--  `Underlay Overlay Mapping in Contrail`_ 
+-  `Underlay Overlay Mapping in Tungsten Fabric`_ 
 
 -  `Monitoring the System`_ 
 
--  `Debugging Processes Using the Contrail Introspect Feature`_ 
+-  `Debugging Processes Using the Tungsten Fabric Introspect Feature`_ 
 
 -  `Monitor > Infrastructure > Dashboard`_ 
 
@@ -60,23 +60,23 @@ Analytics data is written to a database in Contrail. The data expires after the 
 
 -  `Query > Logs`_ 
 
--  `System Log Receiver in Contrail Analytics`_ 
+-  `System Log Receiver in Tungsten Fabric Analytics`_ 
 
 -  `Example\:\ Debugging Connectivity Using Monitoring for Troubleshooting`_ 
 
-.. _Contrail Alerts: alerts-overview.html
+.. _Tungsten Fabric Alerts: alerts-overview.html
 
 .. _Analytics Scalability: analytics-scalability-vnc.html
 
 .. _High Availability for Analytics: ha-analytics-vnc.html
 
-.. _Ceilometer Support in a Contrail Cloud: ceilometer-configuring.html
+.. _Ceilometer Support in a Tungsten Fabric Cloud: ceilometer-configuring.html
 
-.. _Underlay Overlay Mapping in Contrail: underlay-overlay-mapping-vnc.html
+.. _Underlay Overlay Mapping in Tungsten Fabric: underlay-overlay-mapping-vnc.html
 
 .. _Monitoring the System: monitor-vnc.html
 
-.. _Debugging Processes Using the Contrail Introspect Feature: introspect-process-debugging.html
+.. _Debugging Processes Using the Tungsten Fabric Introspect Feature: introspect-process-debugging.html
 
 .. _Monitor > Infrastructure > Dashboard: monitor-dashboard-vnc.html
 
@@ -96,7 +96,7 @@ Analytics data is written to a database in Contrail. The data expires after the 
 
 .. _Query > Logs: monitoring-syslog-vnc.html
 
-.. _System Log Receiver in Contrail Analytics: syslog-receiver-vnc.html
+.. _System Log Receiver in Tungsten Fabric Analytics: syslog-receiver-vnc.html
 
 .. _Example\:\ Debugging Connectivity Using Monitoring for Troubleshooting: debug-connectivity-vnc.html
 

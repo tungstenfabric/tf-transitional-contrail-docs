@@ -1,11 +1,11 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-===============================================================
-Adding a New Node to an Existing Containerized Contrail Cluster
-===============================================================
+======================================================================
+Adding a New Node to an Existing Containerized Tungsten Fabric Cluster
+======================================================================
 
-This is the initial process for adding a new node to an existing cluster in containerized Contrail.
+This is the initial process for adding a new node to an existing cluster in containerized Tungsten Fabric.
 
 -  `Controller Configuration`_ 
 
@@ -22,7 +22,7 @@ Controller Configuration
       `contrail-docker/tools/python-contrailctl/examples/configs/controller.conf`_  
 
 
-   - Start the controller container. For more information, see `How to run Contrail Docker containers`_  .
+   - Start the controller container. For more information, see `How to run Tungsten Fabric Docker containers`_  .
 
 
    - Wait for the new containers to come up completely.
@@ -136,11 +136,11 @@ Manually configure contrailctl on all containers and sync the configs
 Removing Nodes in an Existing Containerized Cluster
 ---------------------------------------------------
 
-For the first version of containerized Contrail, there is no script available for removing a node from an existing cluster. If it is necessary to remove a node from an existing containerized Contrail cluster, please contact Juniper Networks JTAC for assistance.
+For the first version of containerized Tungsten Fabric, there is no script available for removing a node from an existing cluster. If it is necessary to remove a node from an existing containerized Tungsten Fabric cluster, please contact Juniper Networks JTAC for assistance.
 
 
 .. _contrail-docker/tools/python-contrailctl/examples/configs/controller.conf: https://github.com/Juniper/contrail-docker/blob/master/tools/python-contrailctl/examples/configs/controller.conf
 
-.. _How to run Contrail Docker containers: https://github.com/Juniper/contrail-docker/wiki/How-to-run-contrail-docker-containers
+.. _How to run Tungsten Fabric Docker containers: https://github.com/Juniper/contrail-docker/wiki/How-to-run-contrail-docker-containers
 
 .. _https://github.com/Juniper/contrail-docker/blob/master/tools/python-contrailctl/examples/configs/controller.conf: https://github.com/Juniper/contrail-docker/blob/master/tools/python-contrailctl/examples/configs/controller.conf
