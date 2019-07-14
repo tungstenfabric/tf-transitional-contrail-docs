@@ -1,14 +1,14 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-==================================================
-Creating a Virtual Network with OpenStack Contrail
-==================================================
+=========================================================
+Creating a Virtual Network with OpenStack Tungsten Fabric
+=========================================================
 
-Contrail makes creating a virtual network very easy for you. You create networks and network policies at the user dashboard, then associate policies with each network. The following procedure shows how to create a virtual network when using OpenStack.
+Tungsten Fabric makes creating a virtual network very easy for you. You create networks and network policies at the user dashboard, then associate policies with each network. The following procedure shows how to create a virtual network when using OpenStack.
 
 
-#. To create a virtual network when using OpenStack Contrail, select **Project > Other > Networking** . The **Networks** window is displayed. See `Figure 20`_ .
+#. To create a virtual network when using OpenStack Tungsten Fabric, select **Project > Other > Networking** . The **Networks** window is displayed. See `Figure 20`_ .
 
    .. _Figure 20: 
 

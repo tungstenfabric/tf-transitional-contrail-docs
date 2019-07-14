@@ -1,11 +1,11 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-==================================================================
-Creating Projects in OpenStack for Configuring Tenants in Contrail
-==================================================================
+=========================================================================
+Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric
+=========================================================================
 
-In Contrail, a tenant configuration is called a project. A project is created for each set of virtual machines (VMs) and virtual networks (VNs) that are configured as a discrete entity for the tenant.
+In Tungsten Fabric, a tenant configuration is called a project. A project is created for each set of virtual machines (VMs) and virtual networks (VNs) that are configured as a discrete entity for the tenant.
 
 Projects are created, managed, and edited at the OpenStack **Projects** page.
 
@@ -47,15 +47,15 @@ Refer to OpenStack documentation for more information about creating and managin
 
 **Related Documentation**
 
--  `Creating a Virtual Network with Juniper Networks Contrail`_ 
+-  `Creating a Virtual Network with Tungsten Fabric`_ 
 
--  `Creating a Virtual Network with OpenStack Contrail`_ 
+-  `Creating a Virtual Network with OpenStack Tungsten Fabric`_ 
 
 -  `OpenStack documentation`_  
 
-.. _Creating a Virtual Network with Juniper Networks Contrail: creating-virtual-network-juniper-vnc.html
+.. _Creating a Virtual Network with Tungsten Fabric: creating-virtual-network-juniper-vnc.html
 
-.. _Creating a Virtual Network with OpenStack Contrail: creating-virtual-network-vnc.html
+.. _Creating a Virtual Network with OpenStack Tungsten Fabric: creating-virtual-network-vnc.html
 
 
 .. _OpenStack documentation: http://docs.openstack.org/

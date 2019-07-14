@@ -7,7 +7,7 @@ Creating a Floating IP Address Pool
 
 A floating IP address is an IP address (typically public) that can be dynamically assigned to a running virtual instance.
 
-To configure floating IP address pools in project networks in Contrail, then allocate floating IP addresses from the pool to virtual machine instances in other virtual networks:
+To configure floating IP address pools in project networks in Tungsten Fabric, then allocate floating IP addresses from the pool to virtual machine instances in other virtual networks:
 
 
 #. Select **Configure > Networking > Networks** ; see `Figure 25`_ . Make sure your project is the active project in the upper right.

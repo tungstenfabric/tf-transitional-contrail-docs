@@ -1,11 +1,11 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-======================================
-Ceilometer Support in a Contrail Cloud
-======================================
+=============================================
+Ceilometer Support in a Tungsten Fabric Cloud
+=============================================
 
-Ceilometer is an OpenStack feature that provides an infrastructure for collecting SDN metrics from OpenStack projects. The metrics can be used by various rating engines to transform events into billable items. The Ceilometer collection process is sometimes referred to as “metering”. The Ceilometer service provides data that can be used by platforms that provide metering, tracking, billing, and similar services. This topic describes how to configure the Ceilometer service for Contrail.
+Ceilometer is an OpenStack feature that provides an infrastructure for collecting SDN metrics from OpenStack projects. The metrics can be used by various rating engines to transform events into billable items. The Ceilometer collection process is sometimes referred to as “metering”. The Ceilometer service provides data that can be used by platforms that provide metering, tracking, billing, and similar services. This topic describes how to configure the Ceilometer service for Tungsten Fabric.
 
 
 
@@ -18,7 +18,7 @@ Ceilometer is an OpenStack feature that provides an infrastructure for collectin
 -  `Verification of Ceilometer Operation`_ 
 
 
--  `Contrail Ceilometer Plugin`_ 
+-  `Tungsten Fabric Ceilometer Plugin`_ 
 
 
 -  `Ceilometer Installation and Provisioning`_ 
@@ -28,18 +28,18 @@ Ceilometer is an OpenStack feature that provides an infrastructure for collectin
 Overview
 ========
 
-Contrail Release 2.20 and later supports the OpenStack Ceilometer service, on the OpenStack Juno release on Ubuntu 14.04.1 LTS.
+Release 2.20 and later supports the OpenStack Ceilometer service, on the OpenStack Juno release on Ubuntu 14.04.1 LTS.
 
 The prerequisites for installing Ceilometer are:
 
-- Contrail Cloud installation
+- Tungsten Fabric Cloud installation
 
 
 - Provisioned using ``enable_ceilometer = True`` in the ``provisioning`` file.
 
 
 
-.. note:: Ceilometer services are only installed on the first OpenStack controller node and do not support high availability in Contrail Release 2.20.
+.. note:: Ceilometer services are only installed on the first OpenStack controller node and do not support high availability in Release 2.20.
 
 
 
@@ -61,7 +61,7 @@ API server -- Provides a REST API to query and view data recorded by the collect
 
 Alarms -- Daemons to evaluate and notify based on defined alarming rules.
 
-Database -- Stores the metering data, notifications, and alarms. The supported databases are MongoDB, SQL-based databases compatible with SQLAlchemy, and HBase. The recommended database is MongoDB, which has been thoroughly tested with Contrail and deployed on a production scale.
+Database -- Stores the metering data, notifications, and alarms. The supported databases are MongoDB, SQL-based databases compatible with SQLAlchemy, and HBase. The recommended database is MongoDB, which has been thoroughly tested with Tungsten Fabric and deployed on a production scale.
 
 
 Verification of Ceilometer Operation
@@ -93,7 +93,7 @@ API server -- ``openstack-ceilometer-api``
 Alarms -- ``openstack-ceilometer-alarm-evaluator`` and ``openstack-ceilometer-alarm-notifier``  
 
 To verify the Ceilometer installation, users can verify that the Ceilometer services are up and running by using the ``openstack-status`` command.
-For example, using the ``openstack-status`` command on an all-in-one node running Ubuntu 14.04.1 LTS with release 2.2 of Contrail installed shows the following Ceilometer services as active:
+For example, using the ``openstack-status`` command on an all-in-one node running Ubuntu 14.04.1 LTS with Release 2.2 installed shows the following Ceilometer services as active:
 
 ::
 
@@ -144,10 +144,10 @@ You can issue the  ceilometer meter-listcommand on the OpenStack controller node
 
 
 
-Contrail Ceilometer Plugin
-==========================
+Tungsten Fabric Ceilometer Plugin
+=================================
 
-The Contrail Ceilometer plugin adds the capability to meter the traffic statistics of floating IP addresses in Ceilometer. The following meters for each floating IP resource are added by the plugin in Ceilometer.
+The Tungsten Fabric Ceilometer plugin adds the capability to meter the traffic statistics of floating IP addresses in Ceilometer. The following meters for each floating IP resource are added by the plugin in Ceilometer.
 
 ::
 
@@ -156,7 +156,7 @@ The Contrail Ceilometer plugin adds the capability to meter the traffic statisti
  ip.floating.transmit.bytes
  ip.floating.transmit.packets
 
-The Contrail Ceilometer plugin configuration is done in the ``/etc/ceilometer/pipeline.yaml`` file when Contrail is installed by the Fabric provisioning scripts.
+The Tungsten Fabric Ceilometer plugin configuration is done in the ``/etc/ceilometer/pipeline.yaml`` file when Tungsten Fabric is installed by the Fabric provisioning scripts.
 The following example shows the configuration that is added to the file:
 
 ::
@@ -170,7 +170,7 @@ The following example shows the configuration that is added to the file:
          - "ip.floating.receive.bytes"
          - "ip.floating.transmit.bytes"
        resources:
-           - contrail://<IP-address-of-Contrail-Analytics-Node>:8081
+           - contrail://<IP-address-of-Tungsten-Fabric-Analytics-Node>:8081
        sinks:
          - contrail_sink
  sinks:
@@ -238,11 +238,11 @@ The following example shows the output from the  ceilometer statisticscommand an
 Ceilometer Installation and Provisioning
 ========================================
 
-There are two scenarios possible for Contrail Ceilometer plugin installation.
+There are two scenarios possible for Tungsten Fabric Ceilometer plugin installation.
 
-- If you install your own OpenStack distribution, you can install the Contrail Ceilometer plugin on the OpenStack controller node.
+- If you install your own OpenStack distribution, you can install the Tungsten Fabric Ceilometer plugin on the OpenStack controller node.
 
 
-- When using Contrail Cloud services, the Ceilometer controller services are installed and provisioned as part of the OpenStack controller node and the compute agent service is installed as part of the compute node when  enable_ceilometeris set as  Truein the cluster ``config`` or ``testbed`` files.
+- When using Tungsten Fabric Cloud services, the Ceilometer controller services are installed and provisioned as part of the OpenStack controller node and the compute agent service is installed as part of the compute node when  enable_ceilometeris set as  Truein the cluster ``config`` or ``testbed`` files.
 
 

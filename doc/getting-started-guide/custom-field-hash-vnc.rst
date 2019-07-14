@@ -10,9 +10,9 @@ Customized Hash Field Selection for ECMP Load Balancing
 Overview: Custom Hash Feature
 -----------------------------
 
-Starting with Contrail Release 3.0, it is possible to configure the set of fields used to hash upon during equal-cost multipath (ECMP) load balancing.
+Starting with Release 3.0, it is possible to configure the set of fields used to hash upon during equal-cost multipath (ECMP) load balancing.
 
-Earlier versions of Contrail had this set of fields fixed to the standard 5-tuple set of: source L3 address, destination L3 address, L4 protocol, L4 SourcePort, and L4 DestinationPort.
+Earlier versions of Tungsten Fabric had this set of fields fixed to the standard 5-tuple set of: source L3 address, destination L3 address, L4 protocol, L4 SourcePort, and L4 DestinationPort.
 
 With the custom hash feature, users can configure an exact subset of fields to hash upon when choosing the forwarding path among a set of eligible ECMP candidates.
 
@@ -31,7 +31,7 @@ VNI configurations take precedence over VN configurations, and VN configurations
 
 Custom hash is useful whenever packets originating from a particular source and addressed to a particular destination must go through the same set of service instances during transit. This might be required if source, destination, or transit nodes maintain a certain state based on the flow, and the state behavior could also be used for subsequent new flowsl, between the same pair of source and destination addresses. In such cases, subsequent flows must follow the same set of service nodes followed by the initial flow.
 
-You can use the Contrail UI to identify specific fields in the network upon which to hash at the **Configure > Networking > Network, Create Network** window, in the **ECMP Hashing Fields** section as shown in the following figure.
+You can use the Tungsten Fabric UI to identify specific fields in the network upon which to hash at the **Configure > Networking > Network, Create Network** window, in the **ECMP Hashing Fields** section as shown in the following figure.
 
 
 .. figure:: S018553.png
@@ -48,7 +48,7 @@ A more practical scenario is one in which flows between a source and destination
 Using ECMP Hash Fields Selection
 --------------------------------
 
-Custom hash fields selection is most useful in scenarios where multiple ECMP paths exist for a destination. Typically, the multiple ECMP paths point to ingress service instance nodes, which could be running anywhere in the Contrail cloud.
+Custom hash fields selection is most useful in scenarios where multiple ECMP paths exist for a destination. Typically, the multiple ECMP paths point to ingress service instance nodes, which could be running anywhere in the Tungsten Fabric cloud.
 
 
 
@@ -85,7 +85,7 @@ Use the following steps to create customized hash fields with ECMP over service 
 
 
 
-#. After the service VMs are instantiated, the ports of the left and right interfaces are available for further configuration. At the Contrail UI Ports section under Networking, select the left port (VMI) of the service instance and apply the desired ECMP hash field configuration.
+#. After the service VMs are instantiated, the ports of the left and right interfaces are available for further configuration. At the Tungsten Fabric UI Ports section under Networking, select the left port (VMI) of the service instance and apply the desired ECMP hash field configuration.
 
 
 .. note:: Currently the ECMP field selection configuration for the service instance left or right interface must be applied by using the Ports (VMIs) section under Networking and explicitly configuring the ECMP fields selection for each of the instantiated service instances' VMIs. This must be done for all service interfaces of the group, to ensure the end result is as expected, because the load balance attribute of only the best path is carried over to the ingress vRouter. If the load balance attribute is not configured, it is not propagated to the ingress vRouter, even if other paths have that configuration.
