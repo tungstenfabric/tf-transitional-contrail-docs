@@ -5,16 +5,16 @@
 Downloading Installation Software
 =================================
 
-All components necessary for installing the Contrail Controller are available for each Contrail release, for the supported Linux operating systems and versions, and for the supported versions of OpenStack.
+All components necessary for installing the Tungsten Fabric Controller are available for each Tungsten Fabric release, for the supported Linux operating systems and versions, and for the supported versions of OpenStack.
 
 All installation images can be downloaded from https://www.juniper.net/support/downloads/?p=contrail#sw .
 
-The Contrail image includes the following software:
+The Tungsten Fabric image includes the following software:
 
-- All dependent software packages needed to support installation and operation of OpenStack and Contrail
-
-
-- Contrail Controller software – all components
+- All dependent software packages needed to support installation and operation of OpenStack and Tungsten Fabric
 
 
-- OpenStack release currently in use for Contrail
+- Tungsten Fabric Controller software – all components
+
+
+- OpenStack release currently in use for Tungsten Fabric
