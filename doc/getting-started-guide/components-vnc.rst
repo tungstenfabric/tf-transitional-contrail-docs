@@ -15,7 +15,7 @@ Tungsten Fabric Major Components
 The following are the major components of Tungsten Fabric.
 
 Tungsten Fabric Control Nodes
-----------------------
+-----------------------------
 
 - Responsible for the routing control plane, configuration management, analytics, and the user interface.
 
