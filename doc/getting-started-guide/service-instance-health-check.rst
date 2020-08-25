@@ -31,7 +31,7 @@ Health Check Object
 -  `Health Check Object Configuration`_ 
 
 
--  `Creating a Health Check with the Tungsten User Interface`_ 
+-  `Creating a Health Check with the Tungsten Fabric User Interface`_ 
 
 
 -  `Using the Health Check`_ 
