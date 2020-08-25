@@ -1,17 +1,17 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-=====================================================
-Installing Contrail with OpenStack and Kolla Ansible
-=====================================================
+===========================================================
+Installing Tungsten Fabric with OpenStack and Kolla Ansible
+===========================================================
 
-This topic provides the steps needed to install Contrail Release 5.0.x. with OpenStack, using Kolla Ansible playbook ``contrail-kolla-ansible`` . Kolla is an OpenStack project that provides Docker containers and Ansible playbooks to provide production-ready containers and deployment tools for operating OpenStack clouds.
+This topic provides the steps needed to install Tungsten Fabric Release 5.0.x. with OpenStack, using Kolla Ansible playbook ``contrail-kolla-ansible`` . Kolla is an OpenStack project that provides Docker containers and Ansible playbooks to provide production-ready containers and deployment tools for operating OpenStack clouds.
 
-The ``contrail-kolla-ansible`` playbook works in conjunction with ``contrail-ansible-deployer`` to install OpenStack and Contrail Release 5.0. *x* . containers.
+The ``contrail-kolla-ansible`` playbook works in conjunction with ``contrail-ansible-deployer`` to install OpenStack and Release 5.0. *x* . containers.
 
-To deploy a Contrail Cluster using Contrail Command, see Deploying Contrail Cluster using Contrail-Command and instances.yml.
+To deploy a Tungsten Fabric Cluster using Contrail Command, see Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml.
 
-Deployment of Kolla containers using ``contrail-kolla-ansible`` and Contrail containers using ``contrail-ansible-deployer`` is presented in this topic:
+Deployment of Kolla containers using ``contrail-kolla-ansible`` and Tungsten Fabric containers using ``contrail-ansible-deployer`` is presented in this topic:
 
 -  `Set Up the Base Host`_ 
 
@@ -19,10 +19,10 @@ Deployment of Kolla containers using ``contrail-kolla-ansible`` and Contrail con
 -  `Run OpenStack Commands`_ 
 
 
--  `Multiple Interface Configuration Sample for Multinode OpenStack HA and Contrail`_ 
+-  `Multiple Interface Configuration Sample for Multinode OpenStack HA and Tungsten Fabric`_ 
 
 
--  `Single Interface Configuration Sample for Multinode OpenStack HA and Contrail`_ 
+-  `Single Interface Configuration Sample for Multinode OpenStack HA and Tungsten Fabric`_ 
 
 
 -  `Frequently Asked Questions`_ 
@@ -46,9 +46,9 @@ To set up the base host:
 
 
 
-#. Configure Contrail and Kolla parameters in the file ``instances.yaml`` , using the following guidelines:
+#. Configure Tungsten Fabric and Kolla parameters in the file ``instances.yaml`` , using the following guidelines:
 
-   - The provider configuration ( ``provider_config`` ) section refers to the cloud provider where the Contrail cluster will be hosted, and contains all parameters relevant to the provider. For bare metal servers, the provider is ``bms`` .
+   - The provider configuration ( ``provider_config`` ) section refers to the cloud provider where the Tungsten Fabric cluster will be hosted, and contains all parameters relevant to the provider. For bare metal servers, the provider is ``bms`` .
 
 
    - The ``kolla_globals`` section refers to OpenStack services. For more information about all possible ``kolla_globals`` , see `https://github.com/Juniper/contrail-kolla-ansible/.../globals.yml`_  .
@@ -57,9 +57,9 @@ To set up the base host:
    - Additional Kolla configurations ( ``contrail-kolla-ansible`` ) are possible as ``contrail_additions`` . For more information about all possible ``contrail_additions`` to Kolla, see `https://github.com/Juniper/contrail-kolla-ansible/.../all.yml`_  .
 
 
-   - The ``contrail_configuration`` section contains parameters for Contrail services.
+   - The ``contrail_configuration`` section contains parameters for Tungsten Fabric services.
 
-     -  ``CONTAINER_REGISTRY`` specifies the registry from which to pull Contrail containers. It can be set to your local Docker registry if you are building your own containers. If a registry is not specified, it will try to pull the containers from the Docker hub.
+     -  ``CONTAINER_REGISTRY`` specifies the registry from which to pull Tungsten Fabric containers. It can be set to your local Docker registry if you are building your own containers. If a registry is not specified, it will try to pull the containers from the Docker hub.
 
          If a custom registry is specified, also specify the same registry under ``kolla_globals`` as ``contrail_docker_registry`` .
 
@@ -85,7 +85,7 @@ To set up the base host:
        openstack_compute:
 
 
-     - If there are host-specific values per host, for example, if the names of the interfaces used for "network_interface" are different on the servers in your cluster, use the example configuration at `Configuration Sample for Multi Node OpenStack HA and Contrail (multi interface)`_  .
+     - If there are host-specific values per host, for example, if the names of the interfaces used for "network_interface" are different on the servers in your cluster, use the example configuration at `Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric (multi interface)`_  .
 
 
      - Many of the parameters are automatically derived to sane defaults (how the first configuration works). You can explicitly specify variables to override the derived values if required. Review the code to see the derivation logic.
@@ -163,7 +163,7 @@ This example is a more elaborate configuration for a single node, single interfa
  kolla_config:
    kolla_globals:
      kolla_internal_vip_address: <Internal VIP>
-     contrail_api_interface_address: <Contrail API Addr>
+     contrail_api_interface_address: <Tungsten Fabric API Addr>
      enable_haproxy: no
    kolla_passwords:
      keystone_admin_password: <Keystone Admin Password>
@@ -171,7 +171,7 @@ This example is a more elaborate configuration for a single node, single interfa
 
 
 
-3. Follow the steps documented Deploying Contrail Cluster using Contrail-Command and instances.yml.
+3. Follow the steps documented Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml.
 
 
 Run OpenStack Commands
@@ -207,12 +207,12 @@ At this time, it is necessary to manually install the OpenStack client ( ``pytho
 
 
 
-Multiple Interface Configuration Sample for Multinode OpenStack HA and Contrail
--------------------------------------------------------------------------------
+Multiple Interface Configuration Sample for Multinode OpenStack HA and Tungsten Fabric
+--------------------------------------------------------------------------------------
 
-This is a configuration sample for a multiple interface, multiple node deployment of high availability OpenStack and Contrail Release 5.0.x. Use this sample to configure parameters specific to your system.
+This is a configuration sample for a multiple interface, multiple node deployment of high availability OpenStack and Release 5.0.x. Use this sample to configure parameters specific to your system.
 
-For more information or for recent updates, refer to the github topic `Configuration Sample for Multi Node OpenStack HA and Contrail (multi interface).`_  
+For more information or for recent updates, refer to the github topic `Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric (multi interface).`_  
 
 
 
@@ -307,19 +307,19 @@ Configuration Sample—Multiple Interface
    kolla_globals:
      kolla_internal_vip_address: <Internal VIP>
      kolla_external_vip_address: <External VIP>
-     contrail_api_interface_address: <Contrail API IP>
+     contrail_api_interface_address: <Tungsten Fabric API IP>
    kolla_passwords:
      keystone_admin_password: <Keystone Admin Password>
 
 
 
 
-Single Interface Configuration Sample for Multinode OpenStack HA and Contrail
------------------------------------------------------------------------------
+Single Interface Configuration Sample for Multinode OpenStack HA and Tungsten Fabric
+------------------------------------------------------------------------------------
 
-This is a configuration sample for a multiple interface, single node deployment of high availability OpenStack and Contrail Release 5.0.x. Use this sample to configure parameters specific to your system.
+This is a configuration sample for a multiple interface, single node deployment of high availability OpenStack and Release 5.0.x. Use this sample to configure parameters specific to your system.
 
-For more information or for recent updates, refer to the github topic `Configuration Sample for Multi Node OpenStack HA and Contrail (single interface).`_  
+For more information or for recent updates, refer to the github topic `Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric (single interface).`_  
 
 
 
@@ -424,7 +424,7 @@ You might have a situation where you need to specify host-specific parameters, f
 
 For example, if there is no "network_interface" setting under the role "openstack" for example “bms1”, then it will take its setting from the global variable.
 
-An extended example is available at: `Configuration Sample for Multi Node OpenStack HA and Contrail`_  .
+An extended example is available at: `Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric`_  .
 
 
 
@@ -553,7 +553,7 @@ The following example shows how to run OpenStack commands in this way:
 
 **Related Documentation**
 
-- Deploying Contrail Cluster using Contrail-Command and instances.yml
+- Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml
 
 .. _dependency: https://github.com/Juniper/contrail-ansible-deployer/wiki/Provisioning-F.A.Q#5-vrouter-module-is-not-getting-installed-on-the-computes-vrouter-container-in-error-state-and-docker-logs-show-the-error-like-this
 
@@ -563,12 +563,12 @@ The following example shows how to run OpenStack commands in this way:
 
 .. _https://github.com/Juniper/contrail-container-builder/.../common.sh: https://github.com/Juniper/contrail-container-builder/blob/master/containers/base/common.sh
 
-.. _Configuration Sample for Multi Node OpenStack HA and Contrail (multi interface): https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(multi-interface)
+.. _Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric (multi interface): https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(multi-interface)
 
-.. _Configuration Sample for Multi Node OpenStack HA and Contrail (multi interface).: https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(multi-interface)
+.. _Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric (multi interface).: https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(multi-interface)
 
-.. _Configuration Sample for Multi Node OpenStack HA and Contrail (single interface).: https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(single-interface)
+.. _Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric (single interface).: https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(single-interface)
 
-.. _Configuration Sample for Multi Node OpenStack HA and Contrail: https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(multi-interface)
+.. _Configuration Sample for Multi Node OpenStack HA and Tungsten Fabric: https://github.com/Juniper/contrail-ansible-deployer/wiki/Configuration-Sample-for-Multi-Node-Openstack-HA-and-Contrail-(multi-interface)
 
 .. _1756133: https://review.opencontrail.org/#/c/40680/

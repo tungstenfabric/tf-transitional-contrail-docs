@@ -1,16 +1,16 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-======================================================================================================================
-Overview of contrail-ansible-deployer used in Contrail Command for Installing Contrail with Microservices Architecture
-======================================================================================================================
+====================================================================================================================================
+Overview of contrail-ansible-deployer used in Contrail Command for Installing Tungsten Fabric with Microservices Architecture
+====================================================================================================================================
 
-Contrail Release 5.0 introduces microservices architecture. This section provides an overview of using ``contrail-ansible-deployer`` used by The Contrail Command tool for installing Contrail Networking with a microservices architecture. For an introduction to Contrail microservices, refer to. For step by step procedure on how to install contrail using contrail command deployer, refer to Deploying Contrail Cluster using Contrail-Command and instances.yml
+Tungsten Fabric Release 5.0 introduces microservices architecture. This section provides an overview of using ``contrail-ansible-deployer`` used by The Contrail Command tool for installing Tungsten Fabric Networking with a microservices architecture. For an introduction to Tungsten Fabric microservices, refer to. For step by step procedure on how to install contrail using contrail command deployer, refer to Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml
 
 -  `What is the contrail-ansible-deployer?`_ 
 
 
--  `Preparing to Install with Contrail`_ 
+-  `Preparing to Install with Tungsten Fabric`_ 
 
 
 -  `Supported Providers`_ 
@@ -19,13 +19,13 @@ Contrail Release 5.0 introduces microservices architecture. This section provide
 -  `Configure a Yaml File for Your Environment`_ 
 
 
--  `Installing a Contrail System`_ 
+-  `Installing a Tungsten Fabric System`_ 
 
 
 What is the contrail-ansible-deployer?
 --------------------------------------
 
-The ``contrail-ansible-deployer`` is a set of Ansible playbooks designed to deploy Contrail 5.x with microservices architecture.
+The ``contrail-ansible-deployer`` is a set of Ansible playbooks designed to deploy Tungsten Fabric 5.x with microservices architecture.
 
 The ``contrail-ansible-deployer`` contains three plays:
 
@@ -60,12 +60,12 @@ This play configures the provisioned instances. The playbook installs software a
 playbooks/install_contrail.yml
 ------------------------------
 
-This play pulls, configures, and starts the Contrail containers.
+This play pulls, configures, and starts the Tungsten Fabric containers.
 
-Preparing to Install with Contrail
-----------------------------------
+Preparing to Install with Tungsten Fabric
+-----------------------------------------
 
-This section helps you prepare your system before installing Contrail 5.0. *x* using ``contrail-command-deployer`` .
+This section helps you prepare your system before installing Tungsten Fabric 5.0. *x* using ``contrail-command-deployer`` .
 
 Prerequisites
 -------------
@@ -101,7 +101,7 @@ Make sure your system is operational with the following before installation with
 Supported Providers
 -------------------
 
-The playbooks support installing Contrail on the following providers:
+The playbooks support installing Tungsten Fabric on the following providers:
 
 - bms—bare metal server
 
@@ -132,7 +132,7 @@ The configuration has multiple main sections, including:
 -  `Global Services Configuration`_ 
 
 
--  `Contrail Services Configuration`_ 
+-  `Tungsten Fabric Services Configuration`_ 
 
 
 -  `Kolla Services Configuration`_ 
@@ -254,18 +254,18 @@ This section sets global service parameters. All parameters are optional.
 
 
 
-Contrail Services Configuration
--------------------------------
+Tungsten Fabric Services Configuration
+--------------------------------------
 
-This section sets global Contrail service parameters. All parameters are optional.
+This section sets global Tungsten Fabric service parameters. All parameters are optional.
 ::
 
-  contrail_configuration:     # Contrail service configuration section
+  contrail_configuration:     # Tungsten Fabric service configuration section
   CONTRAIL_VERSION: latest
   UPGRADE_KERNEL: true
 
 
-For a complete list of parameters available for contrail_configuration.md, see Contrail Configuration Parameters for Ansible Deployer.
+For a complete list of parameters available for contrail_configuration.md, see Tungsten Fabric Configuration Parameters for Ansible Deployer.
 
 
 
@@ -283,14 +283,14 @@ If OpenStack Kolla is deployed, this section defines the parameters for Kolla.
 Instances Configuration
 -----------------------
 
-Instances are the operating systems on which the containers will be launched. The instance configuration has a few provider-specific knobs. The instance configuration specifies which roles are installed on which instance. Additionally, instance-wide and role-specific Contrail and Kolla configurations can be specified, overwriting the parameters from the global Contrail and Kolla configuration settings.
+Instances are the operating systems on which the containers will be launched. The instance configuration has a few provider-specific knobs. The instance configuration specifies which roles are installed on which instance. Additionally, instance-wide and role-specific Tungsten Fabric and Kolla configurations can be specified, overwriting the parameters from the global Tungsten Fabric and Kolla configuration settings.
 
 
 
 GCE Default All-in-One Instance
 -------------------------------
 
-The following example is a very simple all-in-one GCE instance. It will install all Contrail roles and the Kubernetes master and node, using the default configuration.
+The following example is a very simple all-in-one GCE instance. It will install all Tungsten Fabric roles and the Kubernetes master and node, using the default configuration.
 ::
 
   instances:
@@ -315,10 +315,10 @@ The following example uses three AWS EC2 instances to deploy, and an all-in-one 
 
 
 
-KVM Contrail Plane Instance
+KVM Tungsten Fabric Plane Instance
 ---------------------------
 
-The following example is a KVM-based instance only, installing Contrail control plane containers.
+The following example is a KVM-based instance only, installing Tungsten Fabric control plane containers.
 ::
 
   instances:
@@ -346,21 +346,21 @@ Refer to the following for more configuration examples for instances.
 
 -  `AWS Kolla HA with separate control and data plane instances`_  
 
-Installing a Contrail System
-----------------------------
+Installing a Tungsten Fabric System
+-----------------------------------
 
-To perform a full installation of a Contrail system, refer to the installation instructions in: Deploying Contrail Cluster using Contrail-Command and instances.yml
+To perform a full installation of a Tungsten Fabric system, refer to the installation instructions in: Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml
 
 **Related Documentation**
 
-- Deploying Contrail Cluster using Contrail-Command and instances.yml
+- Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml
 
 
-.. _Introduction to Contrail Microservices Architecture: 
+.. _Introduction to Tungsten Fabric Microservices Architecture: 
 
-.. _Deploying Contrail Cluster using Contrail-Command and instances.yml: 
+.. _Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml: 
 
-.. _Contrail Configuration Parameters for Ansible Deployer: 
+.. _Tungsten Fabric Configuration Parameters for Ansible Deployer: 
 
 .. _GCE Kubernetes (k8s) HA with separate control and data plane instances: https://github.com/Juniper/contrail-ansible-deployer/blob/master/examples/gce1.md
 
