@@ -23,7 +23,7 @@ Installing and Upgrading Tungsten Fabric
 
     `Downloading Installation Software`_
 
-    `Overview of contrail-ansible-deployer used in Tungsten Fabric Command for Installing Tungsten Fabric with Microservices Architecture`_
+    `Overview of contrail-ansible-deployer used in Contrail Command for Installing Tungsten Fabric with Microservices Architecture`_
 
     `Installing Tungsten Fabric with OpenStack and Kolla Ansible`_
 
@@ -41,7 +41,7 @@ Installing and Upgrading Tungsten Fabric
 
   Upgrading Tungsten Fabric Software
 
-  Tungsten Fabric Command
+  Contrail Command
 
   Using Tungsten Fabric with Red Hat
 
@@ -221,7 +221,7 @@ Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
 
 .. _Downloading Installation Software: download-software-vnc.html
 
-.. _Overview of contrail-ansible-deployer used in Tungsten Fabric Command for Installing Tungsten Fabric with Microservices Architecture: install-contrail-overview-ansible-50.html
+.. _Overview of contrail-ansible-deployer used in Contrail Command for Installing Tungsten Fabric with Microservices Architecture: install-contrail-overview-ansible-50.html
 
 .. _Installing Tungsten Fabric with OpenStack and Kolla Ansible: install-contrail-ocata-kolla-50.html
 

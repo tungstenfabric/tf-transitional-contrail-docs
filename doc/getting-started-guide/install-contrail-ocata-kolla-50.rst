@@ -9,7 +9,7 @@ This topic provides the steps needed to install Tungsten Fabric Release 5.0.x. w
 
 The ``contrail-kolla-ansible`` playbook works in conjunction with ``contrail-ansible-deployer`` to install OpenStack and Release 5.0. *x* . containers.
 
-To deploy a Tungsten Fabric Cluster using Tungsten Fabric Command, see Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml.
+To deploy a Tungsten Fabric Cluster using Contrail Command, see Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml.
 
 Deployment of Kolla containers using ``contrail-kolla-ansible`` and Tungsten Fabric containers using ``contrail-ansible-deployer`` is presented in this topic:
 

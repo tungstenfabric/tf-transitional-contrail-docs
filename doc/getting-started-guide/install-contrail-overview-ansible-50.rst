@@ -2,10 +2,10 @@
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 ====================================================================================================================================
-Overview of contrail-ansible-deployer used in Tungsten Fabric Command for Installing Tungsten Fabric with Microservices Architecture
+Overview of contrail-ansible-deployer used in Contrail Command for Installing Tungsten Fabric with Microservices Architecture
 ====================================================================================================================================
 
-Tungsten Fabric Release 5.0 introduces microservices architecture. This section provides an overview of using ``contrail-ansible-deployer`` used by The Tungsten Fabric Command tool for installing Tungsten Fabric Networking with a microservices architecture. For an introduction to Tungsten Fabric microservices, refer to. For step by step procedure on how to install contrail using contrail command deployer, refer to Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml
+Tungsten Fabric Release 5.0 introduces microservices architecture. This section provides an overview of using ``contrail-ansible-deployer`` used by The Contrail Command tool for installing Tungsten Fabric Networking with a microservices architecture. For an introduction to Tungsten Fabric microservices, refer to. For step by step procedure on how to install contrail using contrail command deployer, refer to Deploying Tungsten Fabric Cluster using Contrail-Command and instances.yml
 
 -  `What is the contrail-ansible-deployer?`_ 
 
