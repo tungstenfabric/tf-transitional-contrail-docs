@@ -122,7 +122,7 @@ Restrictions include:
 
 
 Creating a Health Check with the Tungsten Fabric User Interface
---------------------------------------------------------
+---------------------------------------------------------------
 
 To create a health check with the Tungsten Fabric Web UI:
 
