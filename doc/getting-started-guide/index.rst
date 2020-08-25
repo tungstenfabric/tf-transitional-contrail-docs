@@ -148,10 +148,10 @@ Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
     `Query > Logs`_
 
     `Example\:\ Debugging Connectivity Using Monitoring for Troubleshooting`_
-    `Adding a New Node to an Existing Containerized Tungsten Fabric Cluster: add-node-existing-container`_
-    `Introduction to Containerized Tungsten Fabric Modules: containers-overview`_
-    `Using contrailctl to Configure Services Within Containers: contrailctl`_
-    `Tungsten Fabric Global Controller: global-controller-vnc`_
+    `Adding a New Node to an Existing Containerized Tungsten Fabric Cluster`_
+    `Introduction to Containerized Tungsten Fabric Modules`_
+    `Using contrailctl to Configure Services Within Containers`_
+    `Tungsten Fabric Global Controller`_
     `Supporting Multiple Interfaces on Servers and Nodes`_
 
 .. toctree::
@@ -213,6 +213,11 @@ Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
    monitoring-flow-vnc.rst
    monitoring-syslog-vnc.rst
    debug-connectivity-vnc.rst
+   add-node-existing-container.rst
+   containers-overview.rst
+   contrailctl.rst
+   global-controller-vnc.rst
+   multi-interface-40.rst
 
 .. _END USER LICENSE AGREEMENT: copyright.html
 
