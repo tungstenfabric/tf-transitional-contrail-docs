@@ -5,7 +5,7 @@
 Query > Logs
 ============
 
-The **Query > Logs** option allows you to access the system log and object log activity of any Contrail Controller component from one central location.
+The **Query > Logs** option allows you to access the system log and object log activity of any Tungsten Fabric Controller component from one central location.
 
 -  `Query > Logs Menu Options`_ 
 
