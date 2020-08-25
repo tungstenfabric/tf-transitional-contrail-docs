@@ -5,7 +5,7 @@
 Service Chain Route Reorigination
 =================================
 
--  `Overview: Service Chaining in Contrail`_ 
+-  `Overview: Service Chaining in Tungsten Fabric`_ 
 
 
 -  `Route Aggregation`_ 
@@ -19,10 +19,10 @@ Service Chain Route Reorigination
 
 
 
-Overview: Service Chaining in Contrail
---------------------------------------
+Overview: Service Chaining in Tungsten Fabric
+---------------------------------------------
 
-In Contrail, the service chaining feature allows the operator to insert dynamic services to control the traffic between two virtual networks. The service chaining works on a basic rule of next-hop stitching.
+In Tungsten Fabric, the service chaining feature allows the operator to insert dynamic services to control the traffic between two virtual networks. The service chaining works on a basic rule of next-hop stitching.
 
 In `Figure 54`_ , the service chain is inserted between the Left VN and the Right VN. The service chain contains one or more service instances to achieve a required network policy.
 
@@ -51,7 +51,7 @@ There are cases where the ``BgpPath`` attribute for the service chain route need
 In some scenarios, the operator needs a control to stop reorigination of the route as the service chain route, for example, when static routes are configured on service VM interfaces. Control to enable or disable reorigination of the route is implemented by tagging the routes with the ``no-reoriginate`` community. Routes with the ``no-reoriginate`` community tag are skipped for route reorigination.
 
 
-Starting in Contrail Release 5.0, when one or more than one service instance in a service chain fails, reorigination of routes on both sides of the service chain is stopped and routes automatically converge to a backup service chain that is part of another Contrail cluster. For more information, see `Service Instance Health Checks`_ .
+Starting in release 5.0, when one or more than one service instance in a service chain fails, reorigination of routes on both sides of the service chain is stopped and routes automatically converge to a backup service chain that is part of another Tungsten Fabric cluster. For more information, see `Service Instance Health Checks`_ .
 
 
 
@@ -74,7 +74,7 @@ The relationships are shown in `Figure 55`_ .
 
 The schema transformer sets the next-hop field of the route aggregate object to the service chain interface address. The schema transformer also links the route aggregate object to the internal routing instance created for the service instance.
 
-Using the configuration as described, the Contrail control service reads the route aggregation object on the routing instance. When the first, more specific route or contributing route is launched (when the first VM is launched on the right VN), the aggregate route is published. Similarly, the aggregated route is deleted when the last, more specific route or contributing route is deleted (when the last VM is deleted in the right VN). The aggregated route is published when the next hop for the aggregated route gets resolved.
+Using the configuration as described, the Tungsten Fabric control service reads the route aggregation object on the routing instance. When the first, more specific route or contributing route is launched (when the first VM is launched on the right VN), the aggregate route is published. Similarly, the aggregated route is deleted when the last, more specific route or contributing route is deleted (when the last VM is deleted in the right VN). The aggregated route is published when the next hop for the aggregated route gets resolved.
 
 By default, in BGP or XMPP route exchanges, the control node will not publish contributing routes of an aggregate route.
 
@@ -195,7 +195,7 @@ Configuring and Troubleshooting Route Aggregation
 Configure Route Aggregate Object
 --------------------------------
 
-You can use the Contrail UI, **Configure > Networking > Routing > Create >Route Aggregate** screen to name the route aggregate object and identify the routes to aggregate. See `Figure 56`_ .
+You can use the Tungsten Fabric UI, **Configure > Networking > Routing > Create >Route Aggregate** screen to name the route aggregate object and identify the routes to aggregate. See `Figure 56`_ .
 
 .. _Figure 56: 
 
@@ -295,7 +295,7 @@ See the following example.
 Routing Policy
 --------------
 
-Contrail uses routing policy infrastructure to manipulate the route and path attribute dynamically. Contrail also supports attaching the import routing policy on the service instances.
+Tungsten Fabric uses routing policy infrastructure to manipulate the route and path attribute dynamically. Tungsten Fabric also supports attaching the import routing policy on the service instances.
 The routing policy contains list terms. A term can be a terminal rule, meaning that upon a match on the specified term, no further terms are evaluated and the route is dropped or accepted, based on the action in that term.
 If the term is not a terminal rule, subsequent terms are evaluated for the given route.
 The list terms are structured as in the following example.
@@ -388,7 +388,7 @@ Match Condition: From
 
 The match condition ``from`` contains a list of match conditions to be satisfied for applying the action specified in the term. It is possible that the term doesn’t have any match condition. This indicates that all routes match this term and action is applied according to the action specified in the term.
 
-The following table describes the match conditions supported by Contrail.
+The following table describes the match conditions supported by Tungsten Fabric.
 
 +------------------------+-------------------------------+-----------------------------------------------------------------------------------------------------+
 | Match Condition        | User Input                    | Description                                                                                         |
@@ -415,7 +415,7 @@ Routing Policy Action and Update Action
 
 The policy action contains two parts, action and update action.
 
-The following table describes ``action`` as supported by Contrail.
+The following table describes ``action`` as supported by Tungsten Fabric.
 
 +-----------------+------------------+------------------------------------------------------------------------------------------------------------------------+
 | Action          | Terminal?        | Description                                                                                                            |
@@ -432,7 +432,7 @@ The following table describes ``action`` as supported by Contrail.
 
 The update action section specifies the route modification to be performed on the matching route.
 
-The following table describes ``update action`` as supported by Contrail.
+The following table describes ``update action`` as supported by Tungsten Fabric.
 
 +------------------------+-------------------------------+-----------------------------------------------------------------------------------------------------+
 |Update Action           | User Input                    | Description                                                                                         |
