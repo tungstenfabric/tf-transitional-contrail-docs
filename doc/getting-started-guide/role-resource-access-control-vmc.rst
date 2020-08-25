@@ -30,7 +30,7 @@ Role and Resource-Based Access Control
 
 
 Tungsten Fabric Role and Resource-Based Access (RBAC) Overview
--------------------------------------------------------
+--------------------------------------------------------------
 
 Release 3.0 and later supports role and resource-based access control (RBAC) with API operation-level access control.
 
