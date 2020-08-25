@@ -62,7 +62,7 @@ To configure service chaining for MX Series routers, extend the virtual networks
     bgp {
         group demo_contrail {
             type internal;
-            description "To Contrail Control Nodes & other MX";
+            description "To Tungsten Fabric Control Nodes & other MX";
             local-address 10.84.20.252;
             keep all;
             family inet-vpn {
@@ -76,10 +76,10 @@ To configure service chaining for MX Series routers, extend the virtual networks
 
 
 
-#. The final step is to add ``target:100:10000`` to the public virtual network and ``target:100:20000`` to the enterprise virtual network, using the Contrail Juniper Networks interface.
+#. The final step is to add ``target:100:10000`` to the public virtual network and ``target:100:20000`` to the enterprise virtual network, using the Tungsten Fabric interface.
 
 
-A full MX Series router configuration for Contrail can be seen in `Sample Network Configuration for Devices for Simple Tiered Web Application`_ .
+A full MX Series router configuration for Tungsten Fabric can be seen in `Sample Network Configuration for Devices for Simple Tiered Web Application`_ .
 
 .. _Sample Network Configuration for Devices for Simple Tiered Web Application: code-example-vnc.html
 

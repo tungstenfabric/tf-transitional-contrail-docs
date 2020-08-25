@@ -1,9 +1,9 @@
 .. This work is licensed under the Creative Commons Attribution 4.0 International License.
    To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-===============================================================
-Setting Up and Using a Simple Virtual Gateway with Contrail 4.0
-===============================================================
+======================================================================
+Setting Up and Using a Simple Virtual Gateway with Tungsten Fabric 4.0
+======================================================================
 
 -  `Introduction to the Simple Gateway`_ 
 
@@ -49,7 +49,7 @@ Every virtual network has a routing instance associated with it. The routing ins
 
 The public network is the IP fabric or the external networks across the IP fabric. The virtual networks do not have access to the public network, and a gateway is used to provide connectivity to the public network from a virtual network. In traditional deployments, a routing device such as a Juniper Networks MX Series router can act as a gateway.
 
-The simple virtual gateway for Contrail is a restricted implementation of a gateway that can be used for experimental purposes, only. The simple gateway provides the Contrail virtual networks with access to the public network, and is represented as ``vgw`` .
+The simple virtual gateway for Tungsten Fabric is a restricted implementation of a gateway that can be used for experimental purposes, only. The simple gateway provides the Tungsten Fabric virtual networks with access to the public network, and is represented as ``vgw`` .
 
 The simple gateway is valid ONLY for a kernel vrouter, and *cannot* be used with any other flavor of vrouter, such as DPDK, SR-IOV, or the like. The simple gateway *cannot* be used in a production environment, it is for experimental uses only.
 
@@ -169,7 +169,7 @@ The following are restrictions of the simple gateway:
 Packet Flows with the Simple Gateway
 ====================================
 
-The following sections describe the packet flow process when the simple gateway is configured on a Contrail system.
+The following sections describe the packet flow process when the simple gateway is configured on a Tungsten Fabric system.
 
 First, the packet flow process from the virtual network to the public network is described. Next, the packet flow process from the public network to the virtual network is described.
 
@@ -301,7 +301,7 @@ Using Thrift Messages to Dynamically Configure the Simple Gateway
 
 Another way to configure the simple gateway is to dynamically send create and delete thrift messages to the vrouter agent.
 
-Starting with Contrail Release 1.10 and greater, the following thrift messages are available:
+Starting with Release 1.10 and greater, the following thrift messages are available:
 
 -  ``AddVirtualGateway`` —add a virtual gateway
 

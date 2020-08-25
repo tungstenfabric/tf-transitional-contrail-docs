@@ -7,7 +7,7 @@ Role-Based Access Control for Analytics
 
 The analytics API uses role-based access control (RBAC) to provide the ability to access UVE and query information based on the permissions of the user for the UVE or queried object.
 
-Contrail Release 4.1 extends authenticated access so that tenants can view network monitoring information about the networks for which they have read permissions. RBAC for anaytics is a Beta feature in Contrail Release 4.1.
+Release 4.1 extends authenticated access so that tenants can view network monitoring information about the networks for which they have read permissions. RBAC for anaytics is a Beta feature in Release 4.1.
 
 The analytics API can map query and UVE objects to configuration objects on which RBAC rules are applied, so that read permissions can be verified using the VNC API.
 

@@ -5,7 +5,7 @@
 Query > Flows
 =============
 
-Select **Query > Flows** to perform rich and complex SQL-like queries on flows in the Contrail Controller. You can use the query results for such things as gaining insight into the operation of applications in a virtual network, performing historical analysis of flow issues, and pinpointing problem areas with flows.
+Select **Query > Flows** to perform rich and complex SQL-like queries on flows in the Tungsten Fabric Controller. You can use the query results for such things as gaining insight into the operation of applications in a virtual network, performing historical analysis of flow issues, and pinpointing problem areas with flows.
 
 -  `Query > Flows > Flow Series`_ 
 
