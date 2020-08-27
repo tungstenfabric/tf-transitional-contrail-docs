@@ -5,154 +5,159 @@
 Tungsten Fabric Getting Started Guide
 =====================================
 
-Overview
+* Overview
 
-  Understanding Tungsten Fabric
+  * Understanding Tungsten Fabric
 
-    `Tungsten Fabric Overview`_
+    * `Tungsten Fabric Overview`_
 
-    `Tungsten Fabric Description`_
+    * `Tungsten Fabric Description`_
 
-Installing and Upgrading Tungsten Fabric
+* Installing and Upgrading Tungsten Fabric
 
-  Server Requirements and Supported Platforms
+  * Server Requirements and Supported Platforms
 
-    `Server Requirements and Supported Platforms`_
+    * `Server Requirements and Supported Platforms`_
 
-  Installing Tungsten Fabric and Provisioning Roles
+  * Installing Tungsten Fabric and Provisioning Roles
+  
+    * `Introduction to Containerized Tungsten Fabric Modules`_
 
-    `Downloading Installation Software`_
+    * `Downloading Installation Software`_
 
-    `Overview of contrail-ansible-deployer used in Contrail Command for Installing Tungsten Fabric with Microservices Architecture`_
+    * `Overview of contrail-ansible-deployer used in Contrail Command for Installing Tungsten Fabric with Microservices Architecture`_
 
-    `Installing Tungsten Fabric with OpenStack and Kolla Ansible`_
+    * `Installing Tungsten Fabric with OpenStack and Kolla Ansible`_
 
-    `Configuring the Control Node with BGP`_
+    * `Supporting Multiple Interfaces on Servers and Nodes`_
 
-    `Role and Resource-Based Access Control`_
+    * `Configuring the Control Node with BGP`_
 
-  Installation and Configuration Scenarios
+    * `Adding a New Node to an Existing Containerized Tungsten Fabric Cluster`_
 
-    `Setting Up and Using a Simple Virtual Gateway with Release 4.0`_
+    * `Using contrailctl to Configure Services Within Containers`_
 
-    `Simple Underlay Connectivity without Gateway`_
+    * `Tungsten Fabric Global Controller`_
 
-    `Dynamic Kernel Module Support (DKMS) for vRouter`_
+    * `Role and Resource-Based Access Control`_
 
-  Upgrading Tungsten Fabric Software
+  * Installation and Configuration Scenarios
 
-  Contrail Command
+    * `Setting Up and Using a Simple Virtual Gateway with Release 4.0`_
 
-  Using Tungsten Fabric with Red Hat
+    * `Simple Underlay Connectivity without Gateway`_
 
-Configuring Tungsten Fabric
+    * `Dynamic Kernel Module Support (DKMS) for vRouter`_
 
-  Configuring Virtual Networks
+  * Upgrading Tungsten Fabric Software
 
-    `Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric`_
+  * Contrail Command
 
-    `Creating a Virtual Network with Tungsten Fabric`_
+  * Using Tungsten Fabric with Red Hat
 
-    `Creating a Virtual Network with OpenStack Tungsten Fabric`_
+* Configuring Tungsten Fabric
 
-    `Creating an Image for a Project in OpenStack Tungsten Fabric`_
+  * Configuring Virtual Networks
 
-    `Creating a Floating IP Address Pool`_
+    * `Creating Projects in OpenStack for Configuring Tenants in Tungsten Fabric`_
 
-    `Using Security Groups with Virtual Machines (Instances)`_
+    * `Creating a Virtual Network with Tungsten Fabric`_
 
-    `Support for IPv6 Networks in Tungsten Fabric`_
+    * `Creating a Virtual Network with OpenStack Tungsten Fabric`_
 
-    `Configuring EVPN and VXLAN`_
+    * `Creating an Image for a Project in OpenStack Tungsten Fabric`_
 
-  Example of Deploying a Multi-Tier Web Application Using Tungsten Fabric
+    * `Creating a Floating IP Address Pool`_
 
-    `Example\:\ Deploying a Multi-Tier Web Application`_
+    * `Using Security Groups with Virtual Machines (Instances)`_
 
-    `Sample Network Configuration for Devices for Simple Tiered Web Application`_
+    * `Support for IPv6 Networks in Tungsten Fabric`_
 
-  Configuring Services
+    * `Configuring EVPN and VXLAN`_
 
-    `Configuring DNS Servers`_
+  * Example of Deploying a Multi-Tier Web Application Using Tungsten Fabric
 
-    `Support for Multicast`_
+    * `Example\:\ Deploying a Multi-Tier Web Application`_
 
-    `Using Static Routes with Services`_
+    * `Sample Network Configuration for Devices for Simple Tiered Web Application`_
 
-    `Configuring Metadata Service`_
+  * Configuring Services
 
-  Configuring Service Chaining
+    * `Configuring DNS Servers`_
 
-    `Service Chaining`_
+    * `Support for Multicast`_
 
-    `Service Chaining MX Series Configuration`_
+    * `Using Static Routes with Services`_
 
-    `ECMP Load Balancing in the Service Chain`_
+    * `Configuring Metadata Service`_
 
-    `Customized Hash Field Selection for ECMP Load Balancing`_
+  * Configuring Service Chaining
 
-    `Using the Tungsten Fabric Heat Template`_
+    * `Service Chaining`_
 
-    `Service Chain Route Reorigination`_
+    * `Service Chaining MX Series Configuration`_
 
-    `Service Instance Health Checks`_
+    * `ECMP Load Balancing in the Service Chain`_
 
-  Examples\:\ Configuring Service Chaining
+    * `Customized Hash Field Selection for ECMP Load Balancing`_
 
-Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
+    * `Using the Tungsten Fabric Heat Template`_
 
-  Understanding Tungsten Fabric Analytics
+    * `Service Chain Route Reorigination`_
 
-    `Understanding Tungsten Fabric Analytics`_
+    * `Service Instance Health Checks`_
 
-    `Tungsten Fabric Alerts`_
+  * Examples\:\ Configuring Service Chaining
 
-    `Underlay Overlay Mapping in Tungsten Fabric`_
+* Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
 
-  Configuring Tungsten Fabric Analytics
+  * Understanding Tungsten Fabric Analytics
 
-    `Analytics Scalability`_
+    * `Understanding Tungsten Fabric Analytics`_
 
-    `High Availability for Analytics`_
+    * `Tungsten Fabric Alerts`_
 
-    `Role-Based Access Control for Analytics`_
+    * `Underlay Overlay Mapping in Tungsten Fabric`_
 
-    `System Log Receiver in Tungsten Fabric Analytics`_
+  * Configuring Tungsten Fabric Analytics
 
-    `Sending Flow Messages to the Tungsten Fabric System Log`_
+    * `Analytics Scalability`_
 
-    `More Efficient Flow Queries`_
+    * `High Availability for Analytics`_
 
-    `Ceilometer Support in a Tungsten Fabric Cloud`_
+    * `Role-Based Access Control for Analytics`_
 
-  Using Tungsten Fabric Analytics to Monitor and Troubleshoot the Network
+    * `System Log Receiver in Tungsten Fabric Analytics`_
 
-    `Monitoring the System`_
+    * `Sending Flow Messages to the Tungsten Fabric System Log`_
 
-    `Debugging Processes Using the Tungsten Fabric Introspect Feature`_
+    * `More Efficient Flow Queries`_
 
-    `Monitor > Infrastructure > Dashboard`_
+    * `Ceilometer Support in a Tungsten Fabric Cloud`_
 
-    `Monitor > Infrastructure > Control Nodes`_
+  * Using Tungsten Fabric Analytics to Monitor and Troubleshoot the Network
 
-    `Monitor > Infrastructure > Virtual Routers`_
+    * `Monitoring the System`_
 
-    `Monitor > Infrastructure > Analytics Nodes`_
+    * `Debugging Processes Using the Tungsten Fabric Introspect Feature`_
 
-    `Monitor > Infrastructure > Config Nodes`_
+    * `Monitor > Infrastructure > Dashboard`_
 
-    `Monitor > Networking`_
+    * `Monitor > Infrastructure > Control Nodes`_
 
-    `Query > Flows`_
+    * `Monitor > Infrastructure > Virtual Routers`_
 
-    `Query > Logs`_
+    * `Monitor > Infrastructure > Analytics Nodes`_
 
-    `Example\:\ Debugging Connectivity Using Monitoring for Troubleshooting`_
-    `Adding a New Node to an Existing Containerized Tungsten Fabric Cluster`_
-    `Introduction to Containerized Tungsten Fabric Modules`_
-    `Using contrailctl to Configure Services Within Containers`_
-    `Tungsten Fabric Global Controller`_
-    `Supporting Multiple Interfaces on Servers and Nodes`_
+    * `Monitor > Infrastructure > Config Nodes`_
+
+    * `Monitor > Networking`_
+
+    * `Query > Flows`_
+
+    * `Query > Logs`_
+
+    * `Example\:\ Debugging Connectivity Using Monitoring for Troubleshooting`_
 
 .. toctree::
    :maxdepth: 2
@@ -330,7 +335,11 @@ Monitoring and Troubleshooting the Network Using Tungsten Fabric Analytics
 .. _Example\:\ Debugging Connectivity Using Monitoring for Troubleshooting: debug-connectivity-vnc.html
 
 .. _Adding a New Node to an Existing Containerized Tungsten Fabric Cluster: add-node-existing-container.html
+
 .. _Introduction to Containerized Tungsten Fabric Modules: containers-overview.html
+
 .. _Using contrailctl to Configure Services Within Containers: contrailctl.html
+
 .. _Tungsten Fabric Global Controller: global-controller-vnc.html
+
 .. _Supporting Multiple Interfaces on Servers and Nodes:   multi-interface-40.html
